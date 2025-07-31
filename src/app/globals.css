@@ -1,27 +1,374 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --secondary-color: rgb(0, 225, 249);
+  --color-primary-50: rgb(234, 255, 254);
+  --color-primary-100: rgb(203, 255, 255);
+  --color-primary-200: rgb(158, 252, 255);
+  --color-primary-300: rgb(91, 247, 255);
+  --color-primary-400: rgb(0, 225, 249);
+  --color-primary-500: rgb(0, 202, 229);
+  --color-primary-DEFAULT: var(--color-primary-500);
+  --color-primary-600: rgb(0, 161, 192);
+  --color-primary-700: rgb(3, 127, 155);
+  --color-primary-800: rgb(13, 102, 125);
+  --color-primary-900: rgb(16, 84, 105);
+  --color-primary-950: rgb(3, 56, 73);
+  --color-gray-50: rgb(250, 250, 250);
+  --color-gray-100: rgb(245, 245, 245);
+  --color-gray-200: rgb(229, 229, 229);
+  --color-gray-300: rgb(212, 212, 212);
+  --color-gray-400: rgb(163, 163, 163);
+  --color-gray-500: rgb(115, 115, 115);
+  --color-gray-600: rgb(82, 82, 82);
+  --color-gray-700: rgb(64, 64, 64);
+  --color-gray-800: rgb(38, 38, 38);
+  --color-gray-900: rgb(23, 23, 23);
+  --color-gray-950: rgb(10, 10, 10);
+  --tw-prose-bullets: #d1d5db;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+
+  --percent: "0%";
+  --color: "";
+
+  --the-header-offset: 64px;
+  --the-header-offset-menu: 112px;
+  --the-header-height: 60px;
+  --gap-x: 8px;
+  --gap-y: 8px;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-gray-950);
+  background: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+.sin-waves {
+  color: rgb(56, 189, 248);
+}
+
+hr {
+  border-top-width: 1px;
+  color: inherit;
+  height: 0;
+}
+
+.the-top-bar .btn-news:hover,
+.the-top-bar .btn-store-address:hover {
+  background: #0000000d;
+}
+
+.the-menu button[type="button"]:hover {
+  background: #0000000d;
+}
+
+.no-scrollbar[data-v-61d9ae21] {
+  scrollbar-width: none;
+}
+
+.section-banner .wrapper:before {
+  content: "";
+  background-image: url("../assets/images/book-image.png");
+  background-size: 115px 115px;
+  height: 115px;
+  left: -50px;
+  position: absolute;
+  top: 10%;
+  width: 115px;
+  z-index: 2;
+}
+
+.section-banner .wrapper:after {
+  content: "";
+  background-image: url("../assets/images/bag-image.png");
+  background-size: 183px 183px;
+  bottom: -70px;
+  content: "";
+  height: 183px;
+  position: absolute;
+  right: -50px;
+  width: 183px;
+  z-index: 2;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.rotate-8 {
+  --tw-rotate: 8deg;
+}
+
+.rotate-180,
+.rotate-8 {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.aspect-w-1 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 1;
+}
+
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+/* header menu */
+.divide-space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.t-flex-gap__wrapper > * {
+  margin-left: var(--gap-x);
+  margin-top: var(--gap-y);
+}
+
+img.lazyloaded {
+  opacity: 1;
+}
+
+/* Content */
+.prose-base {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--tw-prose-headings);
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.3333333;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+.prose
+  :where(h2, h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--color-gray-900);
+}
+
+div[data-type="imageBlock"] {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+div[data-type="imageBlock"] {
+  position: relative;
+  background-color: var(--color-gray-50);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.prose :where(ul):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  list-style-type: disc;
+  margin-bottom: 1.25em;
+  margin-top: 1.25em;
+  padding-inline-start: 1.625em;
+}
+
+.prose-base
+  :where(p, blockquote, ul, ol):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ) {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --the-header-height: 64px;
+  }
+
+  .md\:container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+
+  .md\:w-\[calc\(50\%-8px\)\] {
+    width: calc(50% - 8px);
+  }
+
+  .md\:aspect-w-16 {
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    position: relative;
+    --tw-aspect-w: 16;
+  }
+
+  .md\:aspect-h-9 {
+    --tw-aspect-h: 9;
+  }
+
+  .md\:aspect-w-16 > * {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .md\:prose-lg {
+    font-size: 1.125rem;
+    line-height: 1.7777778;
+  }
+
+  .md\:prose-lg
+    :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 2.25rem;
+    line-height: 1.3333333;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    color: var(--tw-prose-headings);
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 0.6em;
+    margin-top: 1.6em;
+  }
+
+  .prose-base
+    :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 1.25em;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .md\:prose-lg
+    :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .md\:prose-lg
+    :where(.md\:prose-lg > :first-child):not(
+      :where([class~="not-prose"], [class~="not-prose"] *)
+    ) {
+    margin-top: 0;
+  }
+
+  .md\:prose-lg
+    :where(p, blockquote, ul, ol):not(
+      :where([class~="not-prose"], [class~="not-prose"] *)
+    ) {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .md\:prose-lg
+    :where(ul > li):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    padding-inline-start: 0.4444444em;
+  }
+
+  .md\:prose-lg
+    :where(li):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-bottom: 0.6666667em;
+    margin-top: 0.6666667em;
+  }
+
+  .md\:prose-lg
+    :where(ul):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-bottom: 1.3333333em;
+    margin-top: 1.3333333em;
+    padding-inline-start: 1.5555556em;
+  }
+
+  div[data-type="imageBlock"] {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 1023px !important;
+  }
+}
+
+.\@container {
+  container-type: inline-size;
+}
+
+@container (min-width: 36rem) {
+  .\@xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 56rem) {
+  .\@4xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 72rem) {
+  .\@6xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 28rem) {
+  .\@md\:gap-y-6 {
+    row-gap: 1.5rem;
+  }
+}
+
+@container (min-width: 28rem) {
+  .\@md\:gap-x-4 {
+    column-gap: 1rem;
   }
 }

@@ -1,0 +1,33 @@
+.divide-space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+  border-top-width: calc(1px * (1 - var(--tw-divide-y-reverse)));
+}
+
+.newslist-aspect-w-16 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 16;
+}
+
+.newslist-aspect-w-16 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .md\:divide-space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}

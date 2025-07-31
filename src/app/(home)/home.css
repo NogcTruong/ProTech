@@ -1,0 +1,215 @@
+/* Common */
+img.lazyloaded {
+  opacity: 1;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.btn-account:hover,
+.the-menu button[type="button"]:hover {
+  background: #0000000d;
+}
+
+/* header */
+.__default,
+.the-header {
+  background-color: rgb(224 242 254 / 1);
+}
+
+.the-menu .wrapper nav > .activated,
+.the-menu .wrapper nav > .activated:hover,
+.the-menu .wrapper nav > :not(.activated):hover {
+  background: #0000000d;
+}
+
+/* viewdProduct */
+.group\/cart:hover .group-hover\/cart\:opacity-100,
+.group\/scrollable:hover .group-hover\/scrollable\:opacity-100 {
+  opacity: 1;
+}
+
+/* Promotion */
+.section-promotions {
+  --item-size: 80px;
+  --space: 12px;
+}
+
+/* Featured Categories */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:scale-\[220\%\] {
+  --tw-scale-x: 220%;
+  --tw-scale-y: 220%;
+}
+
+.duration-400 {
+  transition-duration: 0.4s;
+}
+
+.ease-out-back {
+  transition-timing-function: cubic-bezier(0.47, 1.64, 0.41, 1);
+}
+
+.group:hover .group-hover\:rotate-8 {
+  --tw-rotate: 8deg;
+}
+
+.group:hover .group-hover\:scale-105 {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+}
+
+.\!transform-gpu {
+  transform: translate3d(var(--tw-translate-x), var(--tw-translate-y), 0)
+    rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+
+/* promotion */
+.dark {
+  color-scheme: dark;
+}
+
+/* Flash sale */
+.section-flash-sale .title:before {
+  content: "";
+  background-image: url("../../assets/logos/gift-mascot-logo.png");
+  background-size: 56px 56px;
+  height: 56px;
+  width: 56px;
+  margin-right: 16px;
+}
+
+/* Usp */
+.section-usp .marker:before {
+  background: var(--color);
+  border-radius: 9999px;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translate3d(calc(-100% - var(--percent)), 0, 0);
+  width: 100%;
+}
+
+.section-usp .title:before {
+  content: "";
+  background-image: url("../../assets/logos/write-mascot-logo.png");
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  background-size: 56px 56px;
+}
+
+/* Suggestion product */
+.section-suggestion-product .title:before {
+  content: "";
+  background-image: url("../../assets/logos/suggest-product-mascot.png");
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  background-size: 56px 56px;
+}
+
+/* Tech news */
+.section-news .title:before {
+  content: "";
+  background-image: url("../../assets/logos/news-mascot-logo.png");
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  background-size: 56px 56px;
+}
+
+.divide-space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+  border-top-width: calc(1px * (1 - var(--tw-divide-y-reverse)));
+}
+
+@media (min-width: 768px) {
+  .section-promotions {
+    --item-size: 120px;
+  }
+
+  .md\:divide-space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
+/* Top keywords */
+.section-top-keywords .title:before {
+  content: "";
+  background-image: url("../../assets/logos/keyword-mascot-logo.png");
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  background-size: 56px 56px;
+}
+
+.t-flex-gap {
+  --gap-x: 0;
+  --gap-y: 0;
+  --gap-x-negative: calc(var(--gap-x) * -1);
+  --gap-y-negative: calc(var(--gap-y) * -1);
+  display: flow-root;
+}
+
+.t-flex-gap__wrapper {
+  margin-left: var(--gap-x-negative);
+  margin-top: var(--gap-x-negative);
+}
+
+.the-input-search-modal .logo {
+  background-size: 85px 40px;
+  margin-top: 4px;
+  width: 85px;
+}
+
+@media (min-width: 768px) {
+  .md\:container {
+    max-width: 768px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .md\:aspect-w-4 {
+    padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+    position: relative;
+    --tw-aspect-w: 4;
+  }
+
+  .md\:aspect-w-4 > * {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .md\:aspect-h-1 {
+    --tw-aspect-h: 1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .md\:container {
+    max-width: 1280px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

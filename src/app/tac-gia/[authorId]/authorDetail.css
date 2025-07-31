@@ -1,0 +1,25 @@
+.author-aspect-w-16 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 16;
+}
+
+.author-aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+.author-aspect-w-16 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+  margin-top: calc(0.5rem * (1 - var(--tw-space-y-reverse)));
+}

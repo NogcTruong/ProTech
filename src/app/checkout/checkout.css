@@ -1,0 +1,48 @@
+.form-radio {
+  border-radius: 100%;
+}
+
+.form-checkbox:checked,
+.form-radio:checked {
+  background-color: currentColor;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-color: #0000;
+}
+
+.form-radio:checked {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E");
+}
+
+.form-checkbox,
+.form-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-origin: border-box;
+  border-width: 1px;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 1rem;
+  padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  width: 1rem;
+  --tw-shadow: 0 0 #0000;
+}
+
+.divide-x > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-x-reverse: 0;
+  border-left-width: calc(1px * (1 - var(--tw-divide-x-reverse)));
+  border-right-width: calc(1px * var(--tw-divide-x-reverse));
+}
+
+.divide-space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+}

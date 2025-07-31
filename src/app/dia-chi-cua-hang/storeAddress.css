@@ -1,0 +1,97 @@
+.store-aspect-w-16 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 16;
+}
+
+.store-aspect-w-16 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.store-aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+.store-aspect-w-4 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 4;
+}
+
+.store-aspect-w-4 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.store-aspect-h-3 {
+  --tw-aspect-h: 3;
+}
+
+/* store address detail  */
+.place-card div,
+.place-card a,
+.default-card div,
+.default-card a {
+  color: #5b5b5b;
+  font-family: Roboto, Arial;
+  font-size: 12px;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.place-card a:link,
+.default-card a:link,
+.directions-card a:link {
+  text-decoration: none;
+  color: #1a73e8;
+}
+
+.place-card a:hover,
+.default-card a:hover,
+.directions-card a:hover {
+  text-decoration: underline;
+}
+
+.place-card .navigate-text {
+  margin-top: 5px;
+  text-align: center;
+  color: #1a73e8;
+  font-size: 12px;
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.navigate:hover .navigate-icon {
+  background-position: 48px 0;
+}
+
+.navigate-icon {
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.icon {
+  background-image: url("https://maps.gstatic.com/mapfiles/embed/images/entity11.png");
+  background-size: 72px 210px;
+}
+
+.gm-control-active {
+  display: none !important;
+}
