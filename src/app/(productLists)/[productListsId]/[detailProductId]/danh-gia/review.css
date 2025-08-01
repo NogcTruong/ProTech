@@ -64,3 +64,29 @@
 .review-aspect-h-1 {
   --tw-aspect-h: 1;
 }
+
+/* feedback modal */
+.rating {
+  --bg: #{hsl($hue,10%,90%)}--fg:#{hsl($hue,10%,10%)}--primary:#{hsl($hue,90%,55%)}--yellow:#{hsl($starHue,90%,55%)}--yellow-t:#{hsla($starHue,90%,55%,0)}--bezier:cubic-bezier(.42,0,.58,1);
+  --trans-dur: .3s;
+  font-size: calc(22px + .625vw);
+  margin: auto;
+}
+
+.rating__stars {
+  display: flex;
+  padding-bottom: 0.375em;
+  position: relative;
+}
+
+.rating__star {
+  display: block;
+  height: 32px;
+  overflow: visible;
+  pointer-events: none;
+  width: 32px;
+}
+
+.pb-safe-or-3 {
+  padding-bottom: max(env(safe-area-inset-bottom), .75rem);
+}

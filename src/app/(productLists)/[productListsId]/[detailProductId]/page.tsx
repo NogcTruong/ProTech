@@ -1347,7 +1347,7 @@ export default function DetailProductPage() {
                 </div>
                 <div className="mt-4 flex justify-center">
                   <a
-                    href="#"
+                    href={`${detailProductId}/danh-gia`}
                     className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center"
                   >
                     <span>Xem tất cả</span>

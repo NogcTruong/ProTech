@@ -78,6 +78,7 @@ hr {
   background: #0000000d;
 }
 
+.no-scrollbar,
 .no-scrollbar[data-v-61d9ae21] {
   scrollbar-width: none;
 }

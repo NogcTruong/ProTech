@@ -4,12 +4,166 @@ import Image from "next/image";
 import "./review.css";
 import { useState } from "react";
 import Link from "next/link";
+import ReviewModal from "@/components/product/reviewModal";
+import clsx from "clsx";
+import { useParams } from "next/navigation";
+import FeedbackModal from "@/components/product/feedbackModal";
+
+type Review = {
+  id: number;
+  name: string;
+  price: number;
+  rating: number;
+  description: string;
+  image?: string[];
+  purchased: boolean;
+};
+
+const products: Review[] = [
+  {
+    id: 1,
+    name: "Bàn phím cơ Bach Tuấn",
+    price: 1200000,
+    rating: 5,
+    description:
+      "Bàn phím cơ chất lượng cao, thiết kế tối giản, phù hợp cho lập trình viên.",
+    image: [
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-tse.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-ymr.jpg",
+    ],
+    purchased: false,
+  },
+  {
+    id: 2,
+    name: "Bàn phím Qưin VD",
+    price: 1500000,
+    rating: 4,
+    description: "Bàn phím cơ với đèn LED RGB, trải nghiệm gõ mượt mà.",
+    image: [
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/vmd-onj.jpg",
+    ],
+    purchased: false,
+  },
+  {
+    id: 3,
+    name: "Bàn phím Phong Chi",
+    price: 1300000,
+    rating: 5,
+    description: "Thiết kế nhỏ gọn, phím gõ êm ái, phù hợp làm việc văn phòng.",
+    image: [
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/n2n-lxq.jpg",
+    ],
+    purchased: false,
+  },
+  {
+    id: 4,
+    name: "Bàn phím Tấn Thành",
+    price: 1100000,
+    rating: 4,
+    description: "Bàn phím cơ giá rẻ, hiệu năng cao, lý tưởng cho game thủ.",
+    image: [
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/p61-ehr.jpg",
+    ],
+    purchased: false,
+  },
+  {
+    id: 5,
+    name: "Bàn phím Tấn Thành",
+    price: 1100000,
+    rating: 3,
+    description: "Bàn phím cơ giá rẻ, hiệu năng cao, lý tưởng cho game thủ.",
+    image: [
+      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/yf5-cyi.jpg",
+    ],
+    purchased: true,
+  },
+  {
+    id: 6,
+    name: "Bàn phím Flow",
+    price: 1400000,
+    rating: 5,
+    description: "Thiết kế hiện đại, tích hợp công nghệ chống nước.",
+    purchased: false,
+  },
+];
 
 export default function Review() {
+  const params = useParams();
+  const { detailProductId, productListsId } = params;
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenReviewModal, setIsOpenReviewModal] = useState(false);
+  const [filterTab, setFilterTab] = useState("tất cả");
+  const [sortBy, setSortBy] = useState("lastest");
+  const [selectedReview, setSelectedReview] = useState<string[]>([]);
+  const [reviewModal, setReviewModal] = useState<Review | null>(null);
+  const [feedback, setFeedback] = useState(false);
+
+  const getFilteredReviews = () => {
+    let reviews = products;
+    const ratingReview = Number(filterTab);
+
+    if (
+      filterTab === "1" ||
+      filterTab === "2" ||
+      filterTab === "3" ||
+      filterTab === "4" ||
+      filterTab === "5"
+    ) {
+      reviews = reviews.filter((review) => review.rating === ratingReview);
+    }
+
+    if (sortBy === "rating-asc") {
+      reviews = [...reviews].sort(
+        (a, b) => Number(a.rating) - Number(b.rating)
+      );
+    } else if (sortBy === "rating-desc") {
+      reviews = [...reviews].sort(
+        (a, b) => Number(b.rating) - Number(a.rating)
+      );
+    }
+
+    if (selectedReview.includes("selectedImage")) {
+      reviews = reviews.filter((rev) => rev.image && rev.image.length > 0);
+    }
+
+    if (selectedReview.includes("selectedPurchased")) {
+      reviews = reviews.filter((rev) => rev.purchased);
+    }
+
+    return reviews;
+  };
+
+  const columns = [];
+  const filteredReviews = getFilteredReviews();
+  for (let i = 0; i < filteredReviews.length; i += 2) {
+    columns.push(filteredReviews.slice(i, i + 2));
+  }
+
+  const handleSelectedReview = (selectedFeedback: string) => {
+    setSelectedReview((prev) =>
+      prev.includes(selectedFeedback)
+        ? prev.filter((seF) => seF !== selectedFeedback)
+        : [...prev, selectedFeedback]
+    );
+  };
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleFeedback = () => {
+    setFeedback(true);
+  };
+
+  const handleSortChange = (sortType: string) => {
+    setSortBy(sortType);
+    setIsOpen(false);
+  };
+
+  const handleOpenReviewModal = (review: Review) => {
+    setReviewModal(review);
+    setIsOpenReviewModal(true);
   };
 
   const filterTableCSS = isOpen
@@ -27,15 +181,15 @@ export default function Review() {
         <nav className="min-w-0 hidden md:block">
           <ol className="flex items-center gap-x-1.5">
             <li className="flex items-center gap-x-1.5 text-colorPray400 text-sm leading-6 min-w-0">
-              <a
-                href="#"
+              <Link
+                href={`/${productListsId}/${detailProductId}`}
                 type="button"
                 className="flex items-center gap-x-1.5 group font-semibold min-w-0 hover:text-colorPray700"
               >
                 <span className="inline-flex items-center font-medium text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-colorPray300 bg-colorPray50 rounded-full truncate text-colorPray700">
                   Keycap Lofree Flow Series Dye-sub PBT Keycaps
                 </span>
-              </a>
+              </Link>
               <span role="presentation">/</span>
             </li>
             <li className="flex items-center gap-x-1.5 text-colorPray500 text-sm leading-6 min-w-0">
@@ -372,7 +526,10 @@ export default function Review() {
               </div>
               <div className="flex flex-col space-y-4 md:w-[200px]">
                 <div>
-                  <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center">
+                  <button
+                    className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
+                    onClick={handleFeedback}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -391,6 +548,11 @@ export default function Review() {
                     </svg>
                     <span>Viết đánh giá</span>
                   </button>
+                  <FeedbackModal
+                    open={feedback}
+                    onClose={() => setFeedback(false)}
+                    title="Đánh giá và nhận xét"
+                  />
                 </div>
               </div>
             </div>
@@ -401,126 +563,22 @@ export default function Review() {
               <div className="relative">
                 <div className="overflow-x-auto overflow-y-hidden scrollbar-hide">
                   <div className="flex space-x-2">
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
-                    <div className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray200">
-                      <Image
-                        width={80}
-                        height={80}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycapss"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-contain lazyloaded"
-                      />
-                    </div>
+                    {products.map((product) =>
+                      product.image?.map((img, imgIndex) => (
+                        <div
+                          key={`${product.id}-${imgIndex}`}
+                          className="w-[80px] h-[80px] shrink-0 rounded-lg overflow-hidden border border-gray-200"
+                        >
+                          <Image
+                            width={80}
+                            height={80}
+                            alt={`Hinh anh khach hang danh gia san pham ${product.name}`}
+                            src={img}
+                            className="w-full h-full object-contain lazyloaded"
+                          />
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -530,12 +588,24 @@ export default function Review() {
                 Lọc đánh giá
               </span>
               <div className="flex space-x-2">
-                <span className="inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white !ring-colorPrimary600 !ring-2 rounded-full cursor-pointer">
+                <span
+                  className={clsx(
+                    "inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer",
+                    { "!ring-colorPrimary600 !ring-2": filterTab === "tất cả" }
+                  )}
+                  onClick={() => setFilterTab("tất cả")}
+                >
                   <span className="inline-flex items-center space-x-1">
                     Tất cả
                   </span>
                 </span>
-                <span className="inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer">
+                <span
+                  className={clsx(
+                    "inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer",
+                    { "!ring-colorPrimary600 !ring-2": filterTab === "5" }
+                  )}
+                  onClick={() => setFilterTab("5")}
+                >
                   <span className="inline-flex items-center space-x-1">
                     <span>5</span>
                     <svg
@@ -554,7 +624,13 @@ export default function Review() {
                     </svg>
                   </span>
                 </span>
-                <span className="inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer">
+                <span
+                  className={clsx(
+                    "inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer",
+                    { "!ring-colorPrimary600 !ring-2": filterTab === "4" }
+                  )}
+                  onClick={() => setFilterTab("4")}
+                >
                   <span className="inline-flex items-center space-x-1">
                     <span>4</span>
                     <svg
@@ -573,7 +649,13 @@ export default function Review() {
                     </svg>
                   </span>
                 </span>
-                <span className="inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer">
+                <span
+                  className={clsx(
+                    "inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer",
+                    { "!ring-colorPrimary600 !ring-2": filterTab === "3" }
+                  )}
+                  onClick={() => setFilterTab("3")}
+                >
                   <span className="inline-flex items-center space-x-1">
                     <span>3</span>
                     <svg
@@ -592,7 +674,13 @@ export default function Review() {
                     </svg>
                   </span>
                 </span>
-                <span className="inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer">
+                <span
+                  className={clsx(
+                    "inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer",
+                    { "!ring-colorPrimary600 !ring-2": filterTab === "2" }
+                  )}
+                  onClick={() => setFilterTab("2")}
+                >
                   <span className="inline-flex items-center space-x-1">
                     <span>2</span>
                     <svg
@@ -611,7 +699,13 @@ export default function Review() {
                     </svg>
                   </span>
                 </span>
-                <span className="inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer">
+                <span
+                  className={clsx(
+                    "inline-flex items-center font-medium text-sm px-2 py-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white rounded-full cursor-pointer",
+                    { "!ring-colorPrimary600 !ring-2": filterTab === "1" }
+                  )}
+                  onClick={() => setFilterTab("1")}
+                >
                   <span className="inline-flex items-center space-x-1">
                     <span>1</span>
                     <svg
@@ -639,7 +733,9 @@ export default function Review() {
                   <div className="flex items-center w-full">
                     <button className="relative w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 inline-flex items-center text-left cursor-default rounded-md text-sm gap-x-1.5 px-2.5 py-1.5 shadow-sm bg-white text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-colorPrimaryDefault pe-9">
                       <span className="block truncate">
-                        Đánh giá cao → thấp
+                        {sortBy === "lastest" && "Mới nhất"}
+                        {sortBy === "rating-desc" && "Đánh giá cao → thấp"}
+                        {sortBy === "rating-asc" && "Đánh giá thấp → cao"}
                       </span>
                       <span className="absolute inset-y-0 end-0 flex items-center px-2.5 pointer-events-none">
                         <svg
@@ -670,7 +766,8 @@ export default function Review() {
                           <li
                             className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                             role="option"
-                            aria-selected="true"
+                            aria-selected={sortBy === "latest"}
+                            onClick={() => handleSortChange("lastest")}
                           >
                             <div className="flex items-center gap-1.5 min-w-0">
                               <span className="truncate">Mới nhất</span>
@@ -697,7 +794,8 @@ export default function Review() {
                           <li
                             className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                             role="option"
-                            aria-selected="true"
+                            aria-selected={sortBy === "rating-desc"}
+                            onClick={() => handleSortChange("rating-desc")}
                           >
                             <div className="flex items-center gap-1.5 min-w-0">
                               <span className="truncate">
@@ -726,7 +824,8 @@ export default function Review() {
                           <li
                             className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                             role="option"
-                            aria-selected="true"
+                            aria-selected={sortBy === "rating-asc"}
+                            onClick={() => handleSortChange("rating-asc")}
                           >
                             <div className="flex items-center gap-1.5 min-w-0">
                               <span className="truncate">Giá thấp → cao</span>
@@ -761,6 +860,7 @@ export default function Review() {
                       type="checkbox"
                       id="Image"
                       className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimary500 focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary500"
+                      onChange={() => handleSelectedReview("selectedImage")}
                     />
                   </div>
                   <div className="ms-3 flex flex-col">
@@ -778,6 +878,7 @@ export default function Review() {
                       type="checkbox"
                       id="purchased"
                       className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimary500 focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary500"
+                      onChange={() => handleSelectedReview("selectedPurchased")}
                     />
                   </div>
                   <div className="ms-3 flex flex-col">
@@ -792,265 +893,70 @@ export default function Review() {
               </div>
             </div>
             <div className="flex flex-col md:flex-row max-md:space-y-4 md:space-x-4">
-              <div className="md:w-1/3 flex flex-col space-y-5">
-                <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                  <div className="w-full relative rounded-lg overflow-hidden">
-                    <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
-                      <Image
-                        width={232}
-                        height={232}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycaps"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-cover lazyloaded"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                        +2
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center space-x-1">
-                    <span className="text-sm font-semibold">Bạch Tuấn</span>
-                    <div className="flex-1"></div>
-                    <span className="text-sm">5.0</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
+              {columns.map((column, columnIndex) => (
+                <div
+                  key={columnIndex}
+                  className="md:w-1/3 flex flex-col space-y-5"
+                >
+                  {column.map((review) => (
+                    <div
+                      key={review.id}
+                      className="shadow-md rounded-2xl p-3 cursor-pointer"
+                      onClick={() => handleOpenReviewModal(review)}
                     >
-                      <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-2 text-sm">
-                    Rất đẹp, xưa giờ toàn xài phím cơ nặng nay đổi qua em này
-                    rất gọn nhẹ, gõ rất êm yên tĩnh. Shop giao hàng rất nhanh,
-                    đóng gói cẩn thận. Shop uy tín, sẽ ủng hộ lần sau.
-                  </div>
+                      {review?.image?.length >= 1 && (
+                        <div className="w-full relative rounded-lg overflow-hidden">
+                          <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
+                            <Image
+                              width={232}
+                              height={232}
+                              alt={`Hinh anh khach hang danh gia san pham ${review.name}`}
+                              srcset={`${review.image[0]} 1x, ${review.image[0]} 2x`}
+                              src={review.image[0]}
+                              className="w-full h-full object-cover lazyloaded"
+                            />
+                          </div>
+                          {review?.image?.length > 1 && (
+                            <div className="absolute bottom-3 right-3">
+                              <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
+                                +{review?.image?.length - 1}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      <div className="mt-2 flex items-center space-x-1">
+                        <span className="text-sm font-semibold">
+                          {review.name}
+                        </span>
+                        <div className="flex-1"></div>
+                        <span className="text-sm">{review.rating}</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill="currentColor"
+                            fill-rule="evenodd"
+                            d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <div className="mt-2 text-sm">{review?.description}</div>
+                    </div>
+                  ))}
                 </div>
-                <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                  <div className="w-full relative rounded-lg overflow-hidden">
-                    <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
-                      <Image
-                        width={232}
-                        height={232}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycaps"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-cover lazyloaded"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                        +2
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center space-x-1">
-                    <span className="text-sm font-semibold">Bạch Tuấn</span>
-                    <div className="flex-1"></div>
-                    <span className="text-sm">5.0</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-2 text-sm">
-                    Rất đẹp, xưa giờ toàn xài phím cơ nặng nay đổi qua em này
-                    rất gọn nhẹ, gõ rất êm yên tĩnh. Shop giao hàng rất nhanh,
-                    đóng gói cẩn thận. Shop uy tín, sẽ ủng hộ lần sau.
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-1/3 flex flex-col space-y-5">
-                <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                  <div className="w-full relative rounded-lg overflow-hidden">
-                    <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
-                      <Image
-                        width={232}
-                        height={232}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycaps"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-cover lazyloaded"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                        +2
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center space-x-1">
-                    <span className="text-sm font-semibold">Bạch Tuấn</span>
-                    <div className="flex-1"></div>
-                    <span className="text-sm">5.0</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-2 text-sm">
-                    Rất đẹp, xưa giờ toàn xài phím cơ nặng nay đổi qua em này
-                    rất gọn nhẹ, gõ rất êm yên tĩnh. Shop giao hàng rất nhanh,
-                    đóng gói cẩn thận. Shop uy tín, sẽ ủng hộ lần sau.
-                  </div>
-                </div>
-                <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                  <div className="w-full relative rounded-lg overflow-hidden">
-                    <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
-                      <Image
-                        width={232}
-                        height={232}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycaps"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-cover lazyloaded"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                        +2
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center space-x-1">
-                    <span className="text-sm font-semibold">Bạch Tuấn</span>
-                    <div className="flex-1"></div>
-                    <span className="text-sm">5.0</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-2 text-sm">
-                    Rất đẹp, xưa giờ toàn xài phím cơ nặng nay đổi qua em này
-                    rất gọn nhẹ, gõ rất êm yên tĩnh. Shop giao hàng rất nhanh,
-                    đóng gói cẩn thận. Shop uy tín, sẽ ủng hộ lần sau.
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-1/3 flex flex-col space-y-5">
-                <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                  <div className="w-full relative rounded-lg overflow-hidden">
-                    <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
-                      <Image
-                        width={232}
-                        height={232}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycaps"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-cover lazyloaded"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                        +2
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center space-x-1">
-                    <span className="text-sm font-semibold">Bạch Tuấn</span>
-                    <div className="flex-1"></div>
-                    <span className="text-sm">5.0</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-2 text-sm">
-                    Rất đẹp, xưa giờ toàn xài phím cơ nặng nay đổi qua em này
-                    rất gọn nhẹ, gõ rất êm yên tĩnh. Shop giao hàng rất nhanh,
-                    đóng gói cẩn thận. Shop uy tín, sẽ ủng hộ lần sau.
-                  </div>
-                </div>
-                <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                  <div className="w-full relative rounded-lg overflow-hidden">
-                    <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
-                      <Image
-                        width={232}
-                        height={232}
-                        alt="Hinh anh khach hang danh gia san pham Keycap Lofree Flow Series Dye-sub PBT Keycaps"
-                        srcset="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg 2x"
-                        src="https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/wkr-bdf.jpg"
-                        className="w-full h-full object-cover lazyloaded"
-                      />
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                        +2
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center space-x-1">
-                    <span className="text-sm font-semibold">Bạch Tuấn</span>
-                    <div className="flex-1"></div>
-                    <span className="text-sm">5.0</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mt-2 text-sm">
-                    Rất đẹp, xưa giờ toàn xài phím cơ nặng nay đổi qua em này
-                    rất gọn nhẹ, gõ rất êm yên tĩnh. Shop giao hàng rất nhanh,
-                    đóng gói cẩn thận. Shop uy tín, sẽ ủng hộ lần sau.
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
+            <ReviewModal
+              open={isOpenReviewModal}
+              onClose={() => setIsOpenReviewModal(false)}
+              title="Đánh giá và nhận xét"
+              review={reviewModal}
+            />
           </div>
         </div>
       </div>
