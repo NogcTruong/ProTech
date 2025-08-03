@@ -75,7 +75,7 @@ export default function ViewedProduct() {
               {products.map((pro, idx) => (
                 <Link
                   key={idx}
-                  href="https://thinkpro.vn/laptop/lenovo-legion-5-y7000-15irx10-2025?skuId=11100"
+                  href="/may-game-thuc-te-ao"
                   className="flex space-x-3 shrink-0 rounded-2xl border overflow-hidden bg-white w-[300px] md:w-[330px]"
                 >
                   <div className="w-16 md:w-[88px] h-16 md:h-[88px] p-2">

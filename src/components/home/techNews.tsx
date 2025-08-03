@@ -189,7 +189,7 @@ export default function TechNews() {
       </div>
       <div className="mt-4 md:mt-10 flex flex-col lg:flex-row lg:space-x-10">
         <Link
-          href="#!"
+          href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
           className={`relative ${currentData.bgColor} group w-full lg:w-1/2 rounded-3xl overflow-hidden py-5 md:py-10 xl:py-20 pl-0 xl:pl-6 pr-10 md:pr-20 transition-colors duration-300`}
         >
           <div className="absolute right-0 bottom-0 h-fit translate-x-1/3">
@@ -251,7 +251,7 @@ export default function TechNews() {
           {dataNews.map((news, nidx) => (
             <Link
               key={nidx}
-              href="#"
+              href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
               className="flex md:flex-row-reverse items-center group"
             >
               <div className="flex-1 flex flex-col space-y-3">

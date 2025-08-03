@@ -43,6 +43,9 @@
   --the-header-height: 60px;
   --gap-x: 8px;
   --gap-y: 8px;
+
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
 }
 
 body {
@@ -196,6 +199,11 @@ div[data-type="imageBlock"] {
   ) {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.shadow-inverse-md {
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000) 0 0 #0000, var(--tw-shadow);
 }
 
 @layer utilities {

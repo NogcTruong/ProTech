@@ -121,25 +121,6 @@ const dataMenu = {
   ],
 };
 
-const dataCategory = [
-  "Laptop",
-  "Bàn phím",
-  "Chuột",
-  "Ghế công thái học",
-  "Bàn nâng hạ",
-  "Thực tế ảo/ Game Console",
-  "Arm màn hình",
-  "Màn hình",
-  "RAM",
-  "Ổ cứng",
-  "Phụ kiện Setup",
-  "Hộc tủ",
-  "Cổng chuyển",
-  "Sạc",
-  "Balo",
-  "Loa",
-];
-
 export default function HeaderPage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [isOpenCart, setIsOpenCart] = useState(false);
@@ -228,9 +209,9 @@ export default function HeaderPage() {
                 <path
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                 />
               </svg>
@@ -301,7 +282,7 @@ export default function HeaderPage() {
                                   {cat.children.map((child, cidx) => (
                                     <Link
                                       key={child.name}
-                                      href="#"
+                                      href="/ghe-cong-thai-hoc"
                                       className="text-left font-bold font-lexend hover:text-colorPrimary500"
                                     >
                                       {child.name}
@@ -312,7 +293,7 @@ export default function HeaderPage() {
                               ) : (
                                 <Link
                                   key={cat.name}
-                                  href="#"
+                                  href="/ghe-cong-thai-hoc"
                                   className="px-4 py-2 flex items-center rounded-lg hover:bg-gray-100 cursor-pointer"
                                   onMouseEnter={() => setActiveMenuIndex(idx)}
                                 >
@@ -356,9 +337,9 @@ export default function HeaderPage() {
                                               <path
                                                 fill="none"
                                                 stroke="currentColor"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="1.5"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="1.5"
                                                 d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.942"
                                               />
                                             </svg>
@@ -396,9 +377,9 @@ export default function HeaderPage() {
                                           <path
                                             fill="none"
                                             stroke="currentColor"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="1.5"
                                             d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                                           />
                                         </svg>
@@ -438,9 +419,9 @@ export default function HeaderPage() {
                                             <path
                                               fill="none"
                                               stroke="currentColor"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"
-                                              stroke-width="1.5"
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
+                                              strokeWidth="1.5"
                                               d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                                             />
                                           </svg>
@@ -536,8 +517,8 @@ export default function HeaderPage() {
                           </span>
                           <div className="mt-6 flex flex-col space-y-2">
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -564,8 +545,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -592,8 +573,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -620,8 +601,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -648,8 +629,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -676,8 +657,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -704,8 +685,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -732,8 +713,8 @@ export default function HeaderPage() {
                               </div>
                             </Link>
                             <Link
-                              href="#"
-                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2"
+                              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                              className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white p-2 border"
                             >
                               <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
                                 <Image
@@ -905,7 +886,7 @@ export default function HeaderPage() {
                   </div>
                   <div className="p-4">
                     <a
-                      href="#"
+                      href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
                       className="group/cart relative flex items-center space-x-3 shrink-0 py-2 px-3 rounded-2xl hover:bg-gray-100"
                     >
                       <div className="w-[72px] h-[72px] overflow-hidden rounded-lg">
@@ -960,7 +941,7 @@ export default function HeaderPage() {
                     </div>
                     <div className="flex-1 dark">
                       <a
-                        href="#"
+                        href="/checkout"
                         className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-black bg-colorPrimary400 hover:bg-colorPrimary500 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault w-full flex justify-center items-center"
                       >
                         <span className="">Đặt hàng</span>

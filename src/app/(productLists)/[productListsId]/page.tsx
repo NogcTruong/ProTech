@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import banner1 from "@/assets/images/bao-hanh-chinh-hang-phu-kien-6ww.webp";
 import banner2 from "@/assets/images/back-to-school-2025-snp.webp";
 import ProductList from "@/components/common/productList";
 import { useEffect, useRef, useState } from "react";
 import "./productLists.css";
+import Link from "next/link";
+import clsx from "clsx";
 
 const brands = [
   { brand: "Nintendo Switch" },
@@ -142,12 +144,14 @@ export default function ProductListsPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
+  const [buttonCompare, setButtonCompare] = useState(false);
 
   const [sortBy, setSortBy] = useState("featured");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedPrices, setSelectedPrices] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [hasPromotion, setHasPromotion] = useState<boolean>(false);
+  const router = useRouter();
   const totalSelected =
     selectedBrands.length +
     selectedPrices.length +
@@ -187,6 +191,16 @@ export default function ProductListsPage() {
   const handleColorChange = (color: string) => {
     setSelectedColors((prev) =>
       prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color]
+    );
+  };
+
+  const handleButtonCompare = () => {
+    setButtonCompare(!buttonCompare);
+  };
+
+  const handleComparative = () => {
+    router.push(
+      "/so-sanh/ban-phim-co-leobog-amg65-vs-ban-phim-co-keychron-k10-max"
     );
   };
 
@@ -453,9 +467,9 @@ export default function ProductListsPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -518,9 +532,9 @@ export default function ProductListsPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -606,9 +620,9 @@ export default function ProductListsPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -663,9 +677,9 @@ export default function ProductListsPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -763,9 +777,9 @@ export default function ProductListsPage() {
                         <path
                           fill="none"
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
                           d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
                         />
                       </svg>
@@ -799,11 +813,129 @@ export default function ProductListsPage() {
                 <div>
                   <div className="flex items-center space-x-2">
                     <span className="text-sm">So sánh</span>
-                    {/* bg-colorPrimaryDefault */}
-                    <button className="relative inline-flex flex-shrink-0 border-2 border-transparent disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none h-5 w-9 rounded-full focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white bg-gray-200">
-                      {/* translate-x-4 rtl:-translate-x-4 */}
-                      <span className="pointer-events-none relative inline-block rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 h-4 w-4 translate-x-0 rtl:-translate-x-0"></span>
+                    <button
+                      className={`${
+                        buttonCompare ? "bg-colorPrimaryDefault" : "bg-gray-200"
+                      } relative inline-flex flex-shrink-0 border-2 border-transparent disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none h-5 w-9 rounded-full focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white`}
+                      onClick={handleButtonCompare}
+                    >
+                      <span
+                        className={`${
+                          buttonCompare
+                            ? "translate-x-4 rtl:-translate-x-4"
+                            : "translate-x-0 rtl:-translate-x-0"
+                        } pointer-events-none relative inline-block rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 h-4 w-4`}
+                      ></span>
                     </button>
+                  </div>
+                  {/*  */}
+                  <div
+                    className={clsx(
+                      buttonCompare ? "" : "translate-y-[calc(100%_+_16px)]",
+                      "transition-transform duration-300 hidden md:block fixed bottom-0 left-0 right-0 z-[11] bg-white shadow-inverse-md"
+                    )}
+                  >
+                    <div className="container py-2 flex space-x-4">
+                      <Link
+                        href="#!"
+                        className="group flex space-x-3 w-[240px] hover:bg-gray-100 p-2 rounded-lg"
+                      >
+                        <div className="w-[72px] h-[72px] rounded-lg bg-gray-100 overflow-hidden relative">
+                          <Image
+                            width={72}
+                            height={72}
+                            alt=""
+                            src="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/4/28/ban-phim-co-leobog-amg65-qkd.jpg"
+                          />
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-1 left-1">
+                            <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-1.5 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                className="flex-shrink-0 h-5 w-5"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94z"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex-1 line-clamp-3">
+                          <span className="text-sm font-medium">
+                            Bàn Phím Cơ Leobog AMG65 Light Feather Silent Switch
+                          </span>
+                        </div>
+                      </Link>
+                      <Link
+                        href="#!"
+                        className="group flex space-x-3 w-[240px] hover:bg-gray-100 p-2 rounded-lg"
+                      >
+                        <div className="w-[72px] h-[72px] rounded-lg bg-gray-100 overflow-hidden relative">
+                          <Image
+                            width={72}
+                            height={72}
+                            alt=""
+                            src="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/4/28/ban-phim-co-leobog-amg65-qkd.jpg"
+                          />
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-1 left-1">
+                            <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-1.5 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                className="flex-shrink-0 h-5 w-5"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94z"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex-1 line-clamp-3">
+                          <span className="text-sm font-medium">
+                            Bàn Phím Cơ Leobog AMG65 Light Feather Silent Switch
+                          </span>
+                        </div>
+                      </Link>
+                      <div className="flex-1"></div>
+                      <div className="flex items-center space-x-2">
+                        <button
+                          type="button"
+                          className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center"
+                        >
+                          <span>Xóa tất cả</span>
+                        </button>
+                        <div className="w-full">
+                          <button
+                            className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-black bg-colorPrimary400 hover:bg-colorPrimary500 disabled:bg-primary-500 aria-disabled:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimary500 inline-flex items-center"
+                            onClick={handleComparative}
+                          >
+                            <span>So sánh</span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              className="flex-shrink-0 h-6 w-6"
+                            >
+                              <path
+                                fill="currentColor"
+                                fillRule="evenodd"
+                                d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -1002,9 +1134,9 @@ export default function ProductListsPage() {
                       >
                         <path
                           fill="currentColor"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12L5.47 6.53a.75.75 0 0 1 0-1.06"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -1025,9 +1157,9 @@ export default function ProductListsPage() {
                           >
                             <path
                               fill="currentColor"
-                              fill-rule="evenodd"
+                              fillRule="evenodd"
                               d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                              clip-rule="evenodd"
+                              clipRule="evenodd"
                             />
                           </svg>
                         </button>
@@ -1109,9 +1241,9 @@ export default function ProductListsPage() {
                             >
                               <path
                                 fill="currentColor"
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                               />
                             </svg>
                           </div>
@@ -1157,9 +1289,9 @@ export default function ProductListsPage() {
                             >
                               <path
                                 fill="currentColor"
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                               />
                             </svg>
                           </div>
@@ -1235,9 +1367,9 @@ export default function ProductListsPage() {
                             >
                               <path
                                 fill="currentColor"
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                               />
                             </svg>
                           </div>
@@ -1268,9 +1400,9 @@ export default function ProductListsPage() {
                             >
                               <path
                                 fill="currentColor"
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                               />
                             </svg>
                           </div>

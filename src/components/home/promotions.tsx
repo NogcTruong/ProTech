@@ -7,75 +7,86 @@ import { useState } from "react";
 const promotionProducts = [
   {
     title: "Laptop Đồ Hoạ cao cấp. Màn chuẩn nét",
-    imgLine1: ["https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
+    imgLine1: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
     ],
     price: "14900000",
     color: ["bg-green-200"],
     startDate: "01/07/2025",
-    },
-    {
-      title: "Xả kho Laptop Gaming. Phiêu triệu tựa game",
-      imgLine1: ["https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+  },
+  {
+    title: "Xả kho Laptop Gaming. Phiêu triệu tựa game",
+    imgLine1: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
-      ],
-      imgLine2: [ "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
-        "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/acer-predator-helios-16-thinkpro-01.png",
-        "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-pro-5-2023-y9000p-thinkpro.jpg",
-        "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/9/4/lenovo-loq-2024-15arp9-undefined-pix.png",
-        "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/asus-rog-flow-x13-2023-thinkpro-01.png"],
-      price: "14900000",
-      color: ["bg-red-200"],
-      startDate: "02/05/2025",
-      },
-  {
-  title: "Laptop Gaming tầm trung - Chơi nét chiến ngay",
-  imgLine1: ["https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
-  "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
-  "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
-  "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
-  ],
-  imgLine2: [ "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/acer-predator-helios-16-thinkpro-01.png",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-pro-5-2023-y9000p-thinkpro.jpg",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/9/4/lenovo-loq-2024-15arp9-undefined-pix.png",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/asus-rog-flow-x13-2023-thinkpro-01.png"],
-  price: "14900000",
-  color: ["bg-purple-200"],
-  startDate: "02/05/2025",
-  },
-  {
-    title: "LENOVO THINKPAD X1 - LAPTOP DOANH NHÂN 'SỐ 1'",
-    imgLine1: ["https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
-    "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
     ],
-    imgLine2: [ "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+    imgLine2: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/acer-predator-helios-16-thinkpro-01.png",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-pro-5-2023-y9000p-thinkpro.jpg",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/9/4/lenovo-loq-2024-15arp9-undefined-pix.png",
-      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/asus-rog-flow-x13-2023-thinkpro-01.png"],
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/asus-rog-flow-x13-2023-thinkpro-01.png",
+    ],
     price: "14900000",
-    color: ["bg-blue-200"],
+    color: ["bg-red-200"],
     startDate: "02/05/2025",
-    },
-    {
-      title: "Laptop Đồ Hoạ cao cấp. Màn chuẩn nét",
-      imgLine1: ["https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+  },
+  {
+    title: "Laptop Gaming tầm trung - Chơi nét chiến ngay",
+    imgLine1: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
       "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
-      ],
-      price: "14900000",
-      color: ["bg-amber-100"],
-      startDate: "01/07/2025",
-      },
-  ];
+    ],
+    imgLine2: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/acer-predator-helios-16-thinkpro-01.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-pro-5-2023-y9000p-thinkpro.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/9/4/lenovo-loq-2024-15arp9-undefined-pix.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/asus-rog-flow-x13-2023-thinkpro-01.png",
+    ],
+    price: "14900000",
+    color: ["bg-purple-200"],
+    startDate: "02/05/2025",
+  },
+  {
+    title: "LENOVO THINKPAD X1 - LAPTOP DOANH NHÂN 'SỐ 1'",
+    imgLine1: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
+    ],
+    imgLine2: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/acer-predator-helios-16-thinkpro-01.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-pro-5-2023-y9000p-thinkpro.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/9/4/lenovo-loq-2024-15arp9-undefined-pix.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/1/10/asus-rog-flow-x13-2023-thinkpro-01.png",
+    ],
+    price: "14900000",
+    color: ["bg-blue-200"],
+    startDate: "02/05/2025",
+  },
+  {
+    title: "Laptop Đồ Hoạ cao cấp. Màn chuẩn nét",
+    imgLine1: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
+    ],
+    price: "14900000",
+    color: ["bg-amber-100"],
+    startDate: "01/07/2025",
+  },
+];
 
 export default function Promotions() {
   const [currentLocation, setCurrentLocation] = useState(0);
@@ -93,50 +104,33 @@ export default function Promotions() {
         <div className="relative">
           <div className="pt-6 overflow-x-auto overflow-y-hidden scrollbar-hide">
             <div className="flex space-x-2 md:space-x-6">
-              {
-                promotionProducts.map((promotionProduct, index) => (
-<Link
-key={index}
-                href="#!"
-                className={`w-[320px] md:w-[calc(100%/2_-_12px)] shrink-0 rounded-3xl relative flex flex-col ${promotionProduct.color[0]}`}
-              >
-                <div className="dark absolute top-0 right-6 -translate-y-1/2 -rotate-3">
-                  <span className="inline-flex items-center font-medium rounded-md text-base px-2.5 py-1.5 gap-1.5 bg-[#36ff9a] text-white dark:text-gray-900">
-                    Từ {promotionProduct.price}
-                  </span>
-                </div>
-                <div className="p-4 md:p-6 h-[150px] md:h-[220px]">
-                  <span className="text-2xl md:text-4xl font-bold font-lexend line-clamp-3">
-                    {promotionProduct.title}
-                  </span>
-                  <div className="mt-4 text-sm md:text-lg text-black/70">
-                    Từ {promotionProduct.startDate}
+              {promotionProducts.map((promotionProduct, index) => (
+                <Link
+                  key={index}
+                  href="/khuyen-mai/laptop-chinh-hang-deal-soc"
+                  className={`w-[320px] md:w-[calc(100%/2_-_12px)] shrink-0 rounded-3xl relative flex flex-col ${promotionProduct.color[0]}`}
+                >
+                  <div className="dark absolute top-0 right-6 -translate-y-1/2 -rotate-3">
+                    <span className="inline-flex items-center font-medium rounded-md text-base px-2.5 py-1.5 gap-1.5 bg-[#36ff9a] text-white dark:text-gray-900">
+                      Từ {promotionProduct.price}
+                    </span>
                   </div>
-                </div>
-                <div className="pb-4 flex-1 flex flex-col space-y-2">
-                  <div className="wrapper overflow-hidden">
-                    <div className="pl-[40px] md:pl-[60px] animate flex space-x-3">
-                      { 
-                        promotionProduct.imgLine1?.map((product, index) => (
-                        <div key={index} className="shrink-0 w-[64px] h-[64px] md:w-[120px] md:h-[120px] border border-gray-300 bg-white rounded-2xl overflow-hidden">
-                          <Image
-                            src={product}
-                            alt="Hinh anh khuyen mai 0"
-                            width={64}
-                            height={64}
-                            sizes="(max-width: 768px) 64px, 120px"
-                            className="t-img w-full h-full object-cover ls-is-cached lazyloaded"
-                          />
-                        </div>
-                        ))
-                      }
+                  <div className="p-4 md:p-6 h-[150px] md:h-[220px]">
+                    <span className="text-2xl md:text-4xl font-bold font-lexend line-clamp-3">
+                      {promotionProduct.title}
+                    </span>
+                    <div className="mt-4 text-sm md:text-lg text-black/70">
+                      Từ {promotionProduct.startDate}
                     </div>
                   </div>
-                  <div className="wrapper overflow-hidden">
-                    <div className="animate flex space-x-3">
-                      {
-                        promotionProduct.imgLine2?.map((product, index) => (
-                          <div key={index} className="shrink-0 w-[64px] h-[64px] md:w-[120px] md:h-[120px] border border-gray-300 bg-white rounded-2xl overflow-hidden">
+                  <div className="pb-4 flex-1 flex flex-col space-y-2">
+                    <div className="wrapper overflow-hidden">
+                      <div className="pl-[40px] md:pl-[60px] animate flex space-x-3">
+                        {promotionProduct.imgLine1?.map((product, index) => (
+                          <div
+                            key={index}
+                            className="shrink-0 w-[64px] h-[64px] md:w-[120px] md:h-[120px] border border-gray-300 bg-white rounded-2xl overflow-hidden"
+                          >
                             <Image
                               src={product}
                               alt="Hinh anh khuyen mai 0"
@@ -146,14 +140,31 @@ key={index}
                               className="t-img w-full h-full object-cover ls-is-cached lazyloaded"
                             />
                           </div>
-                        ))
-                      }
+                        ))}
+                      </div>
+                    </div>
+                    <div className="wrapper overflow-hidden">
+                      <div className="animate flex space-x-3">
+                        {promotionProduct.imgLine2?.map((product, index) => (
+                          <div
+                            key={index}
+                            className="shrink-0 w-[64px] h-[64px] md:w-[120px] md:h-[120px] border border-gray-300 bg-white rounded-2xl overflow-hidden"
+                          >
+                            <Image
+                              src={product}
+                              alt="Hinh anh khuyen mai 0"
+                              width={64}
+                              height={64}
+                              sizes="(max-width: 768px) 64px, 120px"
+                              className="t-img w-full h-full object-cover ls-is-cached lazyloaded"
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-                ))
-              }
+                </Link>
+              ))}
             </div>
           </div>
         </div>

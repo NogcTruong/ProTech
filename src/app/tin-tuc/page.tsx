@@ -510,7 +510,10 @@ export default function NewsList() {
       <div className="mt-4 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-x-20 md:gap-y-10">
         <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-4">
           <div className="col-span-2 row-span-2">
-            <Link href="#" className="flex flex-col space-y-4">
+            <Link
+              href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
+              className="flex flex-col space-y-4"
+            >
               <div className="newslist-aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
                 {dataNews[activeTab]?.main.map((product, idx) => (
                   <Image
@@ -542,7 +545,10 @@ export default function NewsList() {
           </div>
           {dataNews[activeTab]?.newsSub?.map((news, nidx) => (
             <div key={nidx}>
-              <Link href="#" className="flex flex-col space-y-2">
+              <Link
+                href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
+                className="flex flex-col space-y-2"
+              >
                 <div className="newslist-aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
                   <Image
                     width={160}
@@ -574,7 +580,7 @@ export default function NewsList() {
             {visibleData.map((news, idx) => (
               <Link
                 key={idx}
-                href="#"
+                href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
                 className="flex flex-row-reverse md:flex-row md:space-x-6"
               >
                 <div className="w-[112px] md:w-[208px] ml-2 md:ml-0">
@@ -644,7 +650,7 @@ export default function NewsList() {
             </div>
             <div className="flex flex-col space-y-4">
               <Link
-                href="#"
+                href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
                 className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white border p-2"
               >
                 <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
@@ -673,7 +679,7 @@ export default function NewsList() {
                 </div>
               </Link>
               <Link
-                href="#"
+                href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
                 className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white border p-2"
               >
                 <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
@@ -702,7 +708,7 @@ export default function NewsList() {
                 </div>
               </Link>
               <Link
-                href="#"
+                href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
                 className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white border p-2"
               >
                 <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">
@@ -731,7 +737,7 @@ export default function NewsList() {
                 </div>
               </Link>
               <Link
-                href="#"
+                href="/noi-dung/sua-loi-laptop-tu-ngat-wifi-win-10"
                 className="flex items-center space-x-3 shrink-1 rounded-2xl bg-white border p-2"
               >
                 <div className="w-[72px] h-[72px] overflow-hidden rounded-2xl bg-white">

@@ -80,7 +80,7 @@ export default function theTopBar() {
         </Link>
         <Link
           className="cursor-pointer focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-xs gap-x-1.5 px-2.5 py-1.5 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center justify-center btn-store-address"
-          href="#"
+          href="/tin-tuc"
         >
           <span className="flex-shrink-0 h-4 w-4" aria-hidden="true">
             <svg

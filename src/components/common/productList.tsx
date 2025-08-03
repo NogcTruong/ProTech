@@ -34,7 +34,7 @@ export default function ProductList({ products, title }: ProductListProps) {
           filteredProducts.map((product, index) => (
             <Link
               key={index}
-              href="#!"
+              href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
               className="t-product-card group relative border rounded-2xl transition-all bg-white"
             >
               <div className="h-full flex flex-col space-y-2 md:space-y-3">

@@ -1,11 +1,13 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import "./detailProductId.css";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProductSpecsModal from "@/components/product/ProductSpecsModal";
 import DetailPostModal from "@/components/product/detailPostModal";
+import FeedbackModal from "@/components/product/feedbackModal";
+import Link from "next/link";
 
 export default function DetailProductPage() {
   const params = useParams();
@@ -17,7 +19,9 @@ export default function DetailProductPage() {
   const [openDetailPostModal, setOpenDetailPostModal] = useState(false);
   const [activeTab, setActiveTab] = useState("info");
   const [showHeaderOffset, setShowHeaderOffset] = useState(true);
+  const [feedback, setFeedback] = useState(false);
   const lastScrollY = useRef(0);
+  const router = useRouter();
 
   const infoRef = useRef<HTMLDivElement>(null);
   const configRef = useRef<HTMLDivElement>(null);
@@ -79,6 +83,14 @@ export default function DetailProductPage() {
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleBuy = () => {
+    router.push("/gio-hang");
+  };
+
+  const handleFeedback = () => {
+    setFeedback(true);
   };
 
   const filterTableCSS = isOpen
@@ -195,6 +207,54 @@ export default function DetailProductPage() {
               <section className="scroll-mt-20">
                 <div className="flex flex-col space-y-4 md:space-y-6">
                   <div className="flex flex-col space-y-2">
+                    <div>
+                      <div
+                        className="rounded-l-[20px] md:rounded-l-3xl rounded-r-lg p-[6px] md:p-2 inline-flex items-center space-x-1"
+                        style={{
+                          background:
+                            "linear-gradient(90deg, rgb(192, 247, 141) 0%, rgb(231, 255, 209) 100%)",
+                        }}
+                      >
+                        <svg
+                          className="w-7 h-72 md:w-8 md:h-8"
+                          fill="none"
+                          height="18"
+                          viewBox="0 0 18 18"
+                          width="18"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M9.00007 1.71533C7.55909 1.71533 6.15048 2.14263 4.95235 2.9432C3.75422 3.74376 2.82039 4.88163 2.26895 6.21292C1.71751 7.54421 1.57323 9.00913 1.85435 10.4224C2.13547 11.8357 2.82937 13.1339 3.84829 14.1528C4.86722 15.1717 6.16541 15.8656 7.5787 16.1468C8.99199 16.4279 10.4569 16.2836 11.7882 15.7322C13.1195 15.1807 14.2574 14.2469 15.0579 13.0488C15.8585 11.8506 16.2858 10.442 16.2858 9.00104C16.2858 7.06875 15.5182 5.2156 14.1518 3.84927C12.7855 2.48293 10.9324 1.71533 9.00007 1.71533Z"
+                            fill="#4ACD00"
+                          ></path>
+                          <path
+                            d="M16.6542 5.42682L9.75026 12.3319C9.58559 12.4966 9.38771 12.628 9.16848 12.7181C8.94926 12.8083 8.71319 12.8553 8.47441 12.8565H8.46672C8.22934 12.8565 7.99437 12.8111 7.77573 12.723C7.55708 12.6349 7.35922 12.5059 7.19384 12.3437L4.84332 10.0523C4.66888 9.89577 4.52954 9.70715 4.4337 9.49786C4.33786 9.28858 4.28751 9.06296 4.2857 8.83463C4.28388 8.6063 4.33062 8.37999 4.42312 8.16934C4.51561 7.95869 4.65194 7.76808 4.82386 7.609C4.99579 7.44992 5.19976 7.32567 5.42347 7.24375C5.64717 7.16182 5.88598 7.12393 6.12548 7.13234C6.36498 7.14075 6.60021 7.19529 6.81698 7.29269C7.03375 7.39008 7.22757 7.5283 7.38673 7.69901L8.45194 8.72915L14.0818 3.09658C14.2424 2.93566 14.4347 2.80645 14.6477 2.71633C14.8607 2.6262 15.0903 2.57694 15.3233 2.57134C15.5563 2.56574 15.7881 2.60392 16.0056 2.68369C16.2231 2.76347 16.422 2.88328 16.5909 3.03628C16.7598 3.18929 16.8955 3.37249 16.99 3.57543C17.0846 3.77838 17.1363 3.99708 17.1422 4.21906C17.1481 4.44104 17.108 4.66195 17.0243 4.86918C16.9406 5.07641 16.8148 5.26589 16.6542 5.42682Z"
+                            fill="url(#paint0_linear_10882_67852)"
+                          ></path>
+                          <defs>
+                            <linearGradient
+                              id="paint0_linear_10882_67852"
+                              gradientUnits="userSpaceOnUse"
+                              x1="12.8183"
+                              x2="10.8208"
+                              y1="9.40991"
+                              y2="7.20906"
+                            >
+                              <stop stopColor="#7ED44F"></stop>
+                              <stop offset="1" stopColor="white"></stop>
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <div className="flex flex-col">
+                          <span className="font-lexend text-sm font-bold">
+                            HÀNG CHÍNH HÃNG
+                          </span>
+                          <span className="font-lexend text-[8px] md:text-[10px] font-bold">
+                            Giá luôn tốt nhất thị trường
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                     <h1 className="text-2xl font-bold">
                       Ghế Công Thái Học Herman Miller Aeron (Size B - Chân nhựa
                       - Graphite - Mới, Full box, Nhập khẩu)
@@ -213,9 +273,9 @@ export default function DetailProductPage() {
                           <path
                             fill="none"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.5"
                             d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9 9 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9 9 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"
                           />
                         </svg>
@@ -228,12 +288,13 @@ export default function DetailProductPage() {
                         width="16"
                         height="16"
                         viewBox="0 0 16 16"
+                        className="ml-1"
                       >
                         <path
                           fill="currentColor"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                       <a href="#" className="ml-3 text-sm underline">
@@ -370,7 +431,10 @@ export default function DetailProductPage() {
                             <div className="flex space-x-2">
                               <div className="flex-1 grid grid-cols-2 gap-2">
                                 <div className="dark">
-                                  <button className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-black bg-colorPrimary400 hover:bg-colorPrimary500 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault w-full flex justify-center items-center">
+                                  <button
+                                    className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-black bg-colorPrimary400 hover:bg-colorPrimary500 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault w-full flex justify-center items-center"
+                                    onClick={handleBuy}
+                                  >
                                     Mua ngay
                                   </button>
                                 </div>
@@ -386,23 +450,23 @@ export default function DetailProductPage() {
                                       <path
                                         d="M9.5 20.25H4.92284C4.30753 20.25 3.83819 19.6996 3.9354 19.092L5.6154 8.59201C5.69302 8.10688 6.11154 7.75 6.60284 7.75H17.3974C17.8887 7.75 18.3072 8.10688 18.3848 8.59201L18.5948 9.90451"
                                         stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="1.5"
                                       ></path>
                                       <path
                                         d="M8.75 12.25V6C8.75 4.21 10.21 2.75 12 2.75C13.79 2.75 15.25 4.21 15.25 6V10"
                                         stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="1.5"
                                       ></path>
                                       <path
                                         d="M17.5 15.7V19.3M19.3 17.5H15.7M22 17.5C22 15.0147 19.9853 13 17.5 13C15.0147 13 13 15.0147 13 17.5C13 19.9853 15.0147 22 17.5 22C18.7426 22 19.8676 21.4963 20.682 20.682C21.4963 19.8676 22 18.7426 22 17.5Z"
                                         stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="1.5"
                                       ></path>
                                     </svg>
                                     <span className="text-left break-all line-clamp-1">
@@ -448,7 +512,10 @@ export default function DetailProductPage() {
                     </p>
                   </div>
                   <div>
-                    <a className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center">
+                    <Link
+                      className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center"
+                      href="/ghe-cong-thai-hoc"
+                    >
                       <span>Xem tất cả sản phẩm</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -460,13 +527,13 @@ export default function DetailProductPage() {
                         <path
                           fill="none"
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
                           d="m8.25 4.5l7.5 7.5l-7.5 7.5"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -566,9 +633,9 @@ export default function DetailProductPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9 9 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.5 4.5 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75a2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218c-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715q.068.633.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48a4.5 4.5 0 0 1-1.423-.23l-3.114-1.04a4.5 4.5 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5q.125.307.27.602c.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.96 8.96 0 0 0-1.302 4.665a9 9 0 0 0 .654 3.375"
                       />
                     </svg>
@@ -589,9 +656,9 @@ export default function DetailProductPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         d="M21 8.25c0-2.485-2.099-4.5-4.687-4.5c-1.936 0-3.598 1.126-4.313 2.733c-.715-1.607-2.377-2.733-4.312-2.733C5.098 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12"
                       />
                     </svg>
@@ -612,9 +679,9 @@ export default function DetailProductPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         d="M9 12.75L11.25 15L15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6A12 12 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623c5.176-1.332 9-6.03 9-11.622c0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285"
                       />
                     </svg>
@@ -635,9 +702,9 @@ export default function DetailProductPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
                       />
                     </svg>
@@ -661,9 +728,9 @@ export default function DetailProductPage() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3 3 0 0 0 3.75-.615A3 3 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a3 3 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015q.062.07.128.136a3 3 0 0 0 3.622.478m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75"
                     />
                   </svg>
@@ -683,9 +750,9 @@ export default function DetailProductPage() {
                         <path
                           fill="none"
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
                           d="m8.25 4.5l7.5 7.5l-7.5 7.5"
                         />
                       </svg>
@@ -702,9 +769,9 @@ export default function DetailProductPage() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.9 17.9 0 0 0-3.213-9.193a2.06 2.06 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.6 48.6 0 0 0-10.026 0a1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
                     />
                   </svg>
@@ -727,9 +794,9 @@ export default function DetailProductPage() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M9 12.75L11.25 15L15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6A12 12 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623c5.176-1.332 9-6.03 9-11.622c0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285"
                     />
                   </svg>
@@ -856,9 +923,9 @@ export default function DetailProductPage() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="m8.25 4.5l7.5 7.5l-7.5 7.5"
                     />
                   </svg>
@@ -891,9 +958,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </button>
@@ -907,9 +974,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </button>
@@ -923,9 +990,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </button>
@@ -939,9 +1006,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </button>
@@ -955,9 +1022,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </button>
@@ -979,9 +1046,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1008,9 +1075,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1037,9 +1104,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1066,9 +1133,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1095,9 +1162,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1116,7 +1183,11 @@ export default function DetailProductPage() {
                   <div className="flex-1"></div>
                   <div className="mt-4 md:mt-0 flex md:flex-col items-center justify-between space-x-4 md:space-x-0 md:space-y-4">
                     <div>
-                      <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-colorPray900 hover:bg-colorPray800 disabled:bg-colorPray900 aria-disabled:bg-colorPray900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault w-full flex justify-center items-center md:w-[160px]">
+                      <button
+                        type="button"
+                        className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-colorPray900 hover:bg-colorPray800 disabled:bg-colorPray900 aria-disabled:bg-colorPray900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault w-full flex justify-center items-center md:w-[160px]"
+                        onClick={() => handleFeedback()}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="20"
@@ -1127,14 +1198,19 @@ export default function DetailProductPage() {
                           <path
                             fill="none"
                             stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.5"
                             d="m16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
                           />
                         </svg>
                         <span>Viết đánh giá</span>
                       </button>
+                      <FeedbackModal
+                        open={feedback}
+                        onClose={() => setFeedback(false)}
+                        title="Đánh giá và nhận xét"
+                      />
                     </div>
                     <div
                       className="relative min-w-[160px]"
@@ -1290,9 +1366,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1330,9 +1406,9 @@ export default function DetailProductPage() {
                         >
                           <path
                             fill="currentColor"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>
@@ -1361,9 +1437,9 @@ export default function DetailProductPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
                         d="m8.25 4.5l7.5 7.5l-7.5 7.5"
                       ></path>
                     </svg>
@@ -1411,9 +1487,9 @@ export default function DetailProductPage() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="m8.25 4.5l7.5 7.5l-7.5 7.5"
                     />
                   </svg>

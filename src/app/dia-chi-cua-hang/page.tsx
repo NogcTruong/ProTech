@@ -15,7 +15,7 @@ export default function StoreAddress() {
           </h2>
           <div className="mt-4 flex max-md:flex-col max-md:space-y-3 md:space-x-4">
             <Link
-              href="#"
+              href="/dia-chi-cua-hang/5-7-nguyen-huy-tuong-p-6-quan-binh-thanh-tp-ho-chi-minh"
               className="border rounded-2xl shadow-sm p-4 overflow-hidden md:w-[450px]"
             >
               <div className="store-aspect-w-16 store-aspect-h-9 rounded-lg overflow-hidden">
@@ -46,9 +46,9 @@ export default function StoreAddress() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
                     />
                   </svg>
@@ -69,9 +69,9 @@ export default function StoreAddress() {
                     <g
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                     >
                       <path d="M15 10.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
                       <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0" />
@@ -82,7 +82,7 @@ export default function StoreAddress() {
               </div>
             </Link>
             <Link
-              href="#"
+              href="/dia-chi-cua-hang/95-tran-thien-chanh-f12-quan-10-tp-ho-chi-minh"
               className="border rounded-2xl shadow-sm p-4 overflow-hidden md:w-[450px]"
             >
               <div className="store-aspect-w-16 store-aspect-h-9 rounded-lg overflow-hidden">
@@ -112,9 +112,9 @@ export default function StoreAddress() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
                     />
                   </svg>
@@ -135,9 +135,9 @@ export default function StoreAddress() {
                     <g
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                     >
                       <path d="M15 10.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
                       <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0" />
@@ -153,7 +153,7 @@ export default function StoreAddress() {
           <h2 className="text-base font-lexend font-bold">Hà Nội</h2>
           <div className="mt-4 flex max-md:flex-col max-md:space-y-3 md:space-x-4">
             <Link
-              href="#"
+              href="/dia-chi-cua-hang/53-thai-ha-quan-trung-liet-phuong-dong-da-tp-ha-noi"
               className="border rounded-2xl shadow-sm p-4 overflow-hidden md:w-[450px]"
             >
               <div className="store-aspect-w-16 store-aspect-h-9 rounded-lg overflow-hidden">
@@ -183,9 +183,9 @@ export default function StoreAddress() {
                     <path
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                       d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
                     />
                   </svg>
@@ -206,9 +206,9 @@ export default function StoreAddress() {
                     <g
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
                     >
                       <path d="M15 10.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
                       <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0" />
