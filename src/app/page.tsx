@@ -1,20 +1,20 @@
 import "@/app/(home)/home.css";
-import Banner from "@/components/home/banner";
-import ViewedProduct from "@/components/home/viewedProduct";
-import FeaturedCategories from "@/components/home/featuredCategories";
-import Promotions from "@/components/home/promotions";
+import Banner from "@/components/home/Banner";
+import CardProduct from "@/components/home/CardProduct";
+import FeaturedCategories from "@/components/home/FeaturedCategories";
+import Promotions from "@/components/home/Promotions";
 // import FlashSale from "@/components/Home/flashSale";
-import Usp from "@/components/home/usp";
-import SuggestionProduct from "@/components/home/suggestionProduct";
-import TechNews from "@/components/home/techNews";
-import TopKeywords from "@/components/home/topKeywords";
+import Usp from "@/components/home/Usp";
+import SuggestionProduct from "@/components/home/SuggestionProduct";
+import TechNews from "@/components/home/TechNews";
+import TopKeywords from "@/components/home/TopKeywords";
 
 export default function Home() {
   return (
     <main className="home-page bg-[#e0f2fe]">
       <div className="container py-6 flex flex-col">
         <Banner />
-        <ViewedProduct />
+        <CardProduct />
         <FeaturedCategories />
         <Promotions />
         {/* <FlashSale /> */}

@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import Search from "./search";
+import Search from "./home/Search";
 
 const dataMenu = {
   categories: [

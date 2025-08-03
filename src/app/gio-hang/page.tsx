@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "./shoppingCart.css";
 import { useState } from "react";
-import PromotionalCode from "@/components/shoppingCart/promotionalCode";
+import PromotionalCode from "@/components/shoppingCart/PromotionalCode";
 
 export default function shoppingCart() {
   const [openGiftPromotion, setOpenGiftPromotion] = useState(false);

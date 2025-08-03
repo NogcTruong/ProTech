@@ -4,10 +4,10 @@ import Image from "next/image";
 import "./review.css";
 import { useState } from "react";
 import Link from "next/link";
-import ReviewModal from "@/components/product/reviewModal";
+import ReviewModal from "@/components/product/ReviewModal";
 import clsx from "clsx";
 import { useParams } from "next/navigation";
-import FeedbackModal from "@/components/product/feedbackModal";
+import FeedbackModal from "@/components/product/FeedbackModal";
 
 type Review = {
   id: number;

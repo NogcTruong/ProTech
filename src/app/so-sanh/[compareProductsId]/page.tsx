@@ -4,7 +4,7 @@ import Image from "next/image";
 import "./compareProductsId.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AddComparativeProducts from "@/components/product/addComparativeProducts";
+import AddComparativeProducts from "@/components/product/AddComparativeProducts";
 
 export default function CompareProducts() {
   const [isDropInfo, setIsDropInfo] = useState(true);

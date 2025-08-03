@@ -2,10 +2,10 @@
 import Link from "next/link";
 import "./checkout.css";
 import { useState } from "react";
-import PromotionalCode from "@/components/shoppingCart/promotionalCode";
+import PromotionalCode from "@/components/shoppingCart/PromotionalCode";
 import Image from "next/image";
-import ProductsOrderModal from "@/components/shoppingCart/productsOrderModal";
-import FormOrderModal from "@/components/product/formOrderModal";
+import ProductsOrderModal from "@/components/shoppingCart/ProductsOrderModal";
+import FormOrderModal from "@/components/product/FormOrderModal";
 
 export default function Checkout() {
   const [openGiftPromotion, setOpenGiftPromotion] = useState(false);

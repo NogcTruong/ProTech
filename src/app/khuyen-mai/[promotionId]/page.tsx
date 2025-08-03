@@ -1,6 +1,6 @@
 "use client";
 
-import ProductList from "@/components/common/productList";
+import ProductList from "@/components/common/ProductList";
 import { useState } from "react";
 import Image from "next/image";
 import coverBanner from "@/assets/images/cover-folder-thinkpro.webp";

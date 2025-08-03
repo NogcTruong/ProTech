@@ -3,7 +3,7 @@
 import Image from "next/image";
 import coverBanner from "@/assets/images/cover-folder-thinkpro.webp";
 import { useState } from "react";
-import ProductList from "@/components/common/productList";
+import ProductList from "@/components/common/ProductList";
 
 const promotionProducts = [
   {

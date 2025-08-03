@@ -5,8 +5,8 @@ import "./detailProductId.css";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProductSpecsModal from "@/components/product/ProductSpecsModal";
-import DetailPostModal from "@/components/product/detailPostModal";
-import FeedbackModal from "@/components/product/feedbackModal";
+import DetailPostModal from "@/components/product/DetailPostModal";
+import FeedbackModal from "@/components/product/FeedbackModal";
 import Link from "next/link";
 
 export default function DetailProductPage() {

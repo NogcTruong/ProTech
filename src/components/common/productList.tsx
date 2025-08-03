@@ -1,5 +1,6 @@
 "use client";
 
+import { formatPrice } from "@/utils/formatters";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -16,10 +17,9 @@ interface Product {
 
 interface ProductListProps {
   products: Product[];
-  title?: string;
 }
 
-export default function ProductList({ products, title }: ProductListProps) {
+export default function ProductList({ products }: ProductListProps) {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ export default function ProductList({ products, title }: ProductListProps) {
                   </span>
                   <div className="mt-3 flex items-center space-x-2">
                     <span className="font-medium text-rose-600">
-                      {product.price}
+                      {formatPrice(product.price)}
                     </span>
                     <span className="inline-flex items-center font-medium rounded-full text-xs px-1.5 py-0.5 gap-0.5 bg-rose-500 text-white">
                       {product.discount}

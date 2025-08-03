@@ -1,9 +1,9 @@
 "use client";
 
+import { formatPrice } from "@/utils/formatters";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
 const products = [
   {
     name: "Ghế công thái học Ergohuman Enjoy Basic 2",
@@ -115,7 +115,7 @@ export default function ViewedProduct() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-rose-600 font-medium">
-                        {pro.price}
+                        {formatPrice(pro.price)}
                       </span>
                       <span className="inline-flex items-center font-medium rounded-full text-xs px-1.5 py-0.5 gap-0.5 bg-rose-500 text-white">
                         {pro.discount}

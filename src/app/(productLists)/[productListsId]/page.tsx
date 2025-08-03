@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import banner1 from "@/assets/images/bao-hanh-chinh-hang-phu-kien-6ww.webp";
 import banner2 from "@/assets/images/back-to-school-2025-snp.webp";
-import ProductList from "@/components/common/productList";
+import ProductList from "@/components/common/ProductList";
 import { useEffect, useRef, useState } from "react";
 import "./productLists.css";
 import Link from "next/link";

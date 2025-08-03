@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import TopBar from "@/components/theTopBar";
-import MainFooter from "@/components/footerPage";
-import HeaderPage from "@/components/headerPage";
+import TopBar from "@/components/TopBar";
+import MainFooter from "@/components/Footer";
+import HeaderPage from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
