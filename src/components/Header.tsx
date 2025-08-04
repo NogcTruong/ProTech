@@ -792,7 +792,7 @@ export default function HeaderPage() {
           {isOpenSearch && <Search onClose={() => setIsOpenSearch(false)} />}
         </div>
         <div className="md:flex-1"></div>
-        <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault items-center btn-account hidden md:flex">
+        <div className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault items-center btn-account hidden md:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -814,7 +814,7 @@ export default function HeaderPage() {
           <SignedIn>
             <UserButton />
           </SignedIn>
-        </button>
+        </div>
         <div className="relative">
           <div className="inline-flex w-full">
             <div className="relative inline-flex items-center justify-center flex-shrink-0">
