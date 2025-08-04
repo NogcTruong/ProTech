@@ -94,7 +94,7 @@ export default function Review() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenReviewModal, setIsOpenReviewModal] = useState(false);
   const [filterTab, setFilterTab] = useState("tất cả");
-  const [sortBy, setSortBy] = useState("lastest");
+  const [sortBy, setSortBy] = useState("latest");
   const [selectedReview, setSelectedReview] = useState<string[]>([]);
   const [reviewModal, setReviewModal] = useState<Review | null>(null);
   const [feedback, setFeedback] = useState(false);
@@ -739,7 +739,7 @@ export default function Review() {
                   <div className="flex items-center w-full">
                     <button className="relative w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 inline-flex items-center text-left cursor-default rounded-md text-sm gap-x-1.5 px-2.5 py-1.5 shadow-sm bg-white text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-colorPrimaryDefault pe-9">
                       <span className="block truncate">
-                        {sortBy === "lastest" && "Mới nhất"}
+                        {sortBy === "latest" && "Mới nhất"}
                         {sortBy === "rating-desc" && "Đánh giá cao → thấp"}
                         {sortBy === "rating-asc" && "Đánh giá thấp → cao"}
                       </span>
@@ -773,29 +773,31 @@ export default function Review() {
                             className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                             role="option"
                             aria-selected={sortBy === "latest"}
-                            onClick={() => handleSortChange("lastest")}
+                            onClick={() => handleSortChange("latest")}
                           >
                             <div className="flex items-center gap-1.5 min-w-0">
                               <span className="truncate">Mới nhất</span>
                             </div>
-                            <span className="absolute inset-y-0 end-0 flex items-center pe-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                className="h-5 w-5 flex-shrink-0 text-colorPray900"
-                              >
-                                <path
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth="1.5"
-                                  d="m4.5 12.75l6 6l9-13.5"
-                                />
-                              </svg>
-                            </span>
+                            {sortBy === "latest" && (
+                              <span className="absolute inset-y-0 end-0 flex items-center pe-2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 24 24"
+                                  className="h-5 w-5 flex-shrink-0 text-colorPray900"
+                                >
+                                  <path
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="1.5"
+                                    d="m4.5 12.75l6 6l9-13.5"
+                                  />
+                                </svg>
+                              </span>
+                            )}
                           </li>
                           <li
                             className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
@@ -808,24 +810,26 @@ export default function Review() {
                                 Đánh giá cao → thấp
                               </span>
                             </div>
-                            <span className="absolute inset-y-0 end-0 flex items-center pe-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                className="h-5 w-5 flex-shrink-0 text-colorPray900"
-                              >
-                                <path
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth="1.5"
-                                  d="m4.5 12.75l6 6l9-13.5"
-                                />
-                              </svg>
-                            </span>
+                            {sortBy === "rating-desc" && (
+                              <span className="absolute inset-y-0 end-0 flex items-center pe-2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 24 24"
+                                  className="h-5 w-5 flex-shrink-0 text-colorPray900"
+                                >
+                                  <path
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="1.5"
+                                    d="m4.5 12.75l6 6l9-13.5"
+                                  />
+                                </svg>
+                              </span>
+                            )}
                           </li>
                           <li
                             className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
@@ -836,24 +840,26 @@ export default function Review() {
                             <div className="flex items-center gap-1.5 min-w-0">
                               <span className="truncate">Giá thấp → cao</span>
                             </div>
-                            <span className="absolute inset-y-0 end-0 flex items-center pe-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                className="h-5 w-5 flex-shrink-0 text-colorPray900"
-                              >
-                                <path
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth="1.5"
-                                  d="m4.5 12.75l6 6l9-13.5"
-                                />
-                              </svg>
-                            </span>
+                            {sortBy === "rating-asc" && (
+                              <span className="absolute inset-y-0 end-0 flex items-center pe-2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 24 24"
+                                  className="h-5 w-5 flex-shrink-0 text-colorPray900"
+                                >
+                                  <path
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="1.5"
+                                    d="m4.5 12.75l6 6l9-13.5"
+                                  />
+                                </svg>
+                              </span>
+                            )}
                           </li>
                         </ul>
                       </div>

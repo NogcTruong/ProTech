@@ -55,7 +55,9 @@ export default function ViewedProduct() {
   useEffect(() => {
     if (containerRef.current) {
       const observer = new ResizeObserver(() => {
-        setScrollWidthFull(containerRef.current!.scrollWidth);
+        if (containerRef.current) {
+          setScrollWidthFull(containerRef.current.scrollWidth);
+        }
       });
 
       observer.observe(containerRef.current);

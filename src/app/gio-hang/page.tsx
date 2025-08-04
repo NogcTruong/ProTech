@@ -74,7 +74,7 @@ export default function shoppingCart() {
                         Ghế Công Thái Học Manson Atum
                       </span>
                       <Link
-                        href="#"
+                        href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
                         className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold rounded-lg text-sm gap-x-1.5 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 disabled:bg-gray-50 aria-disabled:bg-gray-50 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center"
                       >
                         <span className="text-xs font-normal text-gray-600">

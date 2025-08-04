@@ -9,9 +9,50 @@ import DetailPostModal from "@/components/product/DetailPostModal";
 import FeedbackModal from "@/components/product/FeedbackModal";
 import Link from "next/link";
 
+const reviews = [
+  {
+    name: "Nguyễn Văn An",
+    rating: 4.8,
+    review: "Ghế rất thoải mái, hỗ trợ lưng tốt!",
+    image_url:
+      "https://imagor.owtg.one/unsafe/fit-in/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/social/product-reviews/ghe-cong-thai-hoc-herman-miller-aeron/1qf-7bg.jpg",
+    alt_text:
+      "Hinh anh khach hang danh gia san pham Ghế Công Thái Học Herman Miller Aeron 1",
+  },
+  {
+    name: "Trần Thị Bích",
+    rating: 5.0,
+    review: "Thiết kế đẹp, ngồi lâu không mệt.",
+    image_url:
+      "https://imagor.owtg.one/unsafe/fit-in/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/social/product-reviews/ghe-cong-thai-hoc-herman-miller-aeron/1qf-7bg.jpg",
+    alt_text:
+      "Hinh anh khach hang danh gia san pham Ghế Công Thái Học Herman Miller Aeron 2",
+  },
+  {
+    name: "Nguyễn Văn An",
+    rating: 4.8,
+    review: "Ghế rất thoải mái, hỗ trợ lưng tốt!",
+    image_url:
+      "https://imagor.owtg.one/unsafe/fit-in/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/social/product-reviews/ghe-cong-thai-hoc-herman-miller-aeron/1qf-7bg.jpg",
+    alt_text:
+      "Hinh anh khach hang danh gia san pham Ghế Công Thái Học Herman Miller Aeron 1",
+  },
+  {
+    name: "Trần Thị Bích",
+    rating: 5.0,
+    review: "Thiết kế đẹp, ngồi lâu không mệt.",
+    image_url:
+      "https://imagor.owtg.one/unsafe/fit-in/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/social/product-reviews/ghe-cong-thai-hoc-herman-miller-aeron/1qf-7bg.jpg",
+    alt_text:
+      "Hinh anh khach hang danh gia san pham Ghế Công Thái Học Herman Miller Aeron 2",
+  },
+];
+
 export default function DetailProductPage() {
   const params = useParams();
-  const { detailProductId } = params;
+  const router = useRouter();
+  const { productListsId, detailProductId } = params;
+
   const [isOpen, setIsOpen] = useState(false);
   const [buttonPromotion, setButtonPromotion] = useState("buyNow");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,9 +61,10 @@ export default function DetailProductPage() {
   const [activeTab, setActiveTab] = useState("info");
   const [showHeaderOffset, setShowHeaderOffset] = useState(true);
   const [feedback, setFeedback] = useState(false);
-  const lastScrollY = useRef(0);
-  const router = useRouter();
+  const [filterOpenReview, setFilterOpenReview] = useState("latest");
+  const [showDataReview] = useState(2);
 
+  const lastScrollY = useRef(0);
   const infoRef = useRef<HTMLDivElement>(null);
   const configRef = useRef<HTMLDivElement>(null);
   const reviewRef = useRef<HTMLDivElement>(null);
@@ -42,6 +84,26 @@ export default function DetailProductPage() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const getFilteredReviews = () => {
+    let resultSort = reviews;
+
+    if (filterOpenReview === "rating-desc") {
+      resultSort = [...resultSort].sort(
+        (a, b) => Number(b.rating) - Number(a.rating)
+      );
+    } else if (filterOpenReview === "rating-asc") {
+      resultSort = [...resultSort].sort(
+        (a, b) => Number(a.rating) - Number(b.rating)
+      );
+    }
+
+    return resultSort;
+  };
+
+  const data = getFilteredReviews();
+
+  const handleData = data.slice(0, showDataReview);
 
   const handleTabClick = (idx: number) => {
     setActiveTab(idx);
@@ -89,6 +151,11 @@ export default function DetailProductPage() {
     router.push("/gio-hang");
   };
 
+  const handleSortChange = (sortType: string) => {
+    setFilterOpenReview(sortType);
+    // setOpen
+  };
+
   const handleFeedback = () => {
     setFeedback(true);
   };
@@ -109,31 +176,31 @@ export default function DetailProductPage() {
           <nav className="min-w-0 hidden md:block">
             <ol className="flex items-center gap-x-1.5">
               <li className="flex items-center gap-x-1.5 text-colorPray400 text-sm leading-6 min-w-0">
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   type="button"
                   className="flex items-center gap-x-1.5 group font-semibold min-w-0 hover:text-colorPray700"
                 >
                   <span className="inline-flex items-center font-medium text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-colorPray300 bg-colorPray50 rounded-full truncate text-colorPray700">
                     Trang chủ
                   </span>
-                </a>
+                </Link>
                 <span role="presentation">/</span>
               </li>
               <li className="flex items-center gap-x-1.5 text-colorPray400 text-sm leading-6 min-w-0">
-                <a
-                  href="#"
+                <Link
+                  href={`/${productListsId}`}
                   type="button"
                   className="flex items-center gap-x-1.5 group font-semibold min-w-0 hover:text-colorPray700"
                 >
                   <span className="inline-flex items-center font-medium text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-colorPray300 bg-colorPray50 rounded-full truncate text-colorPray700">
                     Ghế công thái học
                   </span>
-                </a>
+                </Link>
                 <span role="presentation">/</span>
               </li>
               <li className="flex items-center gap-x-1.5 text-colorPray400 text-sm leading-6 min-w-0">
-                <a
+                <Link
                   href="#"
                   type="button"
                   className="flex items-center gap-x-1.5 group font-semibold min-w-0 hover:text-colorPray700"
@@ -141,7 +208,7 @@ export default function DetailProductPage() {
                   <span className="inline-flex items-center font-medium text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-colorPray300 bg-colorPray50 rounded-full truncate text-colorPray700">
                     Herman Miller
                   </span>
-                </a>
+                </Link>
               </li>
             </ol>
           </nav>
@@ -1219,7 +1286,11 @@ export default function DetailProductPage() {
                       <div className="w-full">
                         <button className="relative w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 inline-flex items-center text-left cursor-default rounded-md text-sm gap-x-1.5 px-2.5 py-1.5 shadow-sm bg-white text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-colorPrimaryDefault pe-9">
                           <span className="block truncate">
-                            Đánh giá cao → thấp
+                            {filterOpenReview === "latest" && "Mới nhất"}
+                            {filterOpenReview === "rating-desc" &&
+                              "Đánh giá cao → thấp"}
+                            {filterOpenReview === "rating-asc" &&
+                              "Đánh giá thấp → cao"}
                           </span>
                           <span className="absolute inset-y-0 end-0 flex items-center px-2.5 pointer-events-none">
                             <svg
@@ -1251,86 +1322,95 @@ export default function DetailProductPage() {
                                 className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                                 role="option"
                                 aria-selected="true"
+                                onClick={() => handleSortChange("latest")}
                               >
                                 <div className="flex items-center gap-1.5 min-w-0">
                                   <span className="truncate">Mới nhất</span>
                                 </div>
-                                <span className="absolute inset-y-0 end-0 flex items-center pe-2">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    className="h-5 w-5 flex-shrink-0 text-colorPray900"
-                                  >
-                                    <path
-                                      fill="none"
-                                      stroke="currentColor"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="1.5"
-                                      d="m4.5 12.75l6 6l9-13.5"
-                                    />
-                                  </svg>
-                                </span>
+                                {filterOpenReview === "latest" && (
+                                  <span className="absolute inset-y-0 end-0 flex items-center pe-2">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 24 24"
+                                      className="h-5 w-5 flex-shrink-0 text-colorPray900"
+                                    >
+                                      <path
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="1.5"
+                                        d="m4.5 12.75l6 6l9-13.5"
+                                      />
+                                    </svg>
+                                  </span>
+                                )}
                               </li>
                               <li
                                 className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                                 role="option"
                                 aria-selected="true"
+                                onClick={() => handleSortChange("rating-desc")}
                               >
                                 <div className="flex items-center gap-1.5 min-w-0">
                                   <span className="truncate">
                                     Đánh giá cao → thấp
                                   </span>
                                 </div>
-                                <span className="absolute inset-y-0 end-0 flex items-center pe-2">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    className="h-5 w-5 flex-shrink-0 text-colorPray900"
-                                  >
-                                    <path
-                                      fill="none"
-                                      stroke="currentColor"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="1.5"
-                                      d="m4.5 12.75l6 6l9-13.5"
-                                    />
-                                  </svg>
-                                </span>
+                                {filterOpenReview === "rating-desc" && (
+                                  <span className="absolute inset-y-0 end-0 flex items-center pe-2">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 24 24"
+                                      className="h-5 w-5 flex-shrink-0 text-colorPray900"
+                                    >
+                                      <path
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="1.5"
+                                        d="m4.5 12.75l6 6l9-13.5"
+                                      />
+                                    </svg>
+                                  </span>
+                                )}
                               </li>
                               <li
                                 className="relative cursor-default select-none flex items-center justify-between gap-1 rounded-md px-1.5 py-1.5 text-sm text-colorPray900 hover:bg-colorPray100 hover:pe-7"
                                 role="option"
                                 aria-selected="true"
+                                onClick={() => handleSortChange("rating-asc")}
                               >
                                 <div className="flex items-center gap-1.5 min-w-0">
                                   <span className="truncate">
                                     Giá thấp → cao
                                   </span>
                                 </div>
-                                <span className="absolute inset-y-0 end-0 flex items-center pe-2">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    className="h-5 w-5 flex-shrink-0 text-colorPray900"
-                                  >
-                                    <path
-                                      fill="none"
-                                      stroke="currentColor"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="1.5"
-                                      d="m4.5 12.75l6 6l9-13.5"
-                                    />
-                                  </svg>
-                                </span>
+                                {filterOpenReview === "rating-asc" && (
+                                  <span className="absolute inset-y-0 end-0 flex items-center pe-2">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 24 24"
+                                      className="h-5 w-5 flex-shrink-0 text-colorPray900"
+                                    >
+                                      <path
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="1.5"
+                                        d="m4.5 12.75l6 6l9-13.5"
+                                      />
+                                    </svg>
+                                  </span>
+                                )}
                               </li>
                             </ul>
                           </div>
@@ -1340,86 +1420,46 @@ export default function DetailProductPage() {
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                    <div className="w-full relative rounded-lg overflow-hidden">
-                      <div className="aspect-w-1 aspect-h-1 hover:scale-105 transition-transform">
-                        <Image
-                          width={223}
-                          height={223}
-                          src="https://imagor.owtg.one/unsafe/fit-in/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/social/product-reviews/ghe-cong-thai-hoc-herman-miller-aeron/1qf-7bg.jpg"
-                          alt="Hinh anh khach hang danh gia san pham Ghế Công Thái Học Herman Miller Aeron"
-                          className="w-full h-full object-cover ls-is-cached lazyloaded"
-                        />
-                      </div>
-                      <div className="mt-2 flex items-center space-x-1">
-                        <span className="text-sm font-semibold">
-                          Nguyễn Công Dũng
-                        </span>
-                        <div className="flex-1"></div>
-                        <span className="text-sm">5.0</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          className="h-4 w-4"
-                        >
-                          <path
-                            fill="currentColor"
-                            fillRule="evenodd"
-                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clipRule="evenodd"
+                  {handleData.map((review, ridx) => (
+                    <div
+                      key={ridx}
+                      className="shadow-md rounded-2xl p-3 cursor-pointer"
+                    >
+                      <div className="w-full relative rounded-lg overflow-hidden">
+                        <div className="aspect-w-1 aspect-h-1 hover:scale-105 transition-transform">
+                          <Image
+                            width={223}
+                            height={223}
+                            src={review.image_url}
+                            alt={review.alt_text}
+                            className="w-full h-full object-cover ls-is-cached lazyloaded"
                           />
-                        </svg>
-                      </div>
-                      <div className="mt-2 text-sm">
-                        Xài rồi mới thấy khác biệt! Ghế hỗ trợ tư thế ngồi cực
-                        tốt, lưng và cổ như được nâng đỡ. Chỉnh được nhiều chế
-                        độ, ngồi lâu mà thoải mái. Chất liệu bền, nhìn cũng
-                        sang. Đáng mua!
+                        </div>
+                        <div className="mt-2 flex items-center space-x-1">
+                          <span className="text-sm font-semibold">
+                            {review.name}
+                          </span>
+                          <div className="flex-1"></div>
+                          <span className="text-sm">{review.rating}</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            className="h-4 w-4"
+                          >
+                            <path
+                              fill="currentColor"
+                              fillRule="evenodd"
+                              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        <div className="mt-2 text-sm">{review.review}</div>
                       </div>
                     </div>
-                  </div>
-                  <div className="shadow-md rounded-2xl p-3 cursor-pointer">
-                    <div className="w-full relative rounded-lg overflow-hidden">
-                      <div className="aspect-w-1 aspect-h-1 hover:scale-105 transition-transform">
-                        <Image
-                          width={223}
-                          height={223}
-                          src="https://imagor.owtg.one/unsafe/fit-in/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/social/product-reviews/ghe-cong-thai-hoc-herman-miller-aeron/1qf-7bg.jpg"
-                          alt="Hinh anh khach hang danh gia san pham Ghế Công Thái Học Herman Miller Aeron"
-                          className="w-full h-full object-cover ls-is-cached lazyloaded"
-                        />
-                      </div>
-                      <div className="mt-2 flex items-center space-x-1">
-                        <span className="text-sm font-semibold">
-                          Nguyễn Công Dũng
-                        </span>
-                        <div className="flex-1"></div>
-                        <span className="text-sm">5.0</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          className="h-4 w-4"
-                        >
-                          <path
-                            fill="currentColor"
-                            fillRule="evenodd"
-                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <div className="mt-2 text-sm">
-                        Xài rồi mới thấy khác biệt! Ghế hỗ trợ tư thế ngồi cực
-                        tốt, lưng và cổ như được nâng đỡ. Chỉnh được nhiều chế
-                        độ, ngồi lâu mà thoải mái. Chất liệu bền, nhìn cũng
-                        sang. Đáng mua!
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
                 <div className="mt-4 flex justify-center">
                   <a
