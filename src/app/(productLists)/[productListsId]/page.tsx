@@ -145,6 +145,11 @@ export default function ProductListsPage() {
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
   const [buttonCompare, setButtonCompare] = useState(false);
+  const [isOpenBrands, setIsOpenBrands] = useState(true);
+  const [isOpenPrices, setIsOpenPrices] = useState(true);
+  const [isOpenPromotion, setIsOpenPromotion] = useState(true);
+  const [isOpenColors, setIsOpenColors] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   const [sortBy, setSortBy] = useState("featured");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -204,6 +209,22 @@ export default function ProductListsPage() {
     );
   };
 
+  const handleOpenBrands = () => {
+    setIsOpenBrands(!isOpenBrands);
+  };
+
+  const handleOpenPrices = () => {
+    setIsOpenPrices(!isOpenPrices);
+  };
+
+  const handleOpenPromotion = () => {
+    setIsOpenPromotion(!isOpenPromotion);
+  };
+
+  const handleOpenColors = () => {
+    setIsOpenColors(!isOpenColors);
+  };
+
   const getFilteredProducts = () => {
     let products = laptopProducts;
 
@@ -246,6 +267,15 @@ export default function ProductListsPage() {
 
     return products;
   };
+
+  const data = getFilteredProducts();
+
+  const handleShowMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 10, data.length));
+  };
+
+  const dataProductLists = data.slice(0, visibleCount);
+  const hasMore = visibleCount < data.length;
 
   // Handle chev of category
   const checkScrollButtons = () => {
@@ -436,7 +466,10 @@ export default function ProductListsPage() {
                 <div className="section-filter-listing">
                   <div className="w-full rounded-2xl bg-white border divide-y">
                     <div className="w-full flex flex-col px-1">
-                      <div className="flex items-center space-x-1 px-4 py-3 h-[52px]">
+                      <div
+                        className="flex items-center space-x-1 px-4 py-3 h-[52px] cursor-pointer"
+                        onClick={handleOpenBrands}
+                      >
                         <span className="truncate font-bold font-lexend">
                           Thương hiệu
                           <span
@@ -473,35 +506,45 @@ export default function ProductListsPage() {
                           />
                         </svg>
                       </div>
-                      <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
-                        <div className="w-full grid grid-cols-2 gap-3">
-                          {brands.map((brand, index) => (
-                            <div key={index} className="flex items-start">
-                              <div className="h-5 flex items-center">
-                                <input
-                                  type="checkbox"
-                                  checked={selectedBrands.includes(brand.brand)}
-                                  onChange={() =>
-                                    handleBrandChange(brand.brand)
-                                  }
-                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                                />
+                      <div
+                        className={`${isOpenBrands ? "h-auto" : "h-0 hidden"}`}
+                      >
+                        <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
+                          <div className="w-full grid grid-cols-2 gap-3">
+                            {brands.map((brand, index) => (
+                              <div key={index} className="flex items-start">
+                                <div className="h-5 flex items-center">
+                                  <input
+                                    type="checkbox"
+                                    checked={selectedBrands.includes(
+                                      brand.brand
+                                    )}
+                                    id={`b-${index}`}
+                                    onChange={() =>
+                                      handleBrandChange(brand.brand)
+                                    }
+                                    className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                  />
+                                </div>
+                                <div className="ms-3 flex flex-col">
+                                  <label
+                                    htmlFor={`b-${index}`}
+                                    className="text-sm font-medium text-colorPray900"
+                                  >
+                                    {brand.brand}
+                                  </label>
+                                </div>
                               </div>
-                              <div className="ms-3 flex flex-col">
-                                <label
-                                  htmlFor=""
-                                  className="text-sm font-medium text-colorPray900"
-                                >
-                                  {brand.brand}
-                                </label>
-                              </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div className="w-full flex flex-col px-1">
-                      <div className="flex items-center space-x-1 px-4 py-3 h-[52px]">
+                      <div
+                        className="flex items-center space-x-1 px-4 py-3 h-[52px] cursor-pointer"
+                        onClick={handleOpenPrices}
+                      >
                         <span className="truncate font-bold font-lexend">
                           Khoảng giá
                           <span
@@ -538,67 +581,77 @@ export default function ProductListsPage() {
                           />
                         </svg>
                       </div>
-                      <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
-                        <div className="w-full grid grid-cols-2 gap-3">
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedPrices.includes("1-2")}
-                                onChange={() => handlePriceChange("1-2")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                              />
+                      <div
+                        className={`${isOpenPrices ? "h-auto" : "h-0 hidden"}`}
+                      >
+                        <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
+                          <div className="w-full grid grid-cols-2 gap-3">
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="p-1_2"
+                                  checked={selectedPrices.includes("1-2")}
+                                  onChange={() => handlePriceChange("1-2")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="p-1_2"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Từ 1 - 2 triệu
+                                </label>
+                              </div>
                             </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Từ 1 - 2 triệu
-                              </label>
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="p-2_5"
+                                  checked={selectedPrices.includes("2-5")}
+                                  onChange={() => handlePriceChange("2-5")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="p-2_5"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Từ 2 - 5 triệu
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedPrices.includes("2-5")}
-                                onChange={() => handlePriceChange("2-5")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                              />
-                            </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Từ 2 - 5 triệu
-                              </label>
-                            </div>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedPrices.includes("5+")}
-                                onChange={() => handlePriceChange("5+")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                              />
-                            </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Trên 5 triệu
-                              </label>
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="p-5"
+                                  checked={selectedPrices.includes("5+")}
+                                  onChange={() => handlePriceChange("5+")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="p-5"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Trên 5 triệu
+                                </label>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="w-full flex flex-col px-1">
-                      <div className="flex items-center space-x-1 px-4 py-3 h-[52px]">
+                    <div className="w-full flex flex-col px-1 cursor-pointer">
+                      <div
+                        className="flex items-center space-x-1 px-4 py-3 h-[52px]"
+                        onClick={handleOpenPromotion}
+                      >
                         <span className="truncate font-bold font-lexend">
                           Có khuyến mại
                         </span>
@@ -626,27 +679,36 @@ export default function ProductListsPage() {
                           />
                         </svg>
                       </div>
-                      <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
-                        <button
-                          className={`${
-                            hasPromotion
-                              ? "bg-colorPrimaryDefault"
-                              : "bg-gray-200"
-                          } relative inline-flex flex-shrink-0 border-2 border-transparent disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none h-5 w-9 rounded-full focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white`}
-                          onClick={() => handleButton()}
-                        >
-                          <span
+                      <div
+                        className={`${
+                          isOpenPromotion ? "h-auto" : "h-0 hidden"
+                        }`}
+                      >
+                        <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
+                          <button
                             className={`${
                               hasPromotion
-                                ? "translate-x-4 rtl:-translate-x-4"
-                                : "translate-x-0 rtl:-translate-x-0"
-                            } pointer-events-none relative inline-block rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 h-4 w-4`}
-                          ></span>
-                        </button>
+                                ? "bg-colorPrimaryDefault"
+                                : "bg-gray-200"
+                            } relative inline-flex flex-shrink-0 border-2 border-transparent disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none h-5 w-9 rounded-full focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white`}
+                            onClick={() => handleButton()}
+                          >
+                            <span
+                              className={`${
+                                hasPromotion
+                                  ? "translate-x-4 rtl:-translate-x-4"
+                                  : "translate-x-0 rtl:-translate-x-0"
+                              } pointer-events-none relative inline-block rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 h-4 w-4`}
+                            ></span>
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="w-full flex flex-col px-1">
-                      <div className="flex items-center space-x-1 px-4 py-3 h-[52px]">
+                    <div className="w-full flex flex-col px-1 cursor-pointer">
+                      <div
+                        className="flex items-center space-x-1 px-4 py-3 h-[52px]"
+                        onClick={handleOpenColors}
+                      >
                         <span className="truncate font-bold font-lexend">
                           Màu sắc
                           <span
@@ -683,78 +745,86 @@ export default function ProductListsPage() {
                           />
                         </svg>
                       </div>
-                      <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
-                        <div className="w-full grid grid-cols-2 gap-3">
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedColors.includes("#000000")}
-                                onChange={() => handleColorChange("#000000")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                              />
+                      <div
+                        className={`${isOpenColors ? "h-auto" : "h-0 hidden"}`}
+                      >
+                        <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
+                          <div className="w-full grid grid-cols-2 gap-3">
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="c-black"
+                                  checked={selectedColors.includes("#000000")}
+                                  onChange={() => handleColorChange("#000000")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="c-black"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Đen
+                                </label>
+                              </div>
                             </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Đen
-                              </label>
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="c-grey"
+                                  checked={selectedColors.includes("#C0C0C0")}
+                                  onChange={() => handleColorChange("#C0C0C0")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="c-grey"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Xám
+                                </label>
+                              </div>
                             </div>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedColors.includes("#C0C0C0")}
-                                onChange={() => handleColorChange("#C0C0C0")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                              />
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="c-green"
+                                  checked={selectedColors.includes("#00CED1")}
+                                  onChange={() => handleColorChange("#00CED1")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="c-green"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Xanh lá
+                                </label>
+                              </div>
                             </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Xám
-                              </label>
-                            </div>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedColors.includes("#00CED1")}
-                                onChange={() => handleColorChange("#00CED1")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                              />
-                            </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Xanh lá
-                              </label>
-                            </div>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="h-5 flex items-center">
-                              <input
-                                type="checkbox"
-                                checked={selectedColors.includes("#808080")}
-                                onChange={() => handleColorChange("#808080")}
-                                className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimaryDefault"
-                              />
-                            </div>
-                            <div className="ms-3 flex flex-col">
-                              <label
-                                htmlFor=""
-                                className="text-sm font-medium text-colorPray900"
-                              >
-                                Xanh dương
-                              </label>
+                            <div className="flex items-start">
+                              <div className="h-5 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  id="c-blue"
+                                  checked={selectedColors.includes("#808080")}
+                                  onChange={() => handleColorChange("#808080")}
+                                  className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimaryDefault"
+                                />
+                              </div>
+                              <div className="ms-3 flex flex-col">
+                                <label
+                                  htmlFor="c-blue"
+                                  className="text-sm font-medium text-colorPray900"
+                                >
+                                  Xanh dương
+                                </label>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1084,30 +1154,35 @@ export default function ProductListsPage() {
               </div>
               <div className="mt-2">
                 <ProductList
-                  products={getFilteredProducts()}
+                  products={dataProductLists}
                   title="Sản phẩm khuyến mãi"
                 />
-                <div className="mt-10 flex justify-center">
-                  <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center btn-show-more">
-                    <span>Xem thêm</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      className="h-6 w-6 flex-shrink-0"
+                {hasMore && (
+                  <div className="mt-10 flex justify-center">
+                    <button
+                      className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center btn-show-more"
+                      onClick={handleShowMore}
                     >
-                      <path
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="1.5"
-                        d="m9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                      <span>Xem thêm</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        className="h-6 w-6 flex-shrink-0"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                          d="m9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -1247,26 +1322,29 @@ export default function ProductListsPage() {
                               />
                             </svg>
                           </div>
-                          <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
-                            <div className="w-full grid grid-cols-2 gap-3">
-                              {brands.map((brand, index) => (
-                                <div key={index} className="flex items-start">
-                                  <div className="h-5 flex items-center">
-                                    <input
-                                      type="checkbox"
-                                      className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
-                                    />
+                          <div className={``}>
+                            <div className="text-sm text-colorPray500 pb-3 pt-0 px-3">
+                              <div className="w-full grid grid-cols-2 gap-3">
+                                {brands.map((brand, index) => (
+                                  <div key={index} className="flex items-start">
+                                    <div className="h-5 flex items-center">
+                                      <input
+                                        type="checkbox"
+                                        id={`v-${index}`}
+                                        className="h-4 w-4 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent form-checkbox rounded bg-white border border-gray-300 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault focus-visible:ring-offset-2 focus-visible:ring-offset-white text-colorPrimary400"
+                                      />
+                                    </div>
+                                    <div className="ms-3 flex flex-col">
+                                      <label
+                                        htmlFor={`v-${index}`}
+                                        className="text-sm font-medium text-colorPray900"
+                                      >
+                                        {brand.brand}
+                                      </label>
+                                    </div>
                                   </div>
-                                  <div className="ms-3 flex flex-col">
-                                    <label
-                                      htmlFor=""
-                                      className="text-sm font-medium text-colorPray900"
-                                    >
-                                      {brand.brand}
-                                    </label>
-                                  </div>
-                                </div>
-                              ))}
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>

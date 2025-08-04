@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const promotionProducts = [
   {
@@ -86,23 +86,88 @@ const promotionProducts = [
     color: ["bg-amber-100"],
     startDate: "01/07/2025",
   },
+  {
+    title: "Laptop Đồ Hoạ cao cấp. Màn chuẩn nét",
+    imgLine1: [
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/5/26/lenovo-legion-slim-7-2023-thinkpro-u9c.jpg",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/7/5/acer-predator-helios-neo-16-phn16-72-91rf-undefined-A0o.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/15/lenovo-legion-slim-5-16ahp9-83dh003bvn-undefined.png",
+      "https://imagor.owtg.one/unsafe/fit-in/120x120/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/10/27/thumb/lenovo-legion-5-pro-2023-7051-thumb.png",
+    ],
+    price: "14900000",
+    color: ["bg-green-200"],
+    startDate: "01/07/2025",
+  },
 ];
 
 export default function Promotions() {
-  const [currentLocation, setCurrentLocation] = useState(0);
-  const itemCount = 1;
-  const lineWidth = 180;
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const prev = () =>
-    setCurrentLocation((prev) => (prev === 0 ? itemCount - 1 : prev - 1));
-  const next = () =>
-    setCurrentLocation((prev) => (prev === itemCount - 1 ? 0 : prev + 1));
+  useEffect(() => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+
+      const handleScroll = () => {
+        const scrollLeft = container.scrollLeft;
+        const scrollWidth = container.scrollWidth;
+        const clientWidth = container.clientWidth;
+
+        const maxScroll = scrollWidth - clientWidth;
+        const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+        setScrollProgress(progress);
+      };
+
+      container.addEventListener("scroll", handleScroll);
+
+      return () => {
+        container.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
+
+  const prev = () => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const currentScroll = container.scrollLeft;
+      const scrollWidth = container.scrollWidth;
+      const devideWidth = scrollWidth / 2 - 600;
+      container.scrollTo({
+        left: Math.max(0, currentScroll - devideWidth),
+      });
+    }
+  };
+
+  const next = () => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const currentScroll = container.scrollLeft;
+      const scrollWidth = container.scrollWidth;
+      const devideWidth = scrollWidth / 2 - 600;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      container.scrollTo({
+        left: Math.min(maxScroll, currentScroll + devideWidth),
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const getIndicatorPosition = () => {
+    const totalWidth = 1200;
+    const indicatorWidth = 180;
+
+    const maxPosition = totalWidth - indicatorWidth;
+    return scrollProgress * maxPosition;
+  };
 
   return (
     <section className="section-promotions mt-10 md:mt-20">
       <div className="relative group/scrollable">
         <div className="relative">
-          <div className="pt-6 overflow-x-auto overflow-y-hidden scrollbar-hide">
+          <div
+            className="pt-6 overflow-x-auto overflow-y-hidden scrollbar-hide"
+            ref={containerRef}
+          >
             <div className="flex space-x-2 md:space-x-6">
               {promotionProducts.map((promotionProduct, index) => (
                 <Link
@@ -173,8 +238,8 @@ export default function Promotions() {
             <div
               className="bg-gray-900 absolute top-0 left-0 h-[2px]"
               style={{
-                width: `${lineWidth}px`,
-                transform: `translateX(${currentLocation * lineWidth}px)`,
+                width: "180px",
+                transform: `translateX(${getIndicatorPosition()}px)`,
                 transition: "width 0.3s ease-in-out",
               }}
             ></div>

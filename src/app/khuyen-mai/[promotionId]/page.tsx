@@ -5,16 +5,6 @@ import { useState } from "react";
 import Image from "next/image";
 import coverBanner from "@/assets/images/cover-folder-thinkpro.webp";
 
-export async function getStaticPaths() {
-  const validIds = [
-    "laptop-chinh-hang-deal-soc",
-    "thinkpad-x-1-series",
-    "macbook-pro-deal",
-  ];
-  const paths = validIds.map((id) => ({ params: { promotionId: id } }));
-  return { paths, fallback: true };
-}
-
 const promotionProducts = {
   laptop: [
     {
@@ -126,12 +116,7 @@ const promotionProducts = {
   ],
 };
 
-export default function PromotionPage({
-  params,
-}: {
-  params: { promotionId: string };
-}) {
-  const { promotionId } = params;
+export default function PromotionPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
   const [sortBy, setSortBy] = useState("featured");
@@ -406,7 +391,6 @@ export default function PromotionPage({
         <div className="mt-1 md:mt-3">
           <ProductList
             products={getFilteredProducts()}
-            title="Sản phẩm khuyến mãi"
           />
         </div>
       </div>
