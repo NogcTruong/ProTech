@@ -150,6 +150,8 @@ export default function ProductListsPage() {
   const [isOpenPromotion, setIsOpenPromotion] = useState(true);
   const [isOpenColors, setIsOpenColors] = useState(true);
   const [visibleCount, setVisibleCount] = useState(10);
+  const [isOpenIndex, setIsOpenIndex] = useState(false);
+  const [infoBox, setInfoBox] = useState(false);
 
   const [sortBy, setSortBy] = useState("featured");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -223,6 +225,14 @@ export default function ProductListsPage() {
 
   const handleOpenColors = () => {
     setIsOpenColors(!isOpenColors);
+  };
+
+  const handleOpenIndex = () => {
+    setIsOpenIndex(!isOpenIndex);
+  };
+
+  const handleInfoBox = () => {
+    setInfoBox(!infoBox);
   };
 
   const getFilteredProducts = () => {
@@ -1156,6 +1166,7 @@ export default function ProductListsPage() {
                 <ProductList
                   products={dataProductLists}
                   title="Sản phẩm khuyến mãi"
+                  showCompareButton={buttonCompare}
                 />
                 {hasMore && (
                   <div className="mt-10 flex justify-center">
@@ -1187,8 +1198,321 @@ export default function ProductListsPage() {
             </div>
           </div>
         </div>
+        <div className="mt-10 md:container">
+          <section className="section-info-box">
+            {/* ${
+                handleInfoBox ? "is-active" : ""
+              } */}
+            <div
+              className={`${
+                infoBox ? "is-active" : ""
+              } section-info-box__wrapper`}
+            >
+              <div className="editor-viewer prose prose-base md:prose-lg mx-auto">
+                <p>
+                  <a href="#!">Laptop </a>đã trở thành thiết bị không thể thiếu
+                  trong cuộc sống hiện đại. Với sự nhỏ gọn, tiện lợi và khả năng
+                  xử lý đa dạng các tác vụ, laptop đáp ứng đầy đủ nhu cầu học
+                  tập, làm việc đến giải trí của mọi người. Trong bài viết này
+                  <strong> ThinkPro </strong>
+                  sẽ cung cấp cho bạn hướng dẫn tìm hiểu chi tiết từ A đến Z về
+                  laptop.
+                </p>
+                <div data-type="tableOfContents" onClick={handleOpenIndex}>
+                  <div className="toc-title--wrapper">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5 icon-bar-index"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      />
+                    </svg>
+                    <span className="toc-title">Mục lục bài viết</span>
+                  </div>
+                  <div className="toc-expand">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      className={`${
+                        isOpenIndex ? "" : "rotate-180"
+                      } h-5 w-5 toc-icon--expand`}
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="m19.5 8.25l-7.5 7.5l-7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    className={`${isOpenIndex && "!flex"} toc-anchor--wrapper`}
+                  >
+                    <Link
+                      href="#LT1"
+                      className="#LT1"
+                      data-origin-level="2"
+                      rel="nofollow"
+                    >
+                      1. Lịch sử ra đời của laptop (máy tính xách tay)
+                    </Link>
+                    <Link
+                      href="#LT2"
+                      className="#LT1"
+                      data-origin-level="2"
+                      rel="nofollow"
+                    >
+                      2. Thông số kỹ thuật cơ bản của laptop
+                    </Link>
+                    <Link
+                      href="#LT2.1"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      2.1. CPU
+                    </Link>
+                    <Link
+                      href="#LT2.2"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      2.2. RAM
+                    </Link>
+                    <Link
+                      href="#LT"
+                      className="#LT1"
+                      data-origin-level="2.3"
+                      rel="nofollow"
+                    >
+                      2.3. Ổ cứng
+                    </Link>
+                    <Link
+                      href="#LT2.4"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      2.4. Card đồ họa
+                    </Link>
+                    <Link
+                      href="#LT2.5"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      2.5. Màn hình
+                    </Link>
+                    <Link
+                      href="#LT2.6"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      2.6. Độ phân giải
+                    </Link>
+                    <Link
+                      href="#LT3"
+                      className="#LT1"
+                      data-origin-level="2"
+                      rel="nofollow"
+                    >
+                      3. Các dòng laptop đang kinh doanh tại ThinkPro
+                    </Link>
+                    <Link
+                      href="#LT3.1"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      3.1. Laptop văn phòng - học tập
+                    </Link>
+                    <Link
+                      href="#LT3.2"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      3.2. Laptop Gaming
+                    </Link>
+                    <Link
+                      href="#LT3.3"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      3.3. Laptop đồ họa
+                    </Link>
+                    <Link
+                      href="#LT3.4"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      3.4. Laptop lập trình
+                    </Link>
+                    <Link
+                      href="#LT4"
+                      className="#LT1"
+                      data-origin-level="2"
+                      rel="nofollow"
+                    >
+                      5. Các thương hiệu laptop đang kinh doanh tại ThinkPro
+                    </Link>
+                    <Link
+                      href="#LT5.1"
+                      className="#LT1"
+                      data-origin-level="3"
+                      rel="nofollow"
+                    >
+                      5.1. Laptop Lenovo
+                    </Link>
+                    <Link
+                      href="#LT5.1.1"
+                      className="#LT1"
+                      data-origin-level="4"
+                      rel="nofollow"
+                    >
+                      5.1.1 Lenovo Thinkpad
+                    </Link>
+                    <Link
+                      href="#LT1"
+                      className="#LT1"
+                      data-origin-level="4"
+                      rel="nofollow"
+                    >
+                      5.1.2. Lenovo Thinkbook
+                    </Link>
+                    <Link
+                      href="#LT1"
+                      className="#LT1"
+                      data-origin-level="4"
+                      rel="nofollow"
+                    >
+                      5.1.3. Lenovo Legion
+                    </Link>
+                    <Link
+                      href="#LT1"
+                      className="#LT1"
+                      data-origin-level="4"
+                      rel="nofollow"
+                    >
+                      5.1.4. Lenovo Yoga
+                    </Link>
+                  </div>
+                </div>
+                <h2 id="LT1" className="font-lexend">
+                  <strong>
+                    1. Lịch sử ra đời của laptop (máy tính xách tay)
+                  </strong>
+                </h2>
+                <p>
+                  <strong>Laptop</strong>
+                  (máy tính xách tay) đã trải qua một hành trình phát triển đáng
+                  kể kể từ khi được ra đời vào năm 1981 bởi Adam Osborne với
+                  chiếc Osborne 1. Từ khi Osborne 1 xuất hiện, laptop đã trải
+                  qua một loạt sự thay đổi và cải tiến đáng kể. Kích thước đã
+                  giảm, hiệu suất tăng lên đáng kể, trọng lượng giảm và tính di
+                  động được nâng cao.
+                </p>
+                <figure data-type="figure">
+                  <div data-type="imageBlock">
+                    <Image
+                      width={868}
+                      height={542}
+                      alt="Chiếc máy tính này được gọi là"
+                      src="https://d28jzcg6y4v9j1.cloudfront.net/laptop_1_1718991238018.jpg"
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption className="not-prose">
+                    <p>Chiếc máy tính này được gọi là &quot;Osborne 1&quot;</p>
+                  </figcaption>
+                </figure>
+                <p>
+                  Các tiến bộ trong công nghệ đã đóng một vai trò quan trọng
+                  trong việc thúc đẩy sự phát triển của laptop. Vi xử lý tiên
+                  tiến, bộ nhớ lớn hơn, màn hình cảm ứng và ổ SSD đã làm cho
+                  laptop trở nên mạnh mẽ và tiện ích hơn. Những thay đổi này
+                  không chỉ làm tăng hiệu suất mà còn tạo ra những trải nghiệm
+                  người dùng tốt hơn.
+                </p>
+                <p>
+                  Sự phát triển của laptop đã tạo ra sức ảnh hưởng lớn đối với
+                  đời sống và kinh tế. Trong môi trường kinh doanh, laptop cho
+                  phép người dùng làm việc từ bất kỳ đâu, giúp tăng năng suất và
+                  sự linh hoạt.
+                </p>
+                <figure data-type="figure">
+                  <div data-type="imageBlock">
+                    <Image
+                      width={868}
+                      height={542}
+                      alt="Laptop đã trở thành một phần không thể thiếu trong cuộc sống hiện đại"
+                      src="https://d28jzcg6y4v9j1.cloudfront.net/laptop_2_1718991238097.jpg"
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption className="not-prose">
+                    <p>
+                      Laptop đã trở thành một phần không thể thiếu trong cuộc
+                      sống hiện đại
+                    </p>
+                  </figcaption>
+                </figure>
+                <p>
+                  Trong tương lai, dự kiến ​​rằng laptop sẽ tiếp tục phát triển
+                  với sự tích hợp của trí tuệ nhân tạo (AI), thực tế ảo (VR) và
+                  Internet of Things (IoT), mở ra nhiều cơ hội mới cho người
+                  dùng. Mục tiêu là làm cho laptop trở nên mỏng nhẹ hơn, mạnh mẽ
+                  hơn và có thời lượng pin kéo dài hơn. Tuy nhiên, với sự tiến
+                  bộ, an ninh và bảo mật cũng sẽ là một trọng tâm quan trọng để
+                  đảm bảo dữ liệu của người dùng được bảo vệ.
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 mb-10 flex justify-center relative z-[3]">
+              <button
+                className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center btn-show-more cursor-pointer"
+                onClick={handleInfoBox}
+              >
+                <span>{`${infoBox ? "Thu hồi" : "Xem thêm"}`}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className={`${infoBox && "rotate-180"} h-6 w-6 flex-shrink-0`}
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="m9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0"
+                  />
+                </svg>
+              </button>
+            </div>
+          </section>
+        </div>
       </main>
-      <div id="headlessui-portal-root" hidden>
+      <div hidden>
         <div className="relative z-50">
           <div className="fixed inset-0 overflow-y-hidden">
             <div className="flex min-h-full items-end sm:items-center justify-center text-center max-md:h-full">

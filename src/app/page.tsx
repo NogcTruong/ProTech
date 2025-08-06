@@ -3,11 +3,12 @@ import Banner from "@/components/home/Banner";
 import CardProduct from "@/components/home/CardProduct";
 import FeaturedCategories from "@/components/home/FeaturedCategories";
 import Promotions from "@/components/home/Promotions";
-// import FlashSale from "@/components/Home/flashSale";
+import FlashSale from "@/components/home/FlashSale";
 import Usp from "@/components/home/Usp";
 import SuggestionProduct from "@/components/home/SuggestionProduct";
 import TechNews from "@/components/home/TechNews";
 import TopKeywords from "@/components/home/TopKeywords";
+import Preorder from "@/components/home/Preorder";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
         <Banner />
         <CardProduct />
         <FeaturedCategories />
+        <FlashSale />
         <Promotions />
-        {/* <FlashSale /> */}
+        <Preorder />
         <Usp />
         <SuggestionProduct />
         <TechNews />

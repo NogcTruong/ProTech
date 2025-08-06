@@ -17,9 +17,13 @@ interface Product {
 
 interface ProductListProps {
   products: Product[];
+  showCompareButton: boolean;
 }
 
-export default function ProductList({ products }: ProductListProps) {
+export default function ProductList({
+  products,
+  showCompareButton,
+}: ProductListProps) {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
   useEffect(() => {
@@ -151,6 +155,34 @@ export default function ProductList({ products }: ProductListProps) {
                       +5 tùy chọn khác
                     </span>
                   </div>
+                </div>
+                <div
+                  className={`${
+                    showCompareButton ? "" : "hidden"
+                  } mt-3 p-2 border-t`}
+                >
+                  <button
+                    type="button"
+                    className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-xs gap-x-1.5 px-2.5 py-1.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 h-4 w-4"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
+                        d="M12 6v12m6-6H6"
+                      />
+                    </svg>
+                    <span>So sánh</span>
+                  </button>
                 </div>
               </div>
             </Link>

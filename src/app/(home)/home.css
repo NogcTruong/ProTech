@@ -76,13 +76,45 @@ img.lazyloaded {
 }
 
 /* Flash sale */
-.section-flash-sale .title:before {
-  content: "";
-  background-image: url("../../assets/logos/gift-mascot-logo.png");
-  background-size: 56px 56px;
-  height: 56px;
-  width: 56px;
-  margin-right: 16px;
+.flash_sale-aspect-w-1 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 1;
+}
+
+.flash_sale-aspect-w-1 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.flash_sale-aspect-h-1 {
+  --tw-aspect-h: 1;
+}
+
+/* Preorder */
+.preorder-aspect-w-1 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 1;
+}
+
+.preorder-aspect-w-1 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.preorder-aspect-h-1 {
+  --tw-aspect-h: 1;
 }
 
 /* Usp */

@@ -1,5 +1,6 @@
 "use client";
 
+import { formatPrice } from "@/utils/formatters";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -177,7 +178,7 @@ export default function Promotions() {
                 >
                   <div className="dark absolute top-0 right-6 -translate-y-1/2 -rotate-3">
                     <span className="inline-flex items-center font-medium rounded-md text-base px-2.5 py-1.5 gap-1.5 bg-[#36ff9a] text-white dark:text-gray-900">
-                      Từ {promotionProduct.price}
+                      Từ {formatPrice(promotionProduct.price)}
                     </span>
                   </div>
                   <div className="p-4 md:p-6 h-[150px] md:h-[220px]">
