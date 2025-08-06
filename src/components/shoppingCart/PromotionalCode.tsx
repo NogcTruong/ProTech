@@ -1,35 +1,54 @@
+import Image from "next/image";
 import BaseModal from "../common/baseModal";
+import Link from "next/link";
 
-type PromotionalCodeProps = {
+type ProductsOrderModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
 };
 
-export default function PromotionalCode({
+export default function ProductsOrderModal({
   open,
   onClose,
   title,
-}: PromotionalCodeProps) {
+}: ProductsOrderModalProps) {
   return (
     <BaseModal open={open} onClose={onClose} title={title}>
-      <div className="p-4 md:p-6">
-        <div className="flex space-x-2">
-          <div className="flex-1 flex flex-col space-y-1">
-            <input
-              type="text"
-              placeholder="Nhập mã khuyến mại"
-              className="relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 form-input rounded-md placeholder-gray-400 text-sm px-3.5 py-2.5 shadow-sm bg-white text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-colorPrimary500"
-            />
-          </div>
-          <div>
-            <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center">
-              <span>Áp dụng</span>
-            </button>
-          </div>
-        </div>
-        <div className="py-4">
-          <span className="text-sm">Bạn có thể chọn 1 khuyến mãi</span>
+      <div className="flex-col space-y-2 p-4 max-h-[80vh] overflow-y-auto">
+        <div>
+          <Link
+            href="#!"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="relative flex items-center space-x-3 shrink-0 py-2 px-3 rounded-2xl hover:bg-gray-100"
+          >
+            <div className="w-[72px] h-[72px] overflow-hidden rounded-lg">
+              <Image
+                width={72}
+                height={72}
+                alt="Chuột không dây DAGK G300SE Silent"
+                src="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg"
+                srcset="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/144x144/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg 2x"
+              />
+            </div>
+            <div className="flex-1 flex flex-col space-y-1">
+              <span className="text-sm font-medium line-clamp-2">
+                Chuột không dây DAGK G300SE Silent
+              </span>
+              <span className="text-xs text-gray-600">
+                Black / Mới, Full box, Nhập khẩu
+              </span>
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-rose-600 font-medium">
+                  149.000
+                </span>
+                <span className="text-sm line-through">399.000</span>
+                <div className="flex-1"></div>
+                <span className="text-sm">x1</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </BaseModal>
