@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import banner1 from "@/assets/images/bao-hanh-chinh-hang-phu-kien-6ww.webp";
 import banner2 from "@/assets/images/back-to-school-2025-snp.webp";
-import ProductList from "@/components/common/ProductList";
+import ProductList from "@/components/common/productList";
 import { useEffect, useRef, useState } from "react";
 import "./productLists.css";
 import Link from "next/link";
@@ -1232,7 +1232,7 @@ export default function ProductListsPage() {
                         stroke="currentColor"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                       />
                     </svg>
@@ -1253,7 +1253,7 @@ export default function ProductListsPage() {
                         stroke="currentColor"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke-width="1.5"
+                        strokeWidth="1.5"
                         d="m19.5 8.25l-7.5 7.5l-7.5-7.5"
                       />
                     </svg>

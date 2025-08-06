@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BaseModal from "../common/baseModal";
-import "../../app/(productLists)/[productListsId]/[detailProductId]/danh-gia/review.css";
+import "../../app/[productListsId]/[detailProductId]/danh-gia/review.css";
 
 type FeedbackProps = {
   open: boolean;

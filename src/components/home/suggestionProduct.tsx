@@ -1,6 +1,6 @@
 "use client";
 
-import ProductList from "@/components/common/ProductList";
+import ProductList from "@/components/common/productList";
 import { useEffect, useState } from "react";
 
 const suggestionProducts = {

@@ -1,6 +1,6 @@
 "use client";
 
-import ProductList from "@/components/common/ProductList";
+import ProductList from "@/components/common/productList";
 import { useState } from "react";
 import Image from "next/image";
 import coverBanner from "@/assets/images/cover-folder-thinkpro.webp";
@@ -389,9 +389,7 @@ export default function PromotionPage() {
           </div>
         </div>
         <div className="mt-1 md:mt-3">
-          <ProductList
-            products={getFilteredProducts()}
-          />
+          <ProductList products={getFilteredProducts()} />
         </div>
       </div>
     </section>

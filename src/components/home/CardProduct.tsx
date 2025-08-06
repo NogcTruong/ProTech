@@ -178,7 +178,7 @@ export default function ViewedProduct() {
                         {formatPrice(pro.price)}
                       </span>
                       <span className="inline-flex items-center font-medium rounded-full text-xs px-1.5 py-0.5 gap-0.5 bg-rose-500 text-white">
-                        {pro.discount}
+                        {pro.discount}%
                       </span>
                     </div>
                   </div>
