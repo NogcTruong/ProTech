@@ -564,7 +564,7 @@ export default function NewsList() {
                 <span className="text-sm md:text-base line-clamp-3">
                   {news.description}
                 </span>
-                <div className="flex flex-col md:flex-row md:items-center md:space-x-3 max-md:space-y-1">
+                <div className="flex flex-col md:flex-row md:items-center md:space-x-3 max-md:space-y-1 text-xs md:text-base">
                   <span className="font-semibold text-[#00C25C]">
                     {news.author}
                   </span>

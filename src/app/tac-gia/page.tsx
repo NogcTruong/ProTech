@@ -7,8 +7,6 @@ const dataAuthor = [
     name: "Lê Văn Mạnh",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🐶",
     posts: 1,
   },
@@ -16,8 +14,6 @@ const dataAuthor = [
     name: "Phan Như Ngọc",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "📮",
     posts: 219,
   },
@@ -25,8 +21,6 @@ const dataAuthor = [
     name: "Huỳnh Thị Cám Từ",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🐼",
     posts: 108,
   },
@@ -34,8 +28,6 @@ const dataAuthor = [
     name: "Vũ Lưu",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🐣",
     posts: 393,
   },
@@ -43,8 +35,6 @@ const dataAuthor = [
     name: "Nguyễn Lâm Ngọc Hàn",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "👩‍🚀",
     posts: 22,
   },
@@ -52,8 +42,6 @@ const dataAuthor = [
     name: "Vũơng Thị Yến Nhi",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🌸",
     posts: 31,
   },
@@ -61,8 +49,6 @@ const dataAuthor = [
     name: "Hoàng Giá Chi Bảo",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "👾",
     posts: 4,
   },
@@ -70,8 +56,6 @@ const dataAuthor = [
     name: "Nguyễn Tú Anh",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🐸",
     posts: 3,
   },
@@ -79,8 +63,6 @@ const dataAuthor = [
     name: "Nguyễn Ngọc Bích",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "👹",
     posts: 1,
   },
@@ -88,8 +70,6 @@ const dataAuthor = [
     name: "Hoàng Thị Thương",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🤖",
     posts: 1,
   },
@@ -97,8 +77,6 @@ const dataAuthor = [
     name: "Đỗ Hương Giang",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "👽",
     posts: 48,
   },
@@ -106,8 +84,6 @@ const dataAuthor = [
     name: "Nguyễn Thị Thủy Phương",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🌳",
     posts: 3,
   },
@@ -115,8 +91,6 @@ const dataAuthor = [
     name: "Hữu Nguyễn",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🍇",
     posts: 1,
   },
@@ -124,8 +98,6 @@ const dataAuthor = [
     name: "Nguyễn Hàn",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "😎",
     posts: 5,
   },
@@ -133,8 +105,6 @@ const dataAuthor = [
     name: "Trương Thị Yến Nhi",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "👶",
     posts: 1,
   },
@@ -142,8 +112,6 @@ const dataAuthor = [
     name: "Lê Hoàng Thoai",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🌴",
     posts: 24,
   },
@@ -151,8 +119,6 @@ const dataAuthor = [
     name: "Vũ Hồng Kháng",
     image:
       "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/56x56/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/112x112/https://d28jzcg6y4v9j1.cloudfront.net/avatars/NV2438112.jpg 2x",
     avatar: "🐱",
     posts: 1,
   },
@@ -174,7 +140,6 @@ export default function Author() {
                     width={56}
                     height={56}
                     src={auth.image}
-                    srcset={auth.srcset}
                     alt={auth.name}
                   />
                 </div>

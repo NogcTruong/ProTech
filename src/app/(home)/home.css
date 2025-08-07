@@ -3,11 +3,6 @@ img.lazyloaded {
   opacity: 1;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 .btn-account:hover,
 .the-menu button[type="button"]:hover {
   background: #0000000d;
@@ -235,6 +230,10 @@ img.lazyloaded {
 
   .md\:aspect-h-1 {
     --tw-aspect-h: 1;
+  }
+
+  .section-featured-categories .group\/scrollable {
+    display: none;
   }
 }
 

@@ -8,9 +8,7 @@ import { useState } from "react";
 const dataPostAuthor = [
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 832w",
+      "https://imagor.owtg.one/unsafe/fit-in/832x468/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg",
     name: "Cách mở WiFi trên laptop Dell đơn giản",
     description:
       "Hướng dẫn chi tiết cách mở WiFi trên laptop Dell nhanh chóng và hiệu quả. Tìm hiểu ngay để kết nối mạng ổn định...",
@@ -22,8 +20,6 @@ const dataPostAuthor = [
   {
     image:
       "https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 832w",
     name: "Cách kiểm tra 2 màn hình laptop bằng HDMI đơn giản",
     description:
       "Hướng dẫn cách kiểm tra 2 màn hình laptop bằng cổng HDMI. Tìm hiểu chi tiết để sử dụng hiệu quả...",
@@ -35,8 +31,6 @@ const dataPostAuthor = [
   {
     image:
       "https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 832w",
     name: "7 cách dùng 6 tựu trên bản vẽ kính thực tế ảo",
     description:
       "Khám phá 7 cách sử dụng kính thực tế ảo để nâng cao trải nghiệm làm việc và giải trí. Tìm hiểu chi tiết ngay...",
@@ -48,8 +42,6 @@ const dataPostAuthor = [
   {
     image:
       "https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 832w",
     name: "Cách bật màn hình cảm ứng laptop Win 10, Win 11",
     description:
       "Hướng dẫn chi tiết cách bật màn hình cảm ứng trên laptop Windows 10 và 11. Tìm hiểu để sử dụng hiệu quả...",
@@ -60,9 +52,7 @@ const dataPostAuthor = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg 832w",
+      "https://imagor.owtg.one/unsafe/fit-in/832x468/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/20/cach-mo-wifi-tren-laptop-dell-don-gian-va-nhanh-chong-review-oVc.jpg",
     name: "Cách mở WiFi trên laptop Dell đơn giản",
     description:
       "Hướng dẫn chi tiết cách mở WiFi trên laptop Dell nhanh chóng và hiệu quả. Tìm hiểu ngay để kết nối mạng ổn định...",
@@ -74,8 +64,6 @@ const dataPostAuthor = [
   {
     image:
       "https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/12/20/cach-ket-noi-2-man-hinh-laptop-bang-hdmi-thinkpro-OTD.png 832w",
     name: "Cách kiểm tra 2 màn hình laptop bằng HDMI đơn giản",
     description:
       "Hướng dẫn cách kiểm tra 2 màn hình laptop bằng cổng HDMI. Tìm hiểu chi tiết để sử dụng hiệu quả...",
@@ -87,8 +75,6 @@ const dataPostAuthor = [
   {
     image:
       "https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2024/1/17/tat-man-hinh-laptop-thinkpro-Lo5.png 832w",
     name: "7 cách dùng 6 tựu trên bản vẽ kính thực tế ảo",
     description:
       "Khám phá 7 cách sử dụng kính thực tế ảo để nâng cao trải nghiệm làm việc và giải trí. Tìm hiểu chi tiết ngay...",
@@ -100,8 +86,6 @@ const dataPostAuthor = [
   {
     image:
       "https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 800w, https://imagor.owtg.one/unsafe/fit-in/832x468/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/6-dieu-can-biet-ve-kinh-thuc-te-ao-thinkpro.jpg 832w",
     name: "Cách bật màn hình cảm ứng laptop Win 10, Win 11",
     description:
       "Hướng dẫn chi tiết cách bật màn hình cảm ứng trên laptop Windows 10 và 11. Tìm hiểu để sử dụng hiệu quả...",
@@ -282,8 +266,7 @@ export default function AuthorPost() {
                           width={112}
                           height={63}
                           alt={pro.name}
-                          sizes="(max-width: 768px) 400px, 416px"
-                          srcset={pro.srcset}
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                           src={pro.image}
                           className="w-full h-full lazyloaded"
                         />

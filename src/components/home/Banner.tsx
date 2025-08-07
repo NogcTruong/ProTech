@@ -49,11 +49,12 @@ export default function banner() {
               >
                 <Image
                   src={banners[current].img}
-                  sizes="100vw"
+                  // sizes="(max-width: 768px) 400px, 400px"
+                  srcset="https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/core/categories/2025/7/1/frame-427320384.png 400w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/core/categories/2025/7/1/frame-427320384.png 800w"
                   alt="Đón Giáng Sinh - Deal Lung Linh. Holiday Sale, giúp bạn dễ dàng mua sắm các sản phẩm công nghệ chất lượng với Giá Tốt Nhất Thị Trường!"
                   className="t-img h-full w-full object-cover"
                   width={400}
-                  height={100}
+                  height={225}
                 />
               </Link>
             </div>

@@ -133,6 +133,22 @@ hr {
   --tw-aspect-w: 1;
 }
 
+.aspect-w-16 {
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  position: relative;
+  --tw-aspect-w: 16;
+}
+
+.aspect-w-16 > * {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
 .aspect-h-9 {
   --tw-aspect-h: 9;
 }
@@ -201,7 +217,15 @@ div[data-type="imageBlock"] {
   margin-top: 0.5rem;
 }
 
-.shadow-inverse-md {
+/* max-md:shadow-inverse-md  */
+
+.max-md\:shadow-inverse-md {
+  --tw-shadow: 0px -4px 6px -1px #0000001a;
+  --tw-shadow-colored: 0px -4px 6px -1px var(--tw-shadow-color);
+}
+
+.shadow-\[15px_15px_0_\#fff\],
+.max-md\:shadow-inverse-md {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000) 0 0 #0000, var(--tw-shadow);
 }
@@ -215,6 +239,11 @@ div[data-type="imageBlock"] {
 @media (min-width: 768px) {
   :root {
     --the-header-height: 64px;
+  }
+
+  .section-banner .wrapper:before,
+  .section-banner .wrapper:after {
+    display: none;
   }
 
   .md\:container {
@@ -469,8 +498,6 @@ div[data-type="imageBlock"] {
     padding-right: 50px;
   }
 }
-
-
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .container {

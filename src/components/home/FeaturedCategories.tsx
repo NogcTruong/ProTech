@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const categories = [
   {
@@ -69,10 +72,43 @@ const categories = [
 ];
 
 export default function Featuredcategoryegories() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+
+      const handleScroll = () => {
+        const scrollLeft = container.scrollLeft;
+        const scrollWidth = container.scrollWidth;
+        const clientWidth = container.clientWidth;
+
+        const maxScroll = scrollWidth - clientWidth;
+        const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+        setScrollProgress(progress);
+      };
+
+      container.addEventListener("scroll", handleScroll);
+
+      return () => {
+        container.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
+
+  const getIndicatorPosition = () => {
+    const totalWidth = 608;
+    const indicatorWidth = 180;
+
+    const maxPosition = totalWidth - indicatorWidth;
+    return maxPosition * scrollProgress;
+  };
+
   return (
-    <section className="section-featured-categoryegories mt-6 md:mt-10">
+    <section className="section-featured-categories mt-6 md:mt-10">
       <h2 className="md:text-3xl font-lexend font-bold">Danh mục nổi bật</h2>
-      <div className="mt-6 grid grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+      <div className="mt-6 hidden grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 md:grid">
         {categories.map((category, idx) => (
           <Link href="/ghe-cong-thai-hoc" className="group" key={idx}>
             <div className="aspect-w-1 aspect-h-1">
@@ -98,6 +134,60 @@ export default function Featuredcategoryegories() {
             </div>
           </Link>
         ))}
+      </div>
+
+      <div className="relative group/scrollable mt-4 md:hidden">
+        <div
+          className="overflow-x-auto overflow-y-hidden scrollbar-hide"
+          ref={containerRef}
+        >
+          <div style={{ width: "704px" }}>
+            <div
+              className="t-flex-gap"
+              style={{ "--gap-x": "8px", "--gap-y": "8px" }}
+            >
+              <div className="flex flex-wrap t-flex-gap__wrapper">
+                {categories.map((category, idx) => (
+                  <Link
+                    href="/ghe-cong-thai-hoc"
+                    className="w-[80px]"
+                    key={idx}
+                  >
+                    <div className="aspect-w-1 aspect-h-1">
+                      <div className="p-3">
+                        <Image
+                          src={category.img}
+                          className="t-img w-full h-full object-cover lazyloaded"
+                          width={56}
+                          height={56}
+                          alt={category.name}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    </div>
+                    <div className="text-center mt-1">
+                      <span className="text-xs font-bold group-hover:underline underline-offset-2">
+                        {category.name}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="h-4 flex flex-col justify-end">
+          <div className="bg-white/20 w-full relative h-2">
+            <div
+              className="bg-gray-900 absolute top-0 left-0 h-[2px]"
+              style={{
+                width: "180px",
+                transform: `translateX(${getIndicatorPosition()}px)`,
+              }}
+            ></div>
+          </div>
+        </div>
       </div>
     </section>
   );

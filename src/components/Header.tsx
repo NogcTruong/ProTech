@@ -122,15 +122,23 @@ const dataMenu = {
 };
 
 export default function HeaderPage() {
+  const boxCart = 400;
   const headerRef = useRef<HTMLDivElement>(null);
   const [isOpenCart, setIsOpenCart] = useState(false);
   const [cartTop, setCartTop] = useState(110);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [activeMenuIndex, setActiveMenuIndex] = useState(1);
+  const [widthFull, setWidthFull] = useState(window.innerWidth);
   const pathname = usePathname();
 
   const currentCategory = dataMenu.categories[activeMenuIndex];
+
+  useEffect(() => {
+    const handleResize = () => setWidthFull(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -184,7 +192,7 @@ export default function HeaderPage() {
         position: "fixed",
         inset: "0px auto auto 0px",
         margin: "0px",
-        transform: `translate(943px, ${cartTop}px)`,
+        transform: `translate(${widthFull - boxCart - 23}px, ${cartTop}px)`,
       }
     : {};
 
@@ -820,7 +828,7 @@ export default function HeaderPage() {
             <div className="relative inline-flex items-center justify-center flex-shrink-0">
               <div className="dark">
                 <button
-                  className="hidden md:inline-flex focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm colorPray900 bg-[#00E1F9] hover:bg-colorPrimary500 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault items-center btn-cart"
+                  className="hidden md:inline-flex focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-2.5 py-2.5 shadow-sm colorPray900 bg-[#00E1F9] hover:bg-colorPrimary500 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault items-center btn-cart"
                   aria-label="Giỏ hàng"
                   onClick={handleOpenCart}
                 >
@@ -840,7 +848,7 @@ export default function HeaderPage() {
                       d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007M8.625 10.5a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0m7.5 0a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0"
                     />
                   </svg>
-                  <span className="hidden md:block">31.990.000 ₫</span>
+                  <span className="hidden lg:block">31.990.000 ₫</span>
                 </button>
                 <Link
                   href="/gio-hang"

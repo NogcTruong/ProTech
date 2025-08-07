@@ -23,8 +23,8 @@ export default function StoreAddress() {
                   <Image
                     width={416}
                     height={234}
-                    srcset="https://imagor.owtg.one/unsafe/fit-in/416x234/https://thinkpro.vn/stores/nguyen-huy-tuong-1.jpeg 1x, https://imagor.owtg.one/unsafe/fit-in/832x468/https://thinkpro.vn/stores/nguyen-huy-tuong-1.jpeg 2x"
                     src="https://imagor.owtg.one/unsafe/fit-in/416x234/https://thinkpro.vn/stores/nguyen-huy-tuong-1.jpeg"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     alt="Số 5 - 7 Nguyễn Huy Tưởng, F6, Q. Bình Thạnh"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -90,8 +90,8 @@ export default function StoreAddress() {
                   <Image
                     width={416}
                     height={234}
-                    srcset="https://imagor.owtg.one/unsafe/fit-in/416x234/https://thinkpro.vn/stores/tran-thien-chanh-1.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/832x468/https://thinkpro.vn/stores/tran-thien-chanh-1.jpg 2x"
                     src="https://imagor.owtg.one/unsafe/fit-in/416x234/https://thinkpro.vn/stores/tran-thien-chanh-1.jpg"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     alt="store-1"
                     className="w-full h-full object-cover lazyloaded"
                   />
@@ -161,8 +161,8 @@ export default function StoreAddress() {
                   <Image
                     width={416}
                     height={234}
-                    srcset="https://imagor.owtg.one/unsafe/fit-in/416x234/https://thinkpro.vn/stores/thai-ha-1.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/832x468/https://thinkpro.vn/stores/thai-ha-1.jpg 2x"
                     src="https://imagor.owtg.one/unsafe/fit-in/416x234/https://thinkpro.vn/stores/thai-ha-1.jpg"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     alt="store-1"
                     className="w-full h-full object-cover"
                   />

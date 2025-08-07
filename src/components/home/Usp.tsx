@@ -6,7 +6,7 @@ import uspImage2 from "@/assets/images/usp-2.png";
 import uspImage3 from "@/assets/images/usp-3.png";
 import uspImage4 from "@/assets/images/usp-4.png";
 import uspImage5 from "@/assets/images/usp-5.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const uspData = [
   {
@@ -26,6 +26,7 @@ const uspData = [
         width="24"
         height="24"
         viewBox="0 0 24 24"
+        className="w-5 h-5 xl:w-6 xl:h-6"
       >
         <path
           fill="none"
@@ -56,6 +57,7 @@ const uspData = [
         width="24"
         height="24"
         viewBox="0 0 24 24"
+        className="w-5 h-5 xl:w-6 xl:h-6"
       >
         <path
           fill="none"
@@ -87,6 +89,7 @@ const uspData = [
         width="24"
         height="24"
         viewBox="0 0 24 24"
+        className="w-5 h-5 xl:w-6 xl:h-6"
       >
         <path
           fill="none"
@@ -100,7 +103,7 @@ const uspData = [
     ),
   },
   {
-    title: "Phục vụ đến 24 giờ",
+    title: "Phục vụ 24 giờ",
     desc: (
       <>
         Lấy khách hàng làm trung tâm, đội ngũ ThinkPro luôn sẵn lòng để phục vụ
@@ -118,6 +121,7 @@ const uspData = [
         width="24"
         height="24"
         viewBox="0 0 24 24"
+        className="w-5 h-5 xl:w-6 xl:h-6"
       >
         <path
           fill="none"
@@ -145,7 +149,7 @@ const uspData = [
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        className="flex-shrink-0"
+        className="flex-shrink-0 w-5 h-5 xl:w-6 xl:h-6"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         fill="currentColor"
@@ -177,8 +181,91 @@ const uspData = [
   },
 ];
 
+const tabHighlightStyleUspDesktop = {
+  "Trải nghiệm tận tay": { top: 48, left: 0, width: 282, height: 60 },
+  "Từ vấn tận tâm": { top: 108, left: 0, width: 282, height: 60 },
+  "Trung tâm khách hàng": { top: 168, left: 0, width: 282, height: 60 },
+  "Phục vụ 24 giờ": { top: 228, left: 0, width: 282, height: 60 },
+  Clerk: { top: 288, left: 0, width: 282, height: 60 },
+};
+
+const tabHighlightStyleUspDesktopTablet = {
+  "Trải nghiệm tận tay": { top: 0, left: 0, width: 194, height: 48 },
+  "Từ vấn tận tâm": { top: 0, left: 194, width: 162, height: 48 },
+  "Trung tâm khách hàng": { top: 0, left: 356, width: 215, height: 48 },
+  "Phục vụ 24 giờ": { top: 0, left: 571, width: 157, height: 48 },
+  Clerk: { top: 0, left: 729, width: 86, height: 48 },
+};
+
+const tabHighlightStyleUspTablet = {
+  "Trải nghiệm tận tay": { top: 0, left: 0, width: 190, height: 48 },
+  "Từ vấn tận tâm": { top: 0, left: 194, width: 158, height: 48 },
+  "Trung tâm khách hàng": { top: 0, left: 348, width: 211, height: 48 },
+  "Phục vụ 24 giờ": { top: 0, left: 559, width: 153, height: 48 },
+  Clerk: { top: 0, left: 713, width: 86, height: 48 },
+};
+
 export default function Usp() {
   const [active, setActive] = useState(0);
+  const [activeMobileSlide, setActiveMobileSlide] = useState(0);
+  const [isHightLg, setIsHightLg] = useState(false);
+  const [isLgScreen, setIsLgScreen] = useState(false);
+  const [isMdLgScreen, setIsMdLgScreenScreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsHightLg(window.innerWidth >= 1280);
+      setIsLgScreen(window.innerWidth < 1280 && window.innerWidth >= 1024);
+      setIsMdLgScreenScreen(
+        window.innerWidth >= 768 && window.innerWidth < 1280
+      );
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector(".mobile-scroll-container");
+    const handleMobileScroll = () => {
+      if (scrollContainer) {
+        const scrollLeft = scrollContainer.scrollLeft;
+        const containerWidth = scrollContainer.clientWidth;
+        const slideIndex = Math.round(scrollLeft / containerWidth);
+        setActiveMobileSlide(slideIndex);
+      }
+    };
+
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", handleMobileScroll);
+      return () => {
+        scrollContainer.removeEventListener("scroll", handleMobileScroll);
+      };
+    }
+  }, []);
+
+  const getStyleUsp = () => {
+    if (isHightLg) {
+      const tab =
+        Object.keys(tabHighlightStyleUspDesktop)[active] ||
+        "trải nghiệm tận tay";
+      return tabHighlightStyleUspDesktop[tab];
+    } else if (isLgScreen) {
+      const tab =
+        Object.keys(tabHighlightStyleUspDesktopTablet)[active] ||
+        "trải nghiệm tận tay";
+      return tabHighlightStyleUspDesktopTablet[tab];
+    } else if (isMdLgScreen) {
+      const tab =
+        Object.keys(tabHighlightStyleUspTablet)[active] ||
+        "trải nghiệm tận tay";
+      return tabHighlightStyleUspTablet[tab];
+    }
+  };
 
   return (
     <section className="section-usp mt-10 md:mt-20">
@@ -192,15 +279,17 @@ export default function Usp() {
       </div>
       <div className="mt-4 md:mt-10">
         <div
-          className={`${uspData[active].bg} rounded-3xl flex flex-col xl:flex-row duration-1000 transition-all`}
+          className={`${
+            isMobile ? uspData[activeMobileSlide].bg : uspData[active].bg
+          }  rounded-3xl flex flex-col xl:flex-row duration-1000 transition-all`}
         >
           <div className="xl:min-w-1/4 relative p-2 md:pt-6 xl:py-10 md:px-4 xl:px-6">
             <div className="hidden md:block overflow-hidden md:h-full">
               <div className="overflow-auto scrollbar-hide md:h-full">
                 <div className="relative flex xl:flex-col justify-center w-max md:h-full">
                   <div
-                    className="marker h-[60px] absolute bg-white rounded-full transition-all ease-out z-[0] overflow-hidden top-12 left-0 w-[282px]"
-                    style={{ top: `${48 + active * 60}px` }}
+                    className="marker h-[60px] absolute bg-white rounded-full transition-all ease-out z-[0] overflow-hidden -top-[60px] w-[282px] inset-x-6"
+                    style={getStyleUsp()}
                   ></div>
                   {uspData.map((item, idx) => (
                     <button
@@ -212,7 +301,7 @@ export default function Usp() {
                       onClick={() => setActive(idx)}
                     >
                       {item.svg}
-                      <span className="text-sm xl:text-lg font-bold font-lexend whitespace-nowrap">
+                      <span className="text-sm xl:text-lg font-bold font-lexend whitespace-nowrap max-xl:h-6">
                         {item.title}
                       </span>
                     </button>
@@ -220,8 +309,18 @@ export default function Usp() {
                 </div>
               </div>
             </div>
+            <div className="md:hidden mt-2 grid grid-cols-5 gap-1">
+              {[0, 1, 2, 3, 4].map((index) => (
+                <div
+                  key={index}
+                  className={`${
+                    activeMobileSlide === index ? "bg-white" : "bg-white/20"
+                  } rounded h-[2px] transition-colors duration-300`}
+                ></div>
+              ))}
+            </div>
           </div>
-          <div className="flex-1 pl-4 md:pl-10 pb-6 pt-4 md:py-8 lg:py-12 flex flex-col md:flex-row justify-between items-center md:space-x-8 overflow-hidden">
+          <div className="max-md:hidden flex-1 pl-4 md:pl-10 pb-6 pt-4 md:py-8 lg:py-12 flex flex-col md:flex-row justify-between items-center md:space-x-8 overflow-hidden">
             <div className="w-full md:w-1/2 text-white flex flex-col space-y-2 md:space-y-6">
               <span className="text-2xl md:text-5xl lg:text-6xl xl:text7xl font-lexend font-bold">
                 {uspData[active].title}
@@ -233,6 +332,38 @@ export default function Usp() {
             <div className="mt-6 md:mt-0 flex-1 flex justify-end">
               <div className="w-[260px] h-[260px] lg:w-[380px] lg:h-[380px] 2xl:w-[460px] 2xl:h-[460px]">
                 <Image src={uspData[active].img} alt="Hình ảnh usp ThinkPro" />
+              </div>
+            </div>
+          </div>
+          <div className="md:hidden">
+            <div className="relative">
+              <div className="mobile-scroll-container relative w-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+                {uspData.map((usp, uspIdx) => (
+                  <div
+                    key={uspIdx}
+                    className="flex-none snap-center basis-full px-4 pb-6 pt-4 flex flex-col justify-between items-center"
+                  >
+                    <div className="w-full text-white flex flex-col space-y-2">
+                      <span
+                        className="text-2xl md:text-5xl lg:text-7xl font-lexend font-bold"
+                        style={{ color: "rgb(var(--color-primary-100))" }}
+                      >
+                        {usp.title}
+                      </span>
+                      <div className="text-sm lg:text-base">{usp.desc}</div>
+                    </div>
+                    <div className="mt-6 md:mt-0 flex-1 flex justify-end">
+                      <div className="h-[260px] md:w-[460px] md:h-[460px]">
+                        <Image
+                          width={260}
+                          height={260}
+                          alt="Hình ảnh usp ThinkPro"
+                          src={usp.img}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

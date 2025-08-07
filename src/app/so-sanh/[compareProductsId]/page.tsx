@@ -3,7 +3,7 @@
 import Image from "next/image";
 import "./compareProductsId.css";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddComparativeProducts from "@/components/product/AddComparativeProducts";
 
 export default function CompareProducts() {
@@ -14,6 +14,7 @@ export default function CompareProducts() {
   const [isDropSize, setIsDropSize] = useState(true);
   const [isOpenAddCompareProducts, setIsOpenAddCompareProducts] =
     useState(false);
+  const [fixedProducts, setFixedProducts] = useState(false);
 
   useEffect(() => {
     const scrollElements = document.querySelectorAll(
@@ -42,6 +43,24 @@ export default function CompareProducts() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const threshld = 613;
+
+      if (scrollTop > threshld) {
+        setFixedProducts(true);
+      } else {
+        setFixedProducts(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleDropCha = () => {
     setIsDropCha(!isDropCha);
   };
@@ -65,17 +84,33 @@ export default function CompareProducts() {
   return (
     <main className="compare-page">
       <div className="md:container md:py-10">
-        <div className="md:rounded-2xl overflow-hidden border-b md:border">
+        <div className="md:rounded-2xl overflow-hidden border-b md:border mb-10">
           <div className="h-[530px] md:h-[520px]">
-            <div className="flex flex-col md:flex-row bg-white">
-              <div className="p-4 md:min-w-[260px] flex-1">
-                <div className="flex items-baseline space-x-2">
+            <div
+              className={` ${
+                fixedProducts
+                  ? "transition-all fixed top-[var(--the-header-height)] left-0 right-0 md:container z-[11] shadow-md"
+                  : ""
+              } flex flex-col md:flex-row bg-white`}
+            >
+              <div
+                className={`${
+                  fixedProducts ? "px-3 pt-1" : "p-4"
+                } md:min-w-[260px] flex-1`}
+              >
+                <div
+                  className={`${
+                    fixedProducts ? "hidden" : ""
+                  } flex items-baseline space-x-2`}
+                >
                   <span className="text-2xl font-bold font-lexend">
                     So sánh
                   </span>
                   <span className="text-sm text-gray-600">2 sản phẩm</span>
                 </div>
-                <div className="mt-4 md:mt-6">
+                <div
+                  className={`${fixedProducts ? "md:mt-2" : "mt-4 md:mt-6"}`}
+                >
                   <div className="relative flex items-start">
                     <div className="flex items-center h-5">
                       <input
@@ -95,146 +130,220 @@ export default function CompareProducts() {
                   </div>
                 </div>
               </div>
+
               <div className="t-scroll-sync--horizontal t-scroll-sync flex">
-                <div className="px-2 py-4 w-[185px] md:w-[260px] shrink-0">
-                  <div className="flex flex-col space-y-2 md:space-y-3">
-                    <div className="compare-aspect-w-1 compare-aspect-h-1 rounded-2xl overflow-hidden bg-gray-100 shrink-0">
+                <div
+                  className={`${
+                    fixedProducts ? "px-3" : "px-2"
+                  } py-4 w-[185px] md:w-[260px] shrink-0`}
+                >
+                  <div
+                    className={`${
+                      fixedProducts
+                        ? "flex-row space-x-2"
+                        : "flex-col space-y-2 md:space-y-3"
+                    } flex`}
+                  >
+                    <div
+                      className={`${
+                        fixedProducts
+                          ? "w-10 h-10 rounded-lg "
+                          : "compare-aspect-w-1 compare-aspect-h-1 rounded-2xl"
+                      } overflow-hidden bg-gray-100 shrink-0`}
+                    >
                       <Image
                         width={169}
                         height={169}
-                        alt="Bàn Phím Cơ Leobog AMG65 (Light Feather Silent Switch - Cyber Star Night - Mới, Full box, Nhập khẩu)"
-                        src="https://imagor.owtg.one/unsafe/fit-in/488x488/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/13/ban-phim-co-leobog-amg65-zoz.jpg"
+                        alt="Dell Inspiron 16 5630 - i5 1340P, QHD+ 16GB, 512GB"
+                        src="https://imagor.owtg.one/unsafe/fit-in/488x488/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/media/core/products/2025/1/20/dell-inspiron-16-5630-8zy.png"
                         className="h-full w-full object-contain lazyloaded"
                       />
                     </div>
                     <div className="flex flex-1 flex-col">
-                      <span className="line-clamp-3 text-sm md:text-base text-start font-semibold">
-                        Bàn Phím Cơ Leobog AMG65 (Light Feather Silent Switch -
-                        Cyber Star Night - Mới, Full box, Nhập khẩu)
+                      <span
+                        className={`${
+                          fixedProducts
+                            ? "line-clamp-2 text-sm"
+                            : "line-clamp-3 md:text-base"
+                        }  text-sm text-start font-semibold`}
+                      >
+                        Dell Inspiron 16 5630 - i5 1340P, QHD+ 16GB, 512GB
                       </span>
                       <div className="mt-3 flex items-center space-x-2">
-                        <span className="font-medium text-rose-600">
+                        <span
+                          className={`${
+                            fixedProducts ? "text-sm" : "md:text-base"
+                          } font-medium text-rose-600`}
+                        >
                           2.490.000
                         </span>
                         <span className="inline-flex items-center font-medium rounded-full text-xs px-1.5 py-0.5 gap-0.5 bg-rose-500 text-white">
                           -13%
                         </span>
                       </div>
-                      <div className="mt-2 flex items-center space-x-1.5">
-                        <span className="text-sm">Màu</span>
-                        <span
-                          aria-label="Black"
-                          className="w-[14px] h-[14px] rounded-full ring-1"
-                          style={{ background: "#000000" }}
-                        ></span>
-                      </div>
+                      {!fixedProducts && (
+                        <div className="mt-2 flex items-center space-x-1.5">
+                          <span className="text-sm">Màu</span>
+                          <span
+                            aria-label="Black"
+                            className="w-[14px] h-[14px] rounded-full ring-1"
+                            style={{ background: "#000000" }}
+                          ></span>
+                        </div>
+                      )}
                     </div>
-                    <div className="mt-2 flex flex-col space-y-2">
-                      <Link
-                        type="button"
-                        className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
-                        href="#!"
-                      >
-                        <span>Xem ngay</span>
-                      </Link>
-                      <Link
-                        type="button"
-                        className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
-                        href="#!"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          className="w-5 h-5 flex-shrink-0"
+                    {!fixedProducts && (
+                      <div className="mt-2 flex flex-col space-y-2">
+                        <Link
+                          type="button"
+                          className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
+                          href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
                         >
-                          <path
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="1.5"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                        <span>Xóa</span>
-                      </Link>
-                    </div>
+                          <span>Xem ngay</span>
+                        </Link>
+                        <Link
+                          type="button"
+                          className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
+                          href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            className="w-5 h-5 flex-shrink-0"
+                          >
+                            <path
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="1.5"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                          <span>Xóa</span>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="px-2 py-4 w-[185px] md:w-[260px] shrink-0">
-                  <div className="flex flex-col space-y-2 md:space-y-3">
-                    <div className="compare-aspect-w-1 compare-aspect-h-1 rounded-2xl overflow-hidden bg-gray-100 shrink-0">
+                <div
+                  className={`${
+                    fixedProducts ? "px-3" : "px-2"
+                  } py-4 w-[185px] md:w-[260px] shrink-0`}
+                >
+                  <div
+                    className={`${
+                      fixedProducts
+                        ? "flex-row space-x-2"
+                        : "flex-col space-y-2 md:space-y-3"
+                    } flex`}
+                  >
+                    <div
+                      className={`${
+                        fixedProducts
+                          ? "w-10 h-10 rounded-lg "
+                          : "compare-aspect-w-1 compare-aspect-h-1 rounded-2xl"
+                      } overflow-hidden bg-gray-100 shrink-0`}
+                    >
                       <Image
                         width={169}
                         height={169}
-                        alt="Bàn Phím Cơ Leobog AMG65 (Light Feather Silent Switch - Cyber Star Night - Mới, Full box, Nhập khẩu)"
-                        src="https://imagor.owtg.one/unsafe/fit-in/488x488/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/13/ban-phim-co-leobog-amg65-zoz.jpg"
+                        alt="Lenovo ThinkBook 14 G5+ - R7 7735H, 16GB, 512GB, 2.8K 90Hz"
+                        src="https://imagor.owtg.one/unsafe/fit-in/488x488/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2023/11/6/lenovo-thinkbook-14-g5-thinkpro-bmA.png"
                         className="h-full w-full object-contain lazyloaded"
                       />
                     </div>
                     <div className="flex flex-1 flex-col">
-                      <span className="line-clamp-3 text-sm md:text-base text-start font-semibold">
-                        Bàn Phím Cơ Leobog AMG65 (Light Feather Silent Switch -
-                        Cyber Star Night - Mới, Full box, Nhập khẩu)
+                      <span
+                        className={`${
+                          fixedProducts
+                            ? "line-clamp-2 text-sm"
+                            : "line-clamp-3 md:text-base"
+                        }  text-sm text-start font-semibold`}
+                      >
+                        Lenovo ThinkBook 14 G5+ - R7 7735H, 16GB, 512GB, 2.8K
+                        90Hz
                       </span>
                       <div className="mt-3 flex items-center space-x-2">
-                        <span className="font-medium text-rose-600">
+                        <span
+                          className={`${
+                            fixedProducts ? "text-sm" : "md:text-base"
+                          } font-medium text-rose-600`}
+                        >
                           2.490.000
                         </span>
                         <span className="inline-flex items-center font-medium rounded-full text-xs px-1.5 py-0.5 gap-0.5 bg-rose-500 text-white">
                           -13%
                         </span>
                       </div>
-                      <div className="mt-2 flex items-center space-x-1.5">
-                        <span className="text-sm">Màu</span>
-                        <span
-                          aria-label="Black"
-                          className="w-[14px] h-[14px] rounded-full ring-1"
-                          style={{ background: "#000000" }}
-                        ></span>
-                      </div>
+                      {!fixedProducts && (
+                        <div className="mt-2 flex items-center space-x-1.5">
+                          <span className="text-sm">Màu</span>
+                          <span
+                            aria-label="Black"
+                            className="w-[14px] h-[14px] rounded-full ring-1"
+                            style={{ background: "#000000" }}
+                          ></span>
+                        </div>
+                      )}
                     </div>
-                    <div className="mt-2 flex flex-col space-y-2">
-                      <Link
-                        type="button"
-                        className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
-                        href="#!"
-                      >
-                        <span>Xem ngay</span>
-                      </Link>
-                      <Link
-                        type="button"
-                        className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
-                        href="#!"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          className="w-5 h-5 flex-shrink-0"
+                    {!fixedProducts && (
+                      <div className="mt-2 flex flex-col space-y-2">
+                        <Link
+                          type="button"
+                          className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
+                          href="#!"
                         >
-                          <path
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="1.5"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                        <span>Xóa</span>
-                      </Link>
-                    </div>
+                          <span>Xem ngay</span>
+                        </Link>
+                        <Link
+                          type="button"
+                          className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimary500 w-full flex justify-center items-center"
+                          href="#!"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            className="w-5 h-5 flex-shrink-0"
+                          >
+                            <path
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="1.5"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                          <span>Xóa</span>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div className="px-2 py-4 w-[185px] md:w-[260px] shrink-0">
-                  <div className="min-h-[170px] md:min-h-[480px] flex flex-col items-center justify-center h-full text-center">
+                <div
+                  className={`${
+                    fixedProducts ? "px-3" : "px-2"
+                  }  py-4 w-[185px] md:w-[260px] shrink-0`}
+                >
+                  <div
+                    className={`${
+                      fixedProducts
+                        ? "min-h-[72px] md:min-h-[90px]"
+                        : "min-h-[170px] md:min-h-[480px]"
+                    } flex flex-col items-center justify-center h-full text-center`}
+                  >
                     <button
                       type="button"
-                      className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 p-2.5 ring-1 ring-inset ring-current text-colorPrimary500 hover:bg-colorPrimary50 disabled:bg-transparent aria-disabled:bg-transparent focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center"
+                      className={`${
+                        fixedProducts
+                          ? "text-sm gap-x-2 p-2"
+                          : "text-base gap-x-2.5 p-2.5"
+                      } focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full ring-1 ring-inset ring-current text-colorPrimary500 hover:bg-colorPrimary50 disabled:bg-transparent aria-disabled:bg-transparent focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center`}
                       onClick={() => setIsOpenAddCompareProducts(true)}
                     >
                       <svg
@@ -242,6 +351,9 @@ export default function CompareProducts() {
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
+                        className={`${
+                          fixedProducts ? "h-5 w-5" : "h-6 w-6"
+                        }  flex-shrink-0 `}
                       >
                         <path
                           fill="none"
@@ -263,17 +375,35 @@ export default function CompareProducts() {
                     title="Thêm sản phẩm so sánh"
                   />
                 </div>
-                <div className="px-2 py-4 w-[185px] md:w-[260px] shrink-0">
-                  <div className="min-h-[170px] md:min-h-[480px] flex flex-col items-center justify-center h-full text-center">
+                <div
+                  className={`${
+                    fixedProducts ? "px-3" : "px-2"
+                  }  py-4 w-[185px] md:w-[260px] shrink-0`}
+                >
+                  <div
+                    className={`${
+                      fixedProducts
+                        ? "min-h-[72px] md:min-h-[90px]"
+                        : "min-h-[170px] md:min-h-[480px]"
+                    } flex flex-col items-center justify-center h-full text-center`}
+                  >
                     <button
                       type="button"
-                      className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 p-2.5 ring-1 ring-inset ring-current text-colorPrimary500 hover:bg-colorPrimary50 disabled:bg-transparent aria-disabled:bg-transparent focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center"
+                      className={`${
+                        fixedProducts
+                          ? "text-sm gap-x-2 p-2"
+                          : "text-base gap-x-2.5 p-2.5"
+                      } focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full ring-1 ring-inset ring-current text-colorPrimary500 hover:bg-colorPrimary50 disabled:bg-transparent aria-disabled:bg-transparent focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center`}
+                      onClick={() => setIsOpenAddCompareProducts(true)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
+                        className={`${
+                          fixedProducts ? "h-5 w-5" : "h-6 w-6"
+                        }  flex-shrink-0 `}
                       >
                         <path
                           fill="none"
@@ -289,6 +419,11 @@ export default function CompareProducts() {
                       Thêm sản phẩm khác
                     </span>
                   </div>
+                  <AddComparativeProducts
+                    open={isOpenAddCompareProducts}
+                    onClose={() => setIsOpenAddCompareProducts(false)}
+                    title="Thêm sản phẩm so sánh"
+                  />
                 </div>
               </div>
             </div>

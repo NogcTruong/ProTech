@@ -9,9 +9,7 @@ import "./content.css";
 const dataRelatedArticle = [
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg",
     name: "Công nghệ AR là gì? Công nghệ AR khác gì VR",
     description:
       "Tại sao công nghệ AR đang trở thành xu hướng? So sánh sự khác biệt giữa AR và VR. Tìm hiểu chi tiết công nghệ AR và VR ngay hôm nay để nâng cao trải nghiệm làm việc, học tập, giải trí...",
@@ -22,9 +20,7 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png",
     name: "SoC là gì? Những điều cần biết về SoC",
     description:
       "Hiểu rõ về SoC (System on Chip) và vai trò của nó trong các thiết bị điện tử hiện đại. Tìm hiểu ngay để nâng cao kiến thức công nghệ...",
@@ -35,9 +31,7 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg",
     name: "Động kinh thực tế ảo với Google: Giả tạo ra sao?",
     description:
       "Giải thích cách sử dụng Google Cardboard để trải nghiệm thực tế ảo. Tìm hiểu chi tiết cách tạo ra hiệu ứng thực tế ảo để khám phá thế giới công nghệ...",
@@ -48,9 +42,7 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg",
     name: "Google nâng cấp sản phẩm kính thực tế ảo Cardboard",
     description:
       "Cập nhật thông tin về sản phẩm kính thực tế ảo Cardboard của Google. Tìm hiểu các tính năng mới và cách sử dụng hiệu quả...",
@@ -61,22 +53,18 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 800w",
-    name: "Kính thực tế ảo là gì? Nguyên lý hoạt động và lợi ích",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/25/01/06/cong-nghe-ar-la-gi-co-gi-khac-biet-voi-cong-nghe-vr-review-gdb.jpg",
+    name: "Công nghệ AR là gì? Công nghệ AR khác gì VR",
     description:
-      "Tìm hiểu về kính thực tế ảo, nguyên lý hoạt động và lợi ích mang lại. Khám phá cách sử dụng hiệu quả để nâng cao trải nghiệm...",
+      "Tại sao công nghệ AR đang trở thành xu hướng? So sánh sự khác biệt giữa AR và VR. Tìm hiểu chi tiết công nghệ AR và VR ngay hôm nay để nâng cao trải nghiệm làm việc, học tập, giải trí...",
     category: "Tutorial",
     author: "Phạm Quốc Toàn",
-    date: "27-07-2024",
+    date: "25-06-2025",
     link: "#",
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/24/06/12/soc-la-gi-nhung-dieu-can-biet-ve-soc-review-zaN.png",
     name: "SoC là gì? Những điều cần biết về SoC",
     description:
       "Hiểu rõ về SoC (System on Chip) và vai trò của nó trong các thiết bị điện tử hiện đại. Tìm hiểu ngay để nâng cao kiến thức công nghệ...",
@@ -87,9 +75,7 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/10/31/google-cardboard-thinkpro-sLX.jpg",
     name: "Động kinh thực tế ảo với Google: Giả tạo ra sao?",
     description:
       "Giải thích cách sử dụng Google Cardboard để trải nghiệm thực tế ảo. Tìm hiểu chi tiết cách tạo ra hiệu ứng thực tế ảo để khám phá thế giới công nghệ...",
@@ -100,9 +86,7 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg",
     name: "Google nâng cấp sản phẩm kính thực tế ảo Cardboard",
     description:
       "Cập nhật thông tin về sản phẩm kính thực tế ảo Cardboard của Google. Tìm hiểu các tính năng mới và cách sử dụng hiệu quả...",
@@ -113,9 +97,7 @@ const dataRelatedArticle = [
   },
   {
     image:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://d28jzcg6y4v9j1.cloudfront.net/media/social/articles/2023/11/1/21-thinkpro-bMs.jpg",
-    srcset:
-      "https://imagor.owtg.one/unsafe/fit-in/208x117/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 208w, https://imagor.owtg.one/unsafe/fit-in/400x225/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 400w, https://imagor.owtg.one/unsafe/fit-in/416x234/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 416w, https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg 800w",
+      "https://imagor.owtg.one/unsafe/fit-in/800x450/https://media-api-beta.thinkpro.vn/media/social/articles/24/12/18/kinh-thuc-te-ao-la-gi-nguyen-ly-hoat-dong-va-luu-y-khi-dung-review-AxE.jpg",
     name: "Kính thực tế ảo là gì? Nguyên lý hoạt động và lợi ích",
     description:
       "Tìm hiểu về kính thực tế ảo, nguyên lý hoạt động và lợi ích mang lại. Khám phá cách sử dụng hiệu quả để nâng cao trải nghiệm...",
@@ -412,15 +394,13 @@ export default function PostContent() {
                   className="flex flex-col space-y-2 mt-5 py-0 md:pb-6 md:flex-row md:mt-6 md:space-y-0 md:space-x-6 md:border-b"
                 >
                   <div className="w-full md:w-[208px]">
-                    <div className="content-aspect-w-16 content-aspect-h-9 rounded-lg overflow-hidden">
+                    <div className="relative content-aspect-w-16 content-aspect-h-9 rounded-lg overflow-hidden">
                       <Image
-                        width={112}
-                        height={63}
+                        fill
                         alt={pro.name}
-                        sizes="(max-width: 768px) 400px, 208px"
-                        srcset={pro.srcset}
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         src={pro.image}
-                        className="w-full h-full lazyloaded"
+                        className="object-cover object-center lazyloaded"
                       />
                     </div>
                   </div>
