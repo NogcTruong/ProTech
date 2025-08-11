@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import "./productLists.css";
 import Link from "next/link";
 import clsx from "clsx";
+import FilterProductListsModal from "@/components/product/productLists/FilterProductListsModal";
 
 const brands = [
   { brand: "Nintendo Switch" },
@@ -152,6 +153,7 @@ export default function ProductListsPage() {
   const [visibleCount, setVisibleCount] = useState(10);
   const [isOpenIndex, setIsOpenIndex] = useState(false);
   const [infoBox, setInfoBox] = useState(false);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
 
   const [sortBy, setSortBy] = useState("featured");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -233,6 +235,10 @@ export default function ProductListsPage() {
 
   const handleInfoBox = () => {
     setInfoBox(!infoBox);
+  };
+
+  const handleOpenFilter = () => {
+    setIsOpenFilter(!isOpenFilter);
   };
 
   const getFilteredProducts = () => {
@@ -846,7 +852,10 @@ export default function ProductListsPage() {
               <div className="md:hidden">
                 <div className="bottom-6 right-1/2 translate-x-1/2 transition-all ease-linear duration-300 fixed z-[11]">
                   <div className="dark">
-                    <button className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-gray-900 bg-colorPrimaryDefault hover:bg-colorPrimary600 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault inline-flex items-center button-sticky-filterable">
+                    <button
+                      className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-gray-900 bg-colorPrimaryDefault hover:bg-colorPrimary600 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault inline-flex items-center button-sticky-filterable"
+                      onClick={handleOpenFilter}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -1230,8 +1239,8 @@ export default function ProductListsPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         strokeWidth="1.5"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                       />
@@ -1251,8 +1260,8 @@ export default function ProductListsPage() {
                       <path
                         fill="none"
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         strokeWidth="1.5"
                         d="m19.5 8.25l-7.5 7.5l-7.5-7.5"
                       />
@@ -1894,6 +1903,11 @@ export default function ProductListsPage() {
           </div>
         </div>
       </div>
+      <FilterProductListsModal
+        open={isOpenFilter}
+        onClose={() => setIsOpenFilter(false)}
+        title="Bộ lọc"
+      />
     </>
   );
 }

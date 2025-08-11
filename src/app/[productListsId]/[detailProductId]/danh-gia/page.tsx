@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import "./review.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import ReviewModal from "@/components/product/ReviewModal";
 import clsx from "clsx";
@@ -98,6 +98,7 @@ export default function Review() {
   const [selectedReview, setSelectedReview] = useState<string[]>([]);
   const [reviewModal, setReviewModal] = useState<Review | null>(null);
   const [feedback, setFeedback] = useState(false);
+  const [responsiveWidth, setResponsiveWidth] = useState(false);
 
   const getFilteredReviews = () => {
     let reviews = products;
@@ -133,6 +134,15 @@ export default function Review() {
 
     return reviews;
   };
+
+  useEffect(() => {
+    const handleResize = () => setResponsiveWidth(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  console.log(window.innerWidth);
+  console.log("responsiveWidth", responsiveWidth);
 
   const columns = [];
   const filteredReviews = getFilteredReviews();
@@ -234,7 +244,6 @@ export default function Review() {
                 width={120}
                 height={120}
                 alt="Keycap Lofree Flow Series Dye-sub PBT Keycaps (Keycap Retro - 84keys - Retro - Mới, Sealed, Nhập khẩu)"
-                srcset="https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/10/23/keycap-lofree-flow-series-dye-sub-pbt-keycaps-undefined-ERj.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/240x240/https://media-api-beta.thinkpro.vn/media/core/products/2024/10/23/keycap-lofree-flow-series-dye-sub-pbt-keycaps-undefined-ERj.jpg 2x"
                 src="https://imagor.owtg.one/unsafe/fit-in/120x120/https://media-api-beta.thinkpro.vn/media/core/products/2024/10/23/keycap-lofree-flow-series-dye-sub-pbt-keycaps-undefined-ERj.jpg"
                 className="lazyloaded"
               />
@@ -283,7 +292,13 @@ export default function Review() {
                 -28%
               </span>
             </div>
-            <div className="md:mt-6 dark fixed md:relative">
+            <div
+              className={`${
+                responsiveWidth
+                  ? "bottom-0 inset-x-0 px-4 py-2.5 bg-white border-t z-[11] flex items-center space-x-2"
+                  : ""
+              } md:mt-6 dark fixed md:relative`}
+            >
               <Link
                 className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-black bg-colorPrimary400 hover:bg-colorPrimary500 disabled:bg-colorPrimary500 aria-disabled:bg-colorPrimary500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimary500 w-full flex justify-center items-center"
                 href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
@@ -293,7 +308,9 @@ export default function Review() {
             </div>
           </div>
           <div className="md:w-2/3 mt-5 md:mt-0 flex flex-col space-y-4 md:space-y-10">
-            <span className="block md:hidden">Đánh giá sản phẩm</span>
+            <span className="block md:hidden text-xl font-lexend font-bold">
+              Đánh giá sản phẩm
+            </span>
             <div className="flex flex-col md:flex-row md:items-end max-md:space-x-4 md:space-x-6">
               <div className="flex flex-col">
                 <span className="text-3xl font-bold font-lexend">5.0 / 5</span>
@@ -923,7 +940,6 @@ export default function Review() {
                               width={232}
                               height={232}
                               alt={`Hinh anh khach hang danh gia san pham ${review.name}`}
-                              srcset={`${review.image[0]} 1x, ${review.image[0]} 2x`}
                               src={review.image[0]}
                               className="w-full h-full object-cover lazyloaded"
                             />

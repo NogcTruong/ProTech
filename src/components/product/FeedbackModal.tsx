@@ -18,7 +18,6 @@ export default function Feedback({ open, onClose, title }: FeedbackProps) {
               height={80}
               width={80}
               alt="Bàn phím cơ PMO Wave75 Aluminum CNC (Sliver Mirror Glass Weight (Tạ Gương) - RGB - Black - Mới, Full box, Nhập khẩu)"
-              srcset="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/4/3/ban-phim-co-pmo-wave75-aluminium-cnc-3rv.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/160x160/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/4/3/ban-phim-co-pmo-wave75-aluminium-cnc-3rv.jpg 2x"
               src="https://imagor.owtg.one/unsafe/fit-in/80x80/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/4/3/ban-phim-co-pmo-wave75-aluminium-cnc-3rv.jpg"
             />
           </div>

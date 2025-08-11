@@ -29,7 +29,6 @@ export default function ProductsOrderModal({
                 height={72}
                 alt="Chuột không dây DAGK G300SE Silent"
                 src="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg"
-                srcset="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg 1x, https://imagor.owtg.one/unsafe/fit-in/144x144/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg 2x"
               />
             </div>
             <div className="flex-1 flex flex-col space-y-1">

@@ -46,12 +46,10 @@ export default function BaseModal({
           style={{ zIndex: 1 }}
         />
         <div
-          className={`relative inset-0 overflow-y-hidden z-10 ${
-            className || ""
-          }`}
+          className={`fixed inset-0 overflow-y-hidden z-10 ${className || ""}`}
         >
           <div className="flex min-h-full items-end sm:items-center justify-center text-center max-md:h-full p-4 sm:p-0">
-            <div className="relative text-left rtl:text-right flex flex-col bg-white shadow-xl w-full sm:min-w-[600px] md:max-w-[800px] rounded-lg sm:my-8">
+            <div className="relative text-left rtl:text-right flex flex-col bg-white shadow-xl w-full sm:max-w-[600px] md:max-w-[800px] rounded-lg sm:my-8">
               <div className="max-md:h-full md:max-h-[calc(100vh_-_100px)] flex flex-col">
                 <div className="relative shrink-0 h-12 px-[52px] py-2 border-b flex items-center">
                   <div className="w-full text-center">

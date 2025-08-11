@@ -129,7 +129,7 @@ export default function HeaderPage() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [activeMenuIndex, setActiveMenuIndex] = useState(1);
-  const [widthFull, setWidthFull] = useState(window.innerWidth);
+  const [widthFull, setWidthFull] = useState();
   const pathname = usePathname();
 
   const currentCategory = dataMenu.categories[activeMenuIndex];
@@ -137,6 +137,7 @@ export default function HeaderPage() {
   useEffect(() => {
     const handleResize = () => setWidthFull(window.innerWidth);
     window.addEventListener("resize", handleResize);
+    handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -786,7 +787,7 @@ export default function HeaderPage() {
             />
             <input
               type="text"
-              placeholder="Tìm kiếm?"
+              placeholder="Tìm kiếm"
               className="block md:hidden w-full md:w-[343px] h-10 pl-14 md:h-12 pr-15 outline-none bg-colorPray100"
             />
             <Image

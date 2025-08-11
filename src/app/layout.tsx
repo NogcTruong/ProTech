@@ -4,6 +4,7 @@ import MainFooter from "@/components/Footer";
 import HeaderPage from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import { FilterProvider } from "@/contexts/FilterContext";
 
 export const metadata: Metadata = {
   title:
@@ -17,7 +18,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <ClerkProvider>
       <html lang="en">
@@ -34,10 +34,12 @@ export default function RootLayout({
           />
         </head>
         <body>
-          <TopBar />
-          <HeaderPage />
-          {children}
-          <MainFooter />
+          <FilterProvider>
+            <TopBar />
+            <HeaderPage />
+            {children}
+            <MainFooter />
+          </FilterProvider>
         </body>
       </html>
     </ClerkProvider>

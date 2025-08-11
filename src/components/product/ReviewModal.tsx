@@ -43,7 +43,6 @@ export default function ReviewModal({
   const isLastImage =
     review?.image && currentIndex === review?.image.length - 1;
   const isFirstImage = currentIndex === 0;
-  console.log(currentIndex);
 
   return (
     <BaseModal open={open} onClose={onClose} title={title}>
@@ -57,7 +56,6 @@ export default function ReviewModal({
                     <Image
                       width={810}
                       height={1080}
-                      srcset={`${review?.image[currentIndex]} 1x, ${review?.image[currentIndex]} 2x`}
                       src={review?.image[currentIndex]}
                       alt="Review Image"
                       className="w-full h-full object-contain cursor-pointer lazyloaded"
