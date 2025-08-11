@@ -8,6 +8,7 @@ import ReviewModal from "@/components/product/ReviewModal";
 import clsx from "clsx";
 import { useParams } from "next/navigation";
 import FeedbackModal from "@/components/product/FeedbackModal";
+import FeedbackMobileModal from "@/components/product/FeedbackMobileModal";
 
 type Review = {
   id: number;
@@ -56,36 +57,17 @@ const products: Review[] = [
     ],
     purchased: false,
   },
-  {
-    id: 4,
-    name: "Bàn phím Tấn Thành",
-    price: 1100000,
-    rating: 4,
-    description: "Bàn phím cơ giá rẻ, hiệu năng cao, lý tưởng cho game thủ.",
-    image: [
-      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/p61-ehr.jpg",
-    ],
-    purchased: false,
-  },
-  {
-    id: 5,
-    name: "Bàn phím Tấn Thành",
-    price: 1100000,
-    rating: 3,
-    description: "Bàn phím cơ giá rẻ, hiệu năng cao, lý tưởng cho game thủ.",
-    image: [
-      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/yf5-cyi.jpg",
-    ],
-    purchased: true,
-  },
-  {
-    id: 6,
-    name: "Bàn phím Flow",
-    price: 1400000,
-    rating: 5,
-    description: "Thiết kế hiện đại, tích hợp công nghệ chống nước.",
-    purchased: false,
-  },
+  // {
+  //   id: 4,
+  //   name: "Bàn phím Tấn Thành",
+  //   price: 1100000,
+  //   rating: 4,
+  //   description: "Bàn phím cơ giá rẻ, hiệu năng cao, lý tưởng cho game thủ.",
+  //   image: [
+  //     "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/p61-ehr.jpg",
+  //   ],
+  //   purchased: false,
+  // },
 ];
 
 export default function Review() {
@@ -98,6 +80,7 @@ export default function Review() {
   const [selectedReview, setSelectedReview] = useState<string[]>([]);
   const [reviewModal, setReviewModal] = useState<Review | null>(null);
   const [feedback, setFeedback] = useState(false);
+  const [feedbackMobile, setFeedbackMobile] = useState(false);
   const [responsiveWidth, setResponsiveWidth] = useState(false);
 
   const getFilteredReviews = () => {
@@ -163,7 +146,11 @@ export default function Review() {
   };
 
   const handleFeedback = () => {
-    setFeedback(true);
+    if (window.innerWidth < 768) {
+      setFeedbackMobile(true);
+    } else {
+      setFeedback(true);
+    }
   };
 
   const handleSortChange = (sortType: string) => {
@@ -311,7 +298,7 @@ export default function Review() {
             <span className="block md:hidden text-xl font-lexend font-bold">
               Đánh giá sản phẩm
             </span>
-            <div className="flex flex-col md:flex-row md:items-end max-md:space-x-4 md:space-x-6">
+            <div className="flex flex-col md:flex-row md:items-end max-md:space-y-4 md:space-x-6">
               <div className="flex flex-col">
                 <span className="text-3xl font-bold font-lexend">5.0 / 5</span>
                 <div className="mt-1">
@@ -576,6 +563,11 @@ export default function Review() {
                     onClose={() => setFeedback(false)}
                     title="Đánh giá và nhận xét"
                   />
+                  <FeedbackMobileModal
+                    open={feedbackMobile}
+                    onClose={() => setFeedbackMobile(false)}
+                    title="Đánh giá và nhận xét"
+                  />
                 </div>
               </div>
             </div>
@@ -583,7 +575,7 @@ export default function Review() {
               <span className="text-xl font-bold font-lexend">
                 Ảnh chụp từ khách
               </span>
-              <div className="relative">
+              <div className="relative group">
                 <div className="overflow-x-auto overflow-y-hidden scrollbar-hide">
                   <div className="flex space-x-2">
                     {products.map((product) =>

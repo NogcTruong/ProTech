@@ -204,6 +204,7 @@ export default function Preorder() {
           height={56}
           src={mascotPreorder}
           alt="Preorder Đặt sớm giá hời"
+          className="max-md:hidden"
         />
         <h2 className="text-xl md:text-4xl lg:text-5xl text-[#00C25C] font-lexend font-bold">
           Preorder

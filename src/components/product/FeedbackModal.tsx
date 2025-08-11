@@ -11,7 +11,7 @@ type FeedbackProps = {
 export default function Feedback({ open, onClose, title }: FeedbackProps) {
   return (
     <BaseModal open={open} onClose={onClose} title={title}>
-      <div className="flex-1 p-4 flex flex-col overflow-auto w-[600px]">
+      <div className="flex-1 p-4 flex flex-col overflow-auto">
         <div className="flex items-start space-x-5">
           <div className="w-[80px] h-[80px] bg-gray-100 rounded-lg">
             <Image

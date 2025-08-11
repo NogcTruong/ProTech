@@ -20,6 +20,14 @@ img.lazyloaded {
   background: #0000000d;
 }
 
+/* Banner */
+@media (max-width: 768px) {
+  .section-banner .wrapper:before,
+  .section-banner .wrapper:after {
+    display: none;
+  }
+}
+
 /* viewdProduct */
 .group\/cart:hover .group-hover\/cart\:opacity-100,
 .group\/scrollable:hover .group-hover\/scrollable\:opacity-100 {

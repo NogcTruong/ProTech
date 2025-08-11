@@ -73,6 +73,7 @@ const categories = [
 
 export default function Featuredcategoryegories() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [showCategories, setShowCategories] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -87,6 +88,7 @@ export default function Featuredcategoryegories() {
         const maxScroll = scrollWidth - clientWidth;
         const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
         setScrollProgress(progress);
+        setShowCategories(container.clientWidth);
       };
 
       container.addEventListener("scroll", handleScroll);
@@ -98,7 +100,7 @@ export default function Featuredcategoryegories() {
   }, []);
 
   const getIndicatorPosition = () => {
-    const totalWidth = 608;
+    const totalWidth = showCategories;
     const indicatorWidth = 180;
 
     const maxPosition = totalWidth - indicatorWidth;
