@@ -8,7 +8,6 @@ import ReviewModal from "@/components/product/ReviewModal";
 import clsx from "clsx";
 import { useParams } from "next/navigation";
 import FeedbackModal from "@/components/product/FeedbackModal";
-import FeedbackMobileModal from "@/components/product/FeedbackMobileModal";
 
 type Review = {
   id: number;
@@ -46,25 +45,14 @@ const products: Review[] = [
     ],
     purchased: false,
   },
-  {
-    id: 3,
-    name: "Bàn phím Phong Chi",
-    price: 1300000,
-    rating: 5,
-    description: "Thiết kế nhỏ gọn, phím gõ êm ái, phù hợp làm việc văn phòng.",
-    image: [
-      "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/n2n-lxq.jpg",
-    ],
-    purchased: false,
-  },
   // {
-  //   id: 4,
-  //   name: "Bàn phím Tấn Thành",
-  //   price: 1100000,
-  //   rating: 4,
-  //   description: "Bàn phím cơ giá rẻ, hiệu năng cao, lý tưởng cho game thủ.",
+  //   id: 3,
+  //   name: "Bàn phím Phong Chi",
+  //   price: 1300000,
+  //   rating: 5,
+  //   description: "Thiết kế nhỏ gọn, phím gõ êm ái, phù hợp làm việc văn phòng.",
   //   image: [
-  //     "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/p61-ehr.jpg",
+  //     "https://imagor.owtg.one/unsafe/fit-in/https://d28jzcg6y4v9j1.cloudfront.net/social/product-reviews/ban-phim-co-lofree-flow/n2n-lxq.jpg",
   //   ],
   //   purchased: false,
   // },
@@ -80,7 +68,6 @@ export default function Review() {
   const [selectedReview, setSelectedReview] = useState<string[]>([]);
   const [reviewModal, setReviewModal] = useState<Review | null>(null);
   const [feedback, setFeedback] = useState(false);
-  const [feedbackMobile, setFeedbackMobile] = useState(false);
   const [responsiveWidth, setResponsiveWidth] = useState(false);
 
   const getFilteredReviews = () => {
@@ -146,11 +133,7 @@ export default function Review() {
   };
 
   const handleFeedback = () => {
-    if (window.innerWidth < 768) {
-      setFeedbackMobile(true);
-    } else {
       setFeedback(true);
-    }
   };
 
   const handleSortChange = (sortType: string) => {
@@ -167,7 +150,7 @@ export default function Review() {
     ? {
         inset: "0px 0px auto auto",
         transform: "translate(0px, 40px)",
-        position: "absolute",
+        position: "absolute" as const,
         margin: "0px",
       }
     : {};
@@ -563,11 +546,6 @@ export default function Review() {
                     onClose={() => setFeedback(false)}
                     title="Đánh giá và nhận xét"
                   />
-                  <FeedbackMobileModal
-                    open={feedbackMobile}
-                    onClose={() => setFeedbackMobile(false)}
-                    title="Đánh giá và nhận xét"
-                  />
                 </div>
               </div>
             </div>
@@ -925,7 +903,8 @@ export default function Review() {
                       className="shadow-md rounded-2xl p-3 cursor-pointer"
                       onClick={() => handleOpenReviewModal(review)}
                     >
-                      {review?.image?.length >= 1 && (
+                      {Array.isArray(review.image) &&
+                      review.image.length > 0 ? (
                         <div className="w-full relative rounded-lg overflow-hidden">
                           <div className="review-aspect-w-1 review-aspect-h-1 hover:scale-105 transition-transform">
                             <Image
@@ -936,15 +915,15 @@ export default function Review() {
                               className="w-full h-full object-cover lazyloaded"
                             />
                           </div>
-                          {review?.image?.length > 1 && (
+                          {review.image.length > 1 && (
                             <div className="absolute bottom-3 right-3">
                               <span className="inline-flex items-center font-medium rounded-md text-xs px-2 py-1 gap-1 ring-1 ring-inset ring-gray-300 text-gray-900 bg-white">
-                                +{review?.image?.length - 1}
+                                +{review.image.length - 1}
                               </span>
                             </div>
                           )}
                         </div>
-                      )}
+                      ) : null}
                       <div className="mt-2 flex items-center space-x-1">
                         <span className="text-sm font-semibold">
                           {review.name}

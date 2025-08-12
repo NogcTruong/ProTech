@@ -116,7 +116,8 @@ export default function DetailProductPage() {
   const handleData = data.slice(0, showDataReview);
 
   const handleTabClick = (idx: number) => {
-    setActiveTab(idx);
+    const tabValues = ["info", "config", "review", "post"];
+    setActiveTab(tabValues[idx]);
     let ref: React.RefObject<HTMLDivElement> | null = null;
     if (idx === 0) ref = infoRef;
     if (idx === 1) ref = configRef;
@@ -163,7 +164,6 @@ export default function DetailProductPage() {
 
   const handleSortChange = (sortType: string) => {
     setFilterOpenReview(sortType);
-    // setOpen
   };
 
   const handleFeedback = () => {
@@ -175,12 +175,12 @@ export default function DetailProductPage() {
   };
 
   const filterTableCSS = isOpen
-    ? {
+    ? ({
         inset: "0px 0px auto auto",
         transform: "translate(0px, 40px)",
-        position: "absolute",
+        position: "absolute" as const,
         margin: "0px",
-      }
+      } as React.CSSProperties)
     : {};
 
   return (
@@ -242,16 +242,22 @@ export default function DetailProductPage() {
             <div className="relative space-y-2">
               <div
                 className="relative !inline-flex bg-colorPray100 rounded-full p-1 w-auto h-11 inline-grid items-center mb-2"
-                style={{
-                  "grid-template-columns": "repeat(4, minmax(0px, 1fr))",
-                }}
+                style={
+                  {
+                    gridTemplateColumns: "repeat(4, minmax(0px, 1fr))",
+                  } as React.CSSProperties
+                }
               >
                 <div
                   className="absolute top-[4px] left-0 duration-200 ease-out focus:outline-none"
                   style={{
                     width: "90px",
                     height: "36px",
-                    transform: `translateX(${4 + 90 * activeTab}px)`,
+                    transform: `translateX(${
+                      4 +
+                      90 *
+                        ["info", "config", "review", "post"].indexOf(activeTab)
+                    }px)`,
                   }}
                 >
                   <div className="w-full h-full bg-colorPrimary400 rounded-full shadow-sm"></div>
@@ -399,7 +405,12 @@ export default function DetailProductPage() {
                         </span>
                         <div
                           className="t-flex-gap mt-2"
-                          style={{ "--gap-x": "8px", "--gap-y": "8px" }}
+                          style={
+                            {
+                              "--gap-x": "8px",
+                              "--gap-y": "8px",
+                            } as React.CSSProperties
+                          }
                         >
                           <div className="flex flex-wrap t-flex-gap__wrapper">
                             <a href="#">
@@ -426,7 +437,12 @@ export default function DetailProductPage() {
                         </span>
                         <div
                           className="t-flex-gap mt-2"
-                          style={{ "--gap-x": "8px", "--gap-y": "8px" }}
+                          style={
+                            {
+                              "--gap-x": "8px",
+                              "--gap-y": "8px",
+                            } as React.CSSProperties
+                          }
                         >
                           <div className="flex flex-wrap t-flex-gap__wrapper">
                             <a href="#">
@@ -453,7 +469,12 @@ export default function DetailProductPage() {
                         </span>
                         <div
                           className="t-flex-gap mt-2"
-                          style={{ "--gap-x": "8px", "--gap-y": "8px" }}
+                          style={
+                            {
+                              "--gap-x": "8px",
+                              "--gap-y": "8px",
+                            } as React.CSSProperties
+                          }
                         >
                           <div className="flex flex-wrap t-flex-gap__wrapper">
                             <a href="#">
@@ -1672,13 +1693,12 @@ export default function DetailProductPage() {
                       }}
                     >
                       <svg
-                        className="w-7 h-72 md:w-8 md:h-8"
+                        className="w-7 h-7 md:w-8 md:h-8"
                         fill="none"
                         height="18"
                         width="18"
                         viewBox="0 0 18 18"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-7 h-7"
                       >
                         <path
                           d="M9.00007 1.71533C7.55909 1.71533 6.15048 2.14263 4.95235 2.9432C3.75422 3.74376 2.82039 4.88163 2.26895 6.21292C1.71751 7.54421 1.57323 9.00913 1.85435 10.4224C2.13547 11.8357 2.82937 13.1339 3.84829 14.1528C4.86722 15.1717 6.16541 15.8656 7.5787 16.1468C8.99199 16.4279 10.4569 16.2836 11.7882 15.7322C13.1195 15.1807 14.2574 14.2469 15.0579 13.0488C15.8585 11.8506 16.2858 10.442 16.2858 9.00104C16.2858 7.06875 15.5182 5.2156 14.1518 3.84927C12.7855 2.48293 10.9324 1.71533 9.00007 1.71533Z"

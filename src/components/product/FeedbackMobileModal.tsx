@@ -69,7 +69,7 @@ export default function FilterProductListsModal({
                   </svg>
                 </button>
               </div>
-              <div className="flex-1 p-2 overflow-auto">
+              <div className="flex-1 p-2 overflow-auto"> 
                 <div className="flex items-start space-x-5">
                   <div className="w-[80px] h-[80px] bg-gray-100 rounded-lg">
                     <Image

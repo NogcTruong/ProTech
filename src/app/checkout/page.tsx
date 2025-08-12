@@ -545,7 +545,7 @@ export default function Checkout() {
                   </div>
                   <div
                     className="flex items-center space-x-2"
-                    // onClick={() => setOpenGiftPromotion(true)}
+                    onClick={() => setOpenGiftPromotion(true)}
                   >
                     <span className="text-gray-600">Chọn hoặc nhập mã</span>
                     <svg

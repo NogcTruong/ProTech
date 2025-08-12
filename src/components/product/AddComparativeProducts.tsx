@@ -1,9 +1,8 @@
-"use client";
-
 import Image from "next/image";
-import BaseModal from "../common/baseModal";
+import BaseModal from "@/components/common/BaseModal";
+import BaseMobileModal from "@/components/common/BaseMobileModal";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type AddComparativeProductsProps = {
   open: boolean;
@@ -387,9 +386,100 @@ export default function AddComparativeProducts({
   onClose,
   title,
 }: AddComparativeProductsProps) {
-  const [activeCategory, setActiveCategory] = useState("bàn phím");
+  const [activeCategory] = useState("bàn phím");
+  const [isMobile, setIsMobile] = useState(false);
 
-  return (
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobile ? (
+    <BaseMobileModal open={open} onClose={onClose} title={title}>
+      <div className="flex w-full overflow-auto p-4 md:p-6">
+        <div className="grid grid-cols-2 gap-4">
+          {Products[activeCategory].map((product, proIndex) => (
+            <Link
+              key={proIndex}
+              href="#!"
+              className="t-product-card group relative border rounded-2xl transition-all bg-white"
+            >
+              <div className="h-full flex flex-col space-y-2 md:space-y-3">
+                <div className="aspect-w-1 aspect-h-1 rounded-2xl overflow-hidden bg-white">
+                  <div className="transition-transform duration-300 group-hover:scale-105">
+                    <Image
+                      src={product.img}
+                      alt={product.name}
+                      width={165}
+                      height={165}
+                      className="h-full w-full object-contain lazyloaded"
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col px-2 pb-3">
+                  <span className="line-clamp-3 text-start font-medium text-sm md:text-body group-hover:underline">
+                    {product.name}
+                  </span>
+                  <div className="mt-3 flex items-center space-x-2">
+                    <span className="font-medium text-rose-600">
+                      {product.price}
+                    </span>
+                    <span className="inline-flex items-center font-medium rounded-full text-xs px-1.5 py-0.5 gap-0.5 bg-rose-500 text-white">
+                      {product.discount}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center space-x-1.5">
+                    <span className="text-sm">Màu</span>
+                    {product.color?.map((col, colIndex) => (
+                      <span
+                        key={colIndex}
+                        aria-label="Black"
+                        className="w-[14px] h-[14px] rounded-full ring-1"
+                        style={{ background: col }}
+                      ></span>
+                    ))}
+                  </div>
+                  <div className="mt-2">
+                    <span className="text-sm text-colorPray600">
+                      Light Feather Silent Switch
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-3 p-2 border-t">
+                  <button
+                    type="button"
+                    className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-xs gap-x-1.5 px-2.5 py-1.5 shadow-sm text-white bg-gray-950 hover:bg-gray-900 disabled:bg-gray-900 aria-disabled:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimary500 inline-flex items-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      className="flex-shrink-0 h-4 w-4"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
+                        d="M12 6v12m6-6H6"
+                      />
+                    </svg>
+                    <span>So sánh</span>
+                  </button>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </BaseMobileModal>
+  ) : (
     <BaseModal open={open} onClose={onClose} title={title}>
       <div className="flex w-full overflow-auto p-4 md:p-6 !w-[600px]">
         <div className="grid grid-cols-2 gap-4">

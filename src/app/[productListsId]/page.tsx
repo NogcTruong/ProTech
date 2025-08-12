@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import banner1 from "@/assets/images/bao-hanh-chinh-hang-phu-kien-6ww.webp";
 import banner2 from "@/assets/images/back-to-school-2025-snp.webp";
 import ProductList from "@/components/common/productList";
@@ -138,9 +138,9 @@ const laptopProducts = [
 ];
 
 export default function ProductListsPage() {
-  const params = useParams();
-  const { productListsId } = params;
-  const [activeCategory, setActiveCategory] = useState("laptop");
+  // const params = useParams();
+  // const { productListsId } = params;
+  // const [activeCategory, setActiveCategory] = useState("laptop");
   const [isOpen, setIsOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -479,7 +479,7 @@ export default function ProductListsPage() {
                 <div className="font-bold font-lexend hidden md:flex items-center space-x-1 py-4">
                   <span>50 sản phẩm</span>
                 </div>
-                <div className="section-filter-listing">
+                <div className="section-filter-listing max-md:hidden">
                   <div className="w-full rounded-2xl bg-white border divide-y">
                     <div className="w-full flex flex-col px-1">
                       <div
@@ -917,7 +917,6 @@ export default function ProductListsPage() {
                       ></span>
                     </button>
                   </div>
-                  {/*  */}
                   <div
                     className={clsx(
                       buttonCompare ? "" : "translate-y-[calc(100%_+_16px)]",

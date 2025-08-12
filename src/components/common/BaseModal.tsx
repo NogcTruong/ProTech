@@ -17,21 +17,22 @@ export default function BaseModal({
   className,
 }: BaseModalProps) {
   useEffect(() => {
-    if (!open) return;
-
     if (open) {
       const originalStyle = window.getComputedStyle(document.body).overflow;
       document.body.style.overflow = "hidden";
+
+      const handleEsc = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      document.addEventListener("keydown", handleEsc);
+
       return () => {
         document.body.style.overflow = originalStyle;
+        document.removeEventListener("keydown", handleEsc);
       };
+    } else {
+      document.body.style.overflow = "";
     }
-
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleEsc);
-    return () => document.removeEventListener("keydown", handleEsc);
   }, [open, onClose]);
 
   if (!open) return null;
@@ -45,11 +46,12 @@ export default function BaseModal({
           aria-label="Đóng modal"
           style={{ zIndex: 1 }}
         />
-        <div
-          className={`fixed inset-0 overflow-y-hidden z-10 ${className || ""}`}
-        >
+        <div className={`fixed overflow-y-hidden z-10 ${className || ""}`}>
           <div className="flex min-h-full items-end sm:items-center justify-center text-center max-md:h-full p-4 sm:p-0">
-            <div className="relative text-left rtl:text-right flex flex-col bg-white shadow-xl w-full sm:max-w-[600px] md:max-w-[800px] rounded-lg sm:my-8">
+            <div
+              className="relative text-left rtl:text-right flex flex-col bg-white shadow-xl w-full sm:max-w-[600px] md:max-w-[800px] rounded-lg sm:my-8"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="max-md:h-full md:max-h-[calc(100vh_-_100px)] flex flex-col">
                 <div className="relative shrink-0 h-12 px-[52px] py-2 border-b flex items-center">
                   <div className="w-full text-center">

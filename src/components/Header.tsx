@@ -129,7 +129,7 @@ export default function HeaderPage() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [activeMenuIndex, setActiveMenuIndex] = useState(1);
-  const [widthFull, setWidthFull] = useState();
+  const [widthFull, setWidthFull] = useState<number>(0);
   const pathname = usePathname();
 
   const currentCategory = dataMenu.categories[activeMenuIndex];
@@ -321,7 +321,7 @@ export default function HeaderPage() {
                                 ⭐ Gợi ý cho bạn
                               </span>
                               <div
-                                style={{ "--gap-x": "8px", "--gap-y": "8px" }}
+                                style={{ "--gap-x": "8px", "--gap-y": "8px" } as React.CSSProperties & Record<string, string>}
                               >
                                 <div className="flex flex-wrap t-flex-gap__wrapper">
                                   {dataMenu.categories[0]?.suggest?.map(
@@ -801,7 +801,7 @@ export default function HeaderPage() {
           {isOpenSearch && <Search onClose={() => setIsOpenSearch(false)} />}
         </div>
         <div className="md:flex-1"></div>
-        <div className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault items-center btn-account hidden md:flex">
+        <div className="cursor-pointer focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault items-center btn-account hidden md:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
