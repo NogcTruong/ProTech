@@ -7,9 +7,12 @@ import imgLogo from "@/assets/logos/logo-techpro-book.png";
 import imgLogoMobile from "@/assets/logos/logo-techpro.png";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-
+import { removeFromCart } from "@/store/cartSlice";
+import CartDropdown from "./common/CartDropdown";
 import { SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Search from "./home/Search";
+import { useAppSelector } from "@/store/hooks";
+import { formatPrice } from "@/utils/formatters";
 
 const dataMenu = {
   categories: [
@@ -131,6 +134,7 @@ export default function HeaderPage() {
   const [activeMenuIndex, setActiveMenuIndex] = useState(1);
   const [widthFull, setWidthFull] = useState<number>(0);
   const pathname = usePathname();
+  const cart = useAppSelector((state: any) => state.cart);
 
   const currentCategory = dataMenu.categories[activeMenuIndex];
 
@@ -190,7 +194,7 @@ export default function HeaderPage() {
 
   const openCart = isOpenCart
     ? {
-        position: "fixed",
+        position: "fixed" as const,
         inset: "0px auto auto 0px",
         margin: "0px",
         transform: `translate(${widthFull - boxCart - 23}px, ${cartTop}px)`,
@@ -321,7 +325,13 @@ export default function HeaderPage() {
                                 ⭐ Gợi ý cho bạn
                               </span>
                               <div
-                                style={{ "--gap-x": "8px", "--gap-y": "8px" } as React.CSSProperties & Record<string, string>}
+                                style={
+                                  {
+                                    "--gap-x": "8px",
+                                    "--gap-y": "8px",
+                                  } as React.CSSProperties &
+                                    Record<string, string>
+                                }
                               >
                                 <div className="flex flex-wrap t-flex-gap__wrapper">
                                   {dataMenu.categories[0]?.suggest?.map(
@@ -849,7 +859,9 @@ export default function HeaderPage() {
                       d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007M8.625 10.5a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0m7.5 0a.375.375 0 1 1-.75 0a.375.375 0 0 1 .75 0"
                     />
                   </svg>
-                  <span className="hidden lg:block">31.990.000 ₫</span>
+                  <span className="hidden lg:block">
+                    {cart?.totalAmount ? formatPrice(cart.totalAmount) : "0 ₫"}
+                  </span>
                 </button>
                 <Link
                   href="/gio-hang"
@@ -873,94 +885,16 @@ export default function HeaderPage() {
                   </svg>
                 </Link>
               </div>
-              <span className="absolute rounded-full ring-1 ring-white flex items-center justify-center text-colorPray50 font-medium whitespace-nowrap top-1 right-2 h-3.5 min-w-[0.875rem] text-[11px] p-1 top-0 right-0 -translate-y-1/2 translate-x-1/2 transform bg-orange-500">
-                1
-              </span>
+              {cart?.totalQuantity > 0 && (
+                <span className="absolute rounded-full ring-1 ring-white flex items-center justify-center text-colorPray50 font-medium whitespace-nowrap top-1 right-2 h-3.5 min-w-[0.875rem] text-[11px] p-1 top-0 right-0 -translate-y-1/2 translate-x-1/2 transform bg-orange-500">
+                  {cart.totalQuantity}
+                </span>
+              )}
             </div>
           </div>
-          {isOpenCart && (
-            <div className="z-50 group" style={openCart}>
-              <div className="overflow-hidden focus:outline-none relative bg-white ring-1 ring-gray-200 rounded-2xl shadow-lg">
-                <div className="flex flex-col w-[400px]">
-                  <div className="border-b flex justify-between items-center space-x-2 px-4 py-2 bg-gray-100">
-                    <span className="text-lg font-lexend font-bold">
-                      Giỏ hàng (1)
-                    </span>
-                    <a
-                      href="/gio-hang"
-                      className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2 px-3 py-2 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center"
-                    >
-                      <span className="">Xem tất cả</span>
-                    </a>
-                  </div>
-                  <div className="p-4">
-                    <a
-                      href="/ghe-cong-thai-hoc/ghe-cong-thai-hoc-herman-miller-aeron"
-                      className="group/cart relative flex items-center space-x-3 shrink-0 py-2 px-3 rounded-2xl hover:bg-gray-100"
-                    >
-                      <div className="w-[72px] h-[72px] overflow-hidden rounded-lg">
-                        <Image
-                          width={72}
-                          height={72}
-                          alt="Ghế Công Thái Học Manson Atum"
-                          src="https://imagor.owtg.one/unsafe/fit-in/72x72/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/28/ghe-cong-thai-hoc-manson-atum-thinkpro-goodspace-6iG.jpg"
-                          className="lazyloaded"
-                        />
-                      </div>
-                      <div className="flex-1 flex flex-col space-y-1">
-                        <span className="text-sm font-medium line-clamp-2">
-                          Ghế Công Thái Học Manson Atum
-                        </span>
-                        <span className="text-xs text-gray-600">
-                          Bản Pro - Kèm kê chân / Gray / Mới, Full box, Chính
-                          hãng
-                        </span>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm text-rose-600 font-medium">
-                            6.790.000
-                          </span>
-                          <span className="text-sm line-through">
-                            7.990.000
-                          </span>
-                          <div className="flex-1"></div>
-                          <span className="text-sm">x1</span>
-                        </div>
-                      </div>
-                      <div className="group-hover/cart:opacity-100 opacity-0 transition-opacity absolute top-1 right-1">
-                        <button className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-1.5 p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94z"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="border-t px-4 py-2.5 flex items-center space-x-2">
-                    <div className="flex flex-col w-2/5">
-                      <span className="text-xs text-gray-600">Tổng cộng</span>
-                      <span className="text-lg font-semibold">6.790.000</span>
-                    </div>
-                    <div className="flex-1 dark">
-                      <a
-                        href="/checkout"
-                        className="focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-base gap-x-2.5 px-3.5 py-2.5 shadow-sm text-black bg-colorPrimary400 hover:bg-colorPrimary500 disabled:bg-colorPrimaryDefault aria-disabled:bg-colorPrimaryDefault focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-colorPrimaryDefault w-full flex justify-center items-center"
-                      >
-                        <span className="">Đặt hàng</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          <div className="z-50 group" style={openCart}>
+            <CartDropdown isOpen={isOpenCart} />
+          </div>
         </div>
       </div>
     </header>

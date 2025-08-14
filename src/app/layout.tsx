@@ -5,6 +5,8 @@ import HeaderPage from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { FilterProvider } from "@/contexts/FilterContext";
+import { ReduxProvider } from "@/store/provider";
+import CartPersistence from "@/components/CartPersistence";
 
 export const metadata: Metadata = {
   title:
@@ -34,12 +36,15 @@ export default function RootLayout({
           />
         </head>
         <body>
-          <FilterProvider>
-            <TopBar />
-            <HeaderPage />
-            {children}
-            <MainFooter />
-          </FilterProvider>
+          <ReduxProvider>
+            <FilterProvider>
+              <CartPersistence />
+              <TopBar />
+              <HeaderPage />
+              {children}
+              <MainFooter />
+            </FilterProvider>
+          </ReduxProvider>
         </body>
       </html>
     </ClerkProvider>

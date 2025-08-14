@@ -5,10 +5,12 @@ import Link from "next/link";
 import "./shoppingCart.css";
 import { useState } from "react";
 import PromotionalCode from "@/components/shoppingCart/PromotionalCode";
+import { useAppSelector } from "@/store/hooks";
 
-export default function shoppingCart() {
+export default function ShoppingCart() {
   const [openGiftPromotion, setOpenGiftPromotion] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const cart = useAppSelector((state: any) => state.cart);
 
   const handleDecrease = () => {
     setQuantity((prev) => Math.max(1, prev - 1));
@@ -18,7 +20,7 @@ export default function shoppingCart() {
     setQuantity((prev) => Math.min(99, prev + 1));
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = parseInt(e.target.value, 10);
     if (isNaN(val)) val = 1;
     val = Math.max(1, Math.min(99, val));
@@ -55,7 +57,11 @@ export default function shoppingCart() {
               <span className="hidden md:inline-block">Xóa tất cả</span>
             </button>
           </div>
-          <div className="mt-6">
+          <div
+            className={`${
+              cart.items.length > 1 ? "flex flex-col space-y-2 mt-6" : "mt-6"
+            }`}
+          >
             <div className="rounded-2xl border overflow-hidden p-3 bg-white shadow-md">
               <div className="flex space-x-3">
                 <div className="w-[72px] h-[72px] shrink-0 rounded-lg overflow-hidden bg-gray-100">
