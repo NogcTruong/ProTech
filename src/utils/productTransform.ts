@@ -15,7 +15,7 @@ export const transformToCartProduct = (
     originalPrice = Math.round(price / (1 - discountPercent / 100));
   }
 
-  const variant = ` ${rawProduct.version}`;
+  const variant = `${rawProduct.version}`;
 
   return {
     id,
@@ -29,13 +29,4 @@ export const transformToCartProduct = (
     colors: rawProduct.color,
     version: rawProduct.version,
   };
-};
-
-export const transformProductList = (
-  rawProducts: RawProduct[],
-  category: string
-): CartProduct[] => {
-  return rawProducts.map((product, index) =>
-    transformToCartProduct(product, index, category)
-  );
 };

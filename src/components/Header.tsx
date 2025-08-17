@@ -7,12 +7,12 @@ import imgLogo from "@/assets/logos/logo-techpro-book.png";
 import imgLogoMobile from "@/assets/logos/logo-techpro.png";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { removeFromCart } from "@/store/cartSlice";
 import CartDropdown from "./common/CartDropdown";
 import { SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Search from "./home/Search";
 import { useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatters";
+import clsx from "clsx";
 
 const dataMenu = {
   categories: [
@@ -132,6 +132,7 @@ export default function HeaderPage() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [activeMenuIndex, setActiveMenuIndex] = useState(1);
+  const [changeHeaderOffsetMenu, setChangeHeaderOffsetMenu] = useState(false);
   const [widthFull, setWidthFull] = useState<number>(0);
   const pathname = usePathname();
   const cart = useAppSelector((state: any) => state.cart);
@@ -149,8 +150,10 @@ export default function HeaderPage() {
     const handleScroll = () => {
       if (headerRef.current && window.scrollY >= 48) {
         headerRef.current.classList.add("shadow-md");
+        setChangeHeaderOffsetMenu(true);
       } else if (headerRef.current) {
         headerRef.current.classList.remove("shadow-md");
+        setChangeHeaderOffsetMenu(false);
       }
 
       const y = window.scrollY;
@@ -270,7 +273,14 @@ export default function HeaderPage() {
               <span className="hidden md:block">Sản phẩm</span>
             </button>
             {isOpenMenu && (
-              <div className="fixed top-[var(--the-header-offset-menu)] left-0 right-0 bottom-0">
+              <div
+                className={clsx(
+                  changeHeaderOffsetMenu
+                    ? "top-[var(--the-header-offset-menu-change)]"
+                    : "top-[var(--the-header-offset-menu)]",
+                  "fixed left-0 right-0 bottom-0"
+                )}
+              >
                 <div
                   className="backdrop-blur-md bg-transparent absolute inset-0 transition"
                   onClick={() => setIsOpenMenu(false)}

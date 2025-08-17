@@ -40,6 +40,7 @@
 
   --the-header-offset: 64px;
   --the-header-offset-menu: 112px;
+  --the-header-offset-menu-change: 48px;
   --the-header-height: 60px;
   --gap-x: 8px;
   --gap-y: 8px;
@@ -235,7 +236,8 @@ div[data-type="imageBlock"] {
 .pb-safe-or-3 {
   padding-bottom: 0.75rem;
 }
-responsiveWidth @layer utilities {
+
+responsiveWidth utilities {
   .text-balance {
     text-wrap: balance;
   }

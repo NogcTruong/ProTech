@@ -1,6 +1,6 @@
 "use client";
 
-import BaseModal from "../common/baseModal";
+import BaseModal from "../common/BaseModal";
 import "../../app/checkout/checkout.css";
 import { useEffect, useState } from "react";
 import {
@@ -11,7 +11,6 @@ import {
   District,
   Ward,
 } from "@/data/locationData";
-import clsx from "clsx";
 
 type FormOrderModalProps = {
   open: boolean;

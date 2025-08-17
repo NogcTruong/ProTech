@@ -1,9 +1,29 @@
 "use client";
 
+// import { Metadata } from "next";
 import Image from "next/image";
 import coverBanner from "@/assets/images/cover-folder-thinkpro.webp";
 import { useState } from "react";
-import ProductList from "@/components/common/productList";
+import ProductList from "@/components/common/ProductList";
+
+// export const metadata: Metadata = {
+//   title: "Khuyến mãi - TechPro",
+//   description:
+//     "Khám phá các chương trình khuyến mãi hấp dẫn tại TechPro. Giảm giá laptop, bàn phím cơ, ghế công thái học, máy chơi game. Ưu đãi lớn, tiết kiệm tối đa.",
+//   keywords: [
+//     "khuyến mãi",
+//     "giảm giá",
+//     "flash sale",
+//     "ưu đãi",
+//     "laptop",
+//     "bàn phím cơ",
+//     "ghế công thái học",
+//     "techpro",
+//   ],
+//   alternates: {
+//     canonical: "/khuyen-mai",
+//   },
+// };
 
 const promotionProducts = [
   {

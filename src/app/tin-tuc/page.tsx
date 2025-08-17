@@ -4,6 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import "./newslist.css";
 import { useState } from "react";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Tin tức công nghệ - TechPro",
+//   description:
+//     "Cập nhật tin tức công nghệ mới nhất, đánh giá sản phẩm, hướng dẫn sử dụng laptop, bàn phím cơ, ghế công thái học. Thông tin chính xác, cập nhật hàng ngày từ TechPro.",
+//   keywords: [
+//     "tin tức công nghệ",
+//     "hướng dẫn laptop",
+//     "bàn phím cơ",
+//     "ghế công thái học",
+//     "techpro",
+//     "công nghệ",
+//   ],
+//   alternates: {
+//     canonical: "/tin-tuc",
+//   },
+// };
 
 const data = [
   {

@@ -9,6 +9,16 @@ import SuggestionProduct from "@/components/home/SuggestionProduct";
 import TechNews from "@/components/home/TechNews";
 import TopKeywords from "@/components/home/TopKeywords";
 import Preorder from "@/components/home/Preorder";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Trang chủ",
+  description:
+    "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam chuyên cung cấp Laptop, Bàn phím cơ, Ghế công thái học, Máy chơi game PS5, Nintendo. Giá tốt nhất, bảo hành chính hãng, giao hàng miễn phí toàn quốc.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

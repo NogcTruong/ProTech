@@ -13,7 +13,7 @@ const uspData = [
     title: "Trải nghiệm tận tay",
     desc: (
       <>
-        ThinkPro tiên phong trưng bày số lượng lớn sản phẩm. Khách hàng có thể
+        Techpro tiên phong trưng bày số lượng lớn sản phẩm. Khách hàng có thể
         trực tiếp trải nghiệm tận tay hàng trăm mẫu sản phẩm công nghệ hiện đại
         nhất cùng với các phần mềm, công cụ đã được cài đặt sẵn trên máy.
       </>
@@ -45,7 +45,7 @@ const uspData = [
       <>
         Được đào tạo bài bản, chuyên nghiệp về tác phong nghề nghiệp lẫn nghiệp
         vụ, kèm theo đó là kỹ năng giao tiếp và xử lý tình huống nhạy bén, đội
-        ngũ tư vấn của ThinkPro đặt lợi ích của khách hàng lên hàng đầu, đề cao
+        ngũ tư vấn của Techpro đặt lợi ích của khách hàng lên hàng đầu, đề cao
         trách nhiệm giúp khách hàng chọn được sản phẩm phù hợp nhất với nhu cầu.
       </>
     ),
@@ -77,7 +77,7 @@ const uspData = [
         Chuyên trang “Trung tâm bảo vệ quyền lợi khách hàng” ra đời với sứ mệnh
         thấu hiểu và hành động kịp thời để khách hàng luôn có cảm giác thoải
         mái. Mỗi đóng góp quý báu từ Quý khách hàng đều mang lại giá trị to lớn,
-        chuyển hoá thành động lực để đội ngũ ThinkPro nỗ lực hoàn thiện, tiến
+        chuyển hoá thành động lực để đội ngũ Techpro nỗ lực hoàn thiện, tiến
         gần hơn đến sứ mệnh cao cả phục vụ cộng đồng.
       </>
     ),
@@ -106,7 +106,7 @@ const uspData = [
     title: "Phục vụ 24 giờ",
     desc: (
       <>
-        Lấy khách hàng làm trung tâm, đội ngũ ThinkPro luôn sẵn lòng để phục vụ
+        Lấy khách hàng làm trung tâm, đội ngũ Techpro luôn sẵn lòng để phục vụ
         và hỗ trợ khách hàng tới 24 giờ với chất lượng dịch vụ nhanh chóng, kết
         nối mọi lúc mọi nơi: Kênh bán hàng Offline mở cửa tới 22h (tuỳ chi
         nhánh) Kênh bán hàng online Tổng đài hỗ trợ kỹ thuật, bảo hành đến 24h
@@ -331,7 +331,7 @@ export default function Usp() {
             </div>
             <div className="mt-6 md:mt-0 flex-1 flex justify-end">
               <div className="w-[260px] h-[260px] lg:w-[380px] lg:h-[380px] 2xl:w-[460px] 2xl:h-[460px]">
-                <Image src={uspData[active].img} alt="Hình ảnh usp ThinkPro" />
+                <Image src={uspData[active].img} alt="Hình ảnh usp Techpro" />
               </div>
             </div>
           </div>
@@ -357,7 +357,7 @@ export default function Usp() {
                         <Image
                           width={260}
                           height={260}
-                          alt="Hình ảnh usp ThinkPro"
+                          alt="Hình ảnh usp Techpro"
                           src={usp.img}
                         />
                       </div>

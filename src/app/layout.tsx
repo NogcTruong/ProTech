@@ -9,10 +9,36 @@ import { ReduxProvider } from "@/store/provider";
 import CartPersistence from "@/components/CartPersistence";
 
 export const metadata: Metadata = {
-  title:
-    "ThinkPro - Laptop, Phím cơ, Bàn nâng hạ, Ghế công thái học, PS5, Nintendo - Dịch vụ Tận tâm",
+  title: {
+    default:
+      "Techpro - Laptop, Phím cơ, Bàn nâng hạ, Ghế công thái học, PS5, Nintendo - Dịch vụ Tận tâm",
+    template: "%s | techpro",
+  },
   description:
     "Chuỗi cửa hàng chuyên Máy tính xách tay (Laptop), Bàn phím cơ, Bàn ghế Công thái học, Máy chơi game, PS5, Nintendo - Dịch vụ Tận tâm, đội ngũ tư vấn được đào tạo kỹ lưỡng, có chuyên môn.",
+  authors: [{ name: "techpro" }],
+  creator: "techpro",
+  publisher: "techpro",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://techpro.vn"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

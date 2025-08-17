@@ -302,7 +302,7 @@ export default function FilterProductListsModal({
                         className="text-sm font-medium text-gray-900"
                       >
                         Tôi sẽ giới thiệu cho bạn bè, người thân mua sản phẩm
-                        này tại ThinkPro
+                        này tại Techpro
                       </label>
                     </div>
                   </div>

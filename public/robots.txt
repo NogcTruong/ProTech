@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://techpro.vn/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /checkout/
+Disallow: /gio-hang/
+
+# Allow important pages
+Allow: /laptop/
+Allow: /ban-phim-co/
+Allow: /ghe-cong-thai-hoc/
+Allow: /ban-nang-ha/
+Allow: /may-choi-game/
+Allow: /tin-tuc/
+Allow: /khuyen-mai/
+
+# Crawl delay
+Crawl-delay: 1

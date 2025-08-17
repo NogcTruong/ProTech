@@ -42,7 +42,7 @@ export default function NotFound() {
             <span>Một số nguyên nhân phổ biến:</span>
             <ul className="list-disc list-inside">
               <li>
-                Các kỹ sư ThinkPro đang thực hiện bảo trì, bạn có thể thử truy
+                Các kỹ sư techpro đang thực hiện bảo trì, bạn có thể thử truy
                 cập lại sau
               </li>
               <li>

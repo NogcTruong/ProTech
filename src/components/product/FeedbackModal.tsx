@@ -328,7 +328,7 @@ export default function Feedback({ open, onClose, title }: FeedbackProps) {
                           className="text-sm font-medium text-gray-900"
                         >
                           Tôi sẽ giới thiệu cho bạn bè, người thân mua sản phẩm
-                          này tại ThinkPro
+                          này tại Techpro
                         </label>
                       </div>
                     </div>
@@ -618,7 +618,7 @@ export default function Feedback({ open, onClose, title }: FeedbackProps) {
                 className="text-sm font-medium text-gray-900"
               >
                 Tôi sẽ giới thiệu cho bạn bè, người thân mua sản phẩm này tại
-                ThinkPro
+                Techpro
               </label>
             </div>
           </div>

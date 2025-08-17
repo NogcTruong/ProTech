@@ -1,6 +1,6 @@
 "use client";
 
-import ProductList from "@/components/common/productList";
+import ProductList from "@/components/common/ProductList";
 import { useEffect, useState } from "react";
 
 const suggestionProducts = {
@@ -374,7 +374,12 @@ const suggestionProducts = {
   ],
 };
 
-const tabHighlightStyle = {
+type KeyTab = keyof typeof suggestionProducts;
+
+const tabHighlightStyle: Record<
+  KeyTab,
+  { top: number; left: number; width: number; height: number }
+> = {
   laptop: { top: 4, left: 4, width: 70, height: 36 },
   "bàn phím": { top: 4, left: 74, width: 86, height: 36 },
   "ghế công thái học": { top: 4, left: 160, width: 143, height: 36 },
@@ -382,7 +387,7 @@ const tabHighlightStyle = {
 };
 
 export default function SuggestionProduct() {
-  const [activeTab, setActiveTab] = useState("laptop");
+  const [activeTab, setActiveTab] = useState<KeyTab>("laptop");
   const [visibleCount, setVisibleCount] = useState(10);
 
   const handleShowMore = () => {
@@ -479,8 +484,8 @@ export default function SuggestionProduct() {
       </div>
       <div className="mt-4 md:mt-10">
         <ProductList
-          products={dataSuggestionProducts || []}
-          title="Sản phẩm gợi ý"
+          products={dataSuggestionProducts as any}
+          showCompareButton={false}
         />
         {hasMore && (
           <div className="mt-10 flex justify-center">

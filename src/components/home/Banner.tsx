@@ -10,30 +10,30 @@ import { useEffect, useState } from "react";
 const banners = [
   {
     img: Banner1,
-    link: "https://thinkpro.vn/back-to-school?utm_content",
+    link: "#",
   },
   {
     img: Banner2,
-    link: "https://thinkpro.vn/back-to-school?utm_content",
+    link: "#",
   },
   {
     img: Banner3,
-    link: "https://thinkpro.vn/back-to-school?utm_content",
+    link: "#",
   },
 ];
 
 const bannersMobile = [
   {
     img: "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/core/categories/2025/7/1/frame-427320384.png",
-    link: "https://thinkpro.vn/back-to-school?utm_content",
+    link: "#",
   },
   {
     img: "https://imagor.owtg.one/unsafe/fit-in/800x450/https://d28jzcg6y4v9j1.cloudfront.net/media/core/categories/2025/3/12/banner-mobi-800x-450.png",
-    link: "https://thinkpro.vn/back-to-school?utm_content",
+    link: "#",
   },
   {
     img: "https://imagor.owtg.one/unsafe/fit-in/800x450/https://owtg-upload.s3.ap-southeast-1.amazonaws.com/media/core/categories/2025/1/20/banner-mobbile-1600x900.jpg",
-    link: "https://thinkpro.vn/back-to-school?utm_content",
+    link: "#",
   },
 ];
 
