@@ -1,6 +1,6 @@
 import Image from "next/image";
-import BaseModal from "../common/BaseModal";
-import "../../app/[productListsId]/[detailProductId]/danh-gia/review.css";
+import BaseModal from "../../../../../components/common/BaseModal";
+import "@/app/[productListsId]/[detailProductId]/danh-gia/review.css";
 import { useEffect, useState } from "react";
 
 type FeedbackProps = {

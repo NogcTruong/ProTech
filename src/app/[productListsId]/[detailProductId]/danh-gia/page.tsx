@@ -7,7 +7,7 @@ import Link from "next/link";
 import ReviewModal from "@/components/product/ReviewModal";
 import clsx from "clsx";
 import { useParams } from "next/navigation";
-import FeedbackModal from "@/components/product/FeedbackModal";
+import FeedbackModal from "@/app/[productListsId]/[detailProductId]/components/modals/FeedbackModal";
 
 type Review = {
   id: number;
@@ -133,7 +133,7 @@ export default function Review() {
   };
 
   const handleFeedback = () => {
-      setFeedback(true);
+    setFeedback(true);
   };
 
   const handleSortChange = (sortType: string) => {

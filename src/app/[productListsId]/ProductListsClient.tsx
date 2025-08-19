@@ -9,10 +9,10 @@ import Link from "next/link";
 import clsx from "clsx";
 import FilterProductListsModal from "@/components/product/productLists/FilterProductListsModal";
 import { brands, laptopProducts } from "./data";
-import Breadcrumb from "./components/Breadcrumb";
 import Banner from "./components/Banner";
 import BrandFilter from "./components/BrandFilter";
 import FilterSidebar from "./components/FilterSidebar";
+import Breadcrumb from "@/components/common/Breadcrumb";
 
 interface ProductListsClientProps {
   params: {
@@ -191,7 +191,32 @@ export default function ProductListsClient({
     <>
       <main className="collection-page">
         <div className="container py-5 md:py-10">
-          <Breadcrumb categoryName={categoryName} />
+          <div className="mb-5 md:mb-8">
+            <Breadcrumb
+              items={[{ label: categoryName, href: "#", isActive: true }]}
+              className="min-w-0 hidden md:block"
+            />
+            <a
+              href="#"
+              type="button"
+              className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-1.5 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-colorPray300 text-colorPray700 bg-colorPray50 hover:bg-colorPray100 disabled:bg-colorPray50 aria-disabled:bg-colorPray50 focus-visible:ring-2 focus-visible:ring-colorPrimaryDefault inline-flex items-center md:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="M20.25 12a.75.75 0 0 1-.75.75H6.31l5.47 5.47a.75.75 0 1 1-1.06 1.06l-6.75-6.75a.75.75 0 0 1 0-1.06l6.75-6.75a.75.75 0 1 1 1.06 1.06l-5.47 5.47H19.5a.75.75 0 0 1 .75.75"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span>{categoryName}</span>
+            </a>
+          </div>
           <Banner />
           <div className="mb-5 md:mb-10">
             <h1 className="text-3xl md:text-5xl font-bold font-lexend">
@@ -201,7 +226,6 @@ export default function ProductListsClient({
           <BrandFilter />
           <div className="mt-4 md:mt-6 flex md:space-x-6">
             <div className="fixed md:sticky md:w-1/4 md:top-[var(--the-header-offset)] z-10 h-[calc(100vh_-_var(--the-header-height))] overflow-auto">
-              {/* FilterSidebar */}
               <FilterSidebar
                 selectedBrands={selectedBrands}
                 selectedPrices={selectedPrices}
