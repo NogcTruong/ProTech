@@ -20,7 +20,6 @@ import DetailedArticle from "./components/DetailedArticle";
 export default function DetailProductIdClient() {
   const router = useRouter();
   const { productListsId, detailProductId } = useParams();
-  console.log("detailProductId", detailProductId);
 
   const [isOpen, setIsOpen] = useState(false);
   const [buttonPromotion, setButtonPromotion] = useState("buyNow");

@@ -196,7 +196,7 @@ export default function FilterProductListsModal({
                 </div>
                 <div className="mt-3">
                   <textarea
-                    rows="3"
+                    rows={3}
                     placeholder="Mọi sản phẩm đề có ưu, nhược riêng. Chia sẻ chi tiết cho anh em về sản phẩm bạn nhé"
                     className="relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 form-textarea rounded-md placeholder-gray-400 text-sm px-2.5 py-1.5 shadow-sm bg-white text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-colorPrimary500 resize-none"
                   ></textarea>

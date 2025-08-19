@@ -1,6 +1,6 @@
 "use client";
 
-import FeedbackModal from "@/app/[productListsId]/[detailProductId]/components/modals/FeedbackModal";
+import FeedbackModal from "@/components/common/FeedbackModal";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
