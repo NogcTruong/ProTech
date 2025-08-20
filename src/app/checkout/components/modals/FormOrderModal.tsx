@@ -1,7 +1,7 @@
 "use client";
 
-import BaseModal from "../common/BaseModal";
-import "../../app/checkout/checkout.css";
+import BaseModal from "@/components/common/BaseModal";
+import "@/app/checkout/checkout.css";
 import { useEffect, useState } from "react";
 import {
   getCities,

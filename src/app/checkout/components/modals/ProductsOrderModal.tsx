@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BaseModal from "../common/baseModal";
+import BaseModal from "@/components/common/BaseModal";
 import Link from "next/link";
 
 type ProductsOrderModalProps = {

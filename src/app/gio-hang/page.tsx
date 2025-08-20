@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "./shoppingCart.css";
 import { useState } from "react";
-import PromotionalCode from "@/components/shoppingCart/PromotionalCode";
+import PromotionalCode from "@/app/checkout/components/modals/PromotionalCode";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { removeFromCart, updateQuantity } from "@/store/cartSlice";
 import { hexToColorName } from "@/utils/colors";

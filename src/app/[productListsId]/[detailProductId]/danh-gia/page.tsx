@@ -19,12 +19,20 @@ export async function generateMetadata({
     "may-choi-game": "Máy chơi game",
     "thuc-te-ao": "Thực tế ảo",
     "game-console": "Game Console",
+    "ghe-cong-thai-hoc-herman-miller-aeron":
+      "Ghế Công Thái Học Herman Miller Aeron",
+  };
+
+  const detailProductMap: { [key: string]: string } = {
+    "ghe-cong-thai-hoc-herman-miller-aeron":
+      "Ghế Công Thái Học Herman Miller Aeron",
   };
 
   const categoryName = categoryMap[decodedCategoryId] || decodedCategoryId;
+  const detailProduct = detailProductMap[decodedProductId] || decodedProductId;
 
-  const productTitle = `${decodedProductId} - ${categoryName} | TechPro`;
-  const productDescription = `Đánh giá ${decodedProductId}.`;
+  const productTitle = `Đánh giá | ${detailProduct} - ${categoryName} | TechPro`;
+  const productDescription = `Đánh giá | ${detailProduct}.`;
 
   return {
     title: productTitle,
@@ -43,5 +51,5 @@ export async function generateMetadata({
 }
 
 export default function Review() {
-  return <ReviewClient  />
+  return <ReviewClient />;
 }

@@ -214,6 +214,8 @@ export default function Feedback({ open, onClose, title }: FeedbackProps) {
                         <div key={index} className="relative">
                           <div className="w-[80px] h-[80px] border rounded-lg overflow-hidden">
                             <Image
+                              width={80}
+                              height={80}
                               src={URL.createObjectURL(image)}
                               alt={`Ảnh ${index + 1}`}
                               className="w-full h-full object-cover"
@@ -511,6 +513,8 @@ export default function Feedback({ open, onClose, title }: FeedbackProps) {
                     </button>
                   </div>
                   <Image
+                    width={80}
+                    height={80}
                     src={URL.createObjectURL(image)}
                     alt={`Ảnh ${index + 1}`}
                     className="w-full h-full object-cover"
