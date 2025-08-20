@@ -86,10 +86,6 @@ export default function AddressDetails() {
             </span>
             <span className="mt-4 font-semibold">Đang mở cửa</span>
             <div className="mt-2">
-              {/* <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Hai</span>
-                <span>09:00 - 21:00</span>
-              </div> */}
               {days.map((thu, idx) => (
                 <div
                   key={idx}
@@ -101,34 +97,6 @@ export default function AddressDetails() {
                   <span>09:00 - 21:00</span>
                 </div>
               ))}
-              {/* <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Hai</span>
-                <span>09:00 - 21:00</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Ba</span>
-                <span>09:00 - 21:00</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Tư</span>
-                <span>09:00 - 21:00</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Năm</span>
-                <span>09:00 - 21:00</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Sáu</span>
-                <span>09:00 - 21:00</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="w-20">Thứ Bảy</span>
-                <span>09:00 - 21:00</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <span className="w-20">Chủ Nhật</span>
-                <span>09:00 - 21:00</span>
-              </div> */}
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2">
               <Link
