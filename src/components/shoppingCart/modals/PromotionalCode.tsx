@@ -1,6 +1,4 @@
-import Image from "next/image";
-import BaseModal from "../../../../components/common/baseModal";
-import Link from "next/link";
+import BaseModal from "@/components/common/BaseModal";
 
 type ProductsOrderModalProps = {
   open: boolean;

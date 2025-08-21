@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductsOrderModal from "@/app/checkout/components/modals/ProductsOrderModal";
+import { useAppSelector } from "@/store/hooks";
+import { formatPrice } from "@/utils/formatters";
 
 interface ProductOrdersProps {
   handleProductsOrder: () => void;
@@ -14,6 +16,8 @@ export default function ProductOrders({
   productsOrderModal,
   setProductsOrderModal,
 }: ProductOrdersProps) {
+  const cart = useAppSelector((state: any) => state.cart);
+
   return (
     <div className="max-md:col-start-1 max-md:row-start-1 md:col-start-3 md:row-start-2">
       <div className="rounded-2xl border bg-white">
@@ -22,7 +26,7 @@ export default function ProductOrders({
           onClick={handleProductsOrder}
         >
           <span className="flex-1 text-lg md:text-xl font-lexend font-bold text-left">
-            Sản phẩm trong đơn (1)
+            Sản phẩm trong đơn ({cart?.totalQuantity})
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,38 +48,45 @@ export default function ProductOrders({
         {/* Desktop */}
         {productsOrder && (
           <div className="hidden md:flex flex-col space-y-2 px-4 pb-4">
-            <Link
-              href="#!"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="relative flex items-center space-x-3 shrink-0 py-2 px-3 rounded-2xl hover:bg-gray-100"
-            >
-              <div className="w-[72px] h-[72px] overflow-hidden rounded-lg">
-                <Image
-                  width={72}
-                  height={72}
-                  alt="Chuột không dây DAGK G300SE Silent"
-                  src="https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/5/6/chuot-khong-day-dagk-g300se-silent-sp7.jpg"
-                  sizes="72px"
-                />
-              </div>
-              <div className="flex-1 flex flex-col space-y-1">
-                <span className="text-sm font-medium line-clamp-2">
-                  Chuột không dây DAGK G300SE Silent
-                </span>
-                <span className="text-xs text-gray-600">
-                  Black / Mới, Full box, Nhập khẩu
-                </span>
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-rose-600 font-medium">
-                    149.000
-                  </span>
-                  <span className="text-sm line-through">399.000</span>
-                  <div className="flex-1"></div>
-                  <span className="text-sm">x1</span>
-                </div>
-              </div>
-            </Link>
+            <>
+              {cart.items.map((item: any) => (
+                <Link
+                  key={`${item.id}-${item.variant}`}
+                  href="#!"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="relative flex items-center space-x-3 shrink-0 py-2 px-3 rounded-2xl hover:bg-gray-100"
+                >
+                  <div className="w-[72px] h-[72px] overflow-hidden rounded-lg">
+                    <Image
+                      width={72}
+                      height={72}
+                      alt={item.name}
+                      src={item.image}
+                      sizes="72px"
+                    />
+                  </div>
+                  <div className="flex-1 flex flex-col space-y-1">
+                    <span className="text-sm font-medium line-clamp-2">
+                      {item.name}
+                    </span>
+                    <span className="text-xs text-gray-600">
+                      {item.version}
+                    </span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm text-rose-600 font-medium">
+                        {formatPrice(item.price)}
+                      </span>
+                      <span className="text-sm line-through">
+                        {formatPrice(item.originalPrice)}
+                      </span>
+                      <div className="flex-1"></div>
+                      <span className="text-sm">x1</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </>
           </div>
         )}
         {/* Mobile */}

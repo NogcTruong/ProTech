@@ -4,9 +4,9 @@ import Link from "next/link";
 import "./checkout.css";
 import { useState } from "react";
 import DeliveryMethod from "./components/DeliveryMethod";
-import Promotion from "./components/Promotion";
-import SummaryOrders from "./components/SummaryOrders";
 import ProductOrders from "./components/ProductOrders";
+import Promotion from "@/components/shoppingCart/Promotion";
+import SummaryOrders from "@/components/shoppingCart/SummaryOrders";
 
 export default function CheckoutClient() {
   const [openGiftPromotion, setOpenGiftPromotion] = useState(false);
@@ -96,11 +96,14 @@ export default function CheckoutClient() {
             setAreaModal={setAreaModal}
           />
           <div className="max-md:col-start-1 max-md:row-start-3 md:col-start-3 flex flex-col space-y-2">
-            <Promotion
-              openGiftPromotion={openGiftPromotion}
-              setOpenGiftPromotion={setOpenGiftPromotion}
-            />
-            <SummaryOrders setOpenGiftPromotion={setOpenGiftPromotion} />
+          <Promotion
+            openGiftPromotion={openGiftPromotion}
+            setOpenGiftPromotion={() => setOpenGiftPromotion(true)}
+            setCloseGiftPromotion={() => setOpenGiftPromotion(false)}
+          />
+          <SummaryOrders
+            setOpenGiftPromotion={() => setOpenGiftPromotion(true)}
+          />
           </div>
           <ProductOrders
             handleProductsOrder={handleProductsOrder}

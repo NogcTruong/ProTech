@@ -1,13 +1,15 @@
-import PromotionalCode from "@/app/checkout/components/modals/PromotionalCode";
+import PromotionalCode from "@/components/shoppingCart/modals/PromotionalCode";
 
 interface PromotionProps {
   openGiftPromotion: boolean;
-  setOpenGiftPromotion: (open: boolean) => void;
+  setOpenGiftPromotion: () => void;
+  setCloseGiftPromotion: () => void;
 }
 
 export default function Promotion({
   openGiftPromotion,
   setOpenGiftPromotion,
+  setCloseGiftPromotion,
 }: PromotionProps) {
   return (
     <section className="overflow-hidden p-4 hidden md:flex flex-col space-y-4 rounded-2xl border bg-white">
@@ -19,7 +21,7 @@ export default function Promotion({
       <div className="md:mt-4">
         <button
           className="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 flex-shrink-0 font-bold font-lexend rounded-full text-sm gap-x-2.5 px-3.5 py-2.5 shadow-sm ring-1 ring-inset ring-gray-300 text-gray-900 bg-white hover:bg-gray-50 disabled:bg-white aria-disabled:bg-white focus-visible:ring-2 focus-visible:ring-primary-500 w-full flex justify-center items-center"
-          onClick={() => setOpenGiftPromotion(true)}
+          onClick={setOpenGiftPromotion}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +42,7 @@ export default function Promotion({
         </button>
         <PromotionalCode
           open={openGiftPromotion}
-          onClose={() => setOpenGiftPromotion(false)}
+          onClose={setCloseGiftPromotion}
           title="Chọn hoặc nhập mã khuyến mãi"
         />
       </div>

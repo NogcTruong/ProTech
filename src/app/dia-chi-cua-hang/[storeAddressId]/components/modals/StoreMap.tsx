@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import "../app/dia-chi-cua-hang/storeAddress.css";
+import "@/app/dia-chi-cua-hang/storeAddress.css";
 
 interface StoreMapProps {
   storeName: string;

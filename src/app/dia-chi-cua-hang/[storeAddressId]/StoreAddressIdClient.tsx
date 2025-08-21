@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import StoreMap from "@/components/StoreMap";
+import StoreMap from "@/app/dia-chi-cua-hang/[storeAddressId]/components/modals/StoreMap";
 import "../storeAddress.css";
 import DetailedAddInfo from "./components/DetailedAddInfo";
 

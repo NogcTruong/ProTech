@@ -17,14 +17,6 @@ export default function CartDropdown({ isOpen }: CartDropdownProps) {
     dispatch(removeFromCart({ id, variant }));
   };
 
-  // const handleUpdateQuantity = (
-  //   id: string,
-  //   variant: string,
-  //   quantity: number
-  // ) => {
-  //   dispatch(updateQuantity({ id, variant, quantity }));
-  // };
-
   if (!isOpen) return null;
 
   return (
