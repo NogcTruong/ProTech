@@ -1,14 +1,14 @@
 import "@/app/(home)/home.css";
-import Banner from "@/components/home/Banner";
-import CardProduct from "@/components/home/CardProduct";
-import FeaturedCategories from "@/components/home/FeaturedCategories";
-import Promotions from "@/components/home/Promotions";
-import FlashSale from "@/components/home/FlashSale";
-import Usp from "@/components/home/Usp";
-import SuggestionProduct from "@/components/home/SuggestionProduct";
-import TechNews from "@/components/home/TechNews";
-import TopKeywords from "@/components/home/TopKeywords";
-import Preorder from "@/components/home/Preorder";
+import Banner from "@/app/(home)/components/Banner";
+import CardProduct from "@/app/(home)/components/CardProduct";
+import FeaturedCategories from "@/app/(home)/components/FeaturedCategories";
+import Promotions from "@/app/(home)/components/Promotions";
+import FlashSale from "@/app/(home)/components/FlashSale";
+import Usp from "@/app/(home)/components/Usp";
+import SuggestionProduct from "@/app/(home)/components/SuggestionProduct";
+import TechNews from "@/app/(home)/components/TechNews";
+import TopKeywords from "@/app/(home)/components/TopKeywords";
+import Preorder from "@/app/(home)/components/Preorder";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

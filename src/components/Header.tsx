@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import CartDropdown from "./common/CartDropdown";
 import { SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import Search from "./home/Search";
+import Search from "../app/(home)/components/Search";
 import { useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatters";
 import clsx from "clsx";
