@@ -420,3 +420,42 @@ export const dataNews = {
     ],
   },
 };
+
+export const recommendedProducts = [
+  {
+    id: "1",
+    name: "RAM Laptop Samsung DDR5 16GB Bus 5600MHz",
+    image:
+      "https://imagor.owtg.one/unsafe/fit-in/72x72/https://media-api-beta.thinkpro.vn/media/core/products/2024/12/31/ram-laptop-samsung-ddr5-16gb-bus-5600mhz-thinkpro-mCA.jpg",
+    price: 1490000,
+    originalPrice: 1690000,
+    discount: "-12%",
+  },
+  {
+    id: "2",
+    name: "Lenovo Xiaoxin 14C 2025",
+    image:
+      "https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2025/4/23/lenovo-xiaoxin-14c-2025-hgp.jpg",
+    price: 1490000,
+    originalPrice: 1690000,
+    discount: "-12%",
+  },
+  {
+    id: "3",
+    name: "Mặt bàn gỗ MDF Pure",
+    image:
+      "https://imagor.owtg.one/unsafe/fit-in/72x72/https://media-api-beta.thinkpro.vn/media/core/products/2024/11/18/mat-ban-go-mdf-pure-by-nicedesign-thinkpro-goodspace-Z9M.jpg",
+    price: 1490000,
+    originalPrice: 1690000,
+    discount: "-12%",
+  },
+  {
+    id: "4",
+    name: "Khung bàn nâng hạ Bamboo",
+    image:
+      "https://imagor.owtg.one/unsafe/fit-in/72x72/https://d28jzcg6y4v9j1.cloudfront.net/media/core/products/2024/10/14/khung-ban-nang-ha-bamboo-edge-by-nicedesign-sh222t6-dm-cl-thinkpro-goodspace-dSJ.jpg",
+    price: 1490000,
+    originalPrice: 1690000,
+    discount: "-12%",
+  },
+];
