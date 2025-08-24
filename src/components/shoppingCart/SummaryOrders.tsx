@@ -1,6 +1,9 @@
+"use client";
+
 import { useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatters";
 import Link from "next/link";
+import { useHydration } from "@/hooks/useHydration";
 
 interface SummaryOrdersProps {
   setOpenGiftPromotion: () => void;
@@ -9,7 +12,25 @@ interface SummaryOrdersProps {
 export default function SummaryOrders({
   setOpenGiftPromotion,
 }: SummaryOrdersProps) {
+  const isHydrated = useHydration();
   const { totalAmount } = useAppSelector((state: any) => state.cart);
+
+  if (!isHydrated) {
+    return (
+      <section className="border rounded-2xl overflow-hidden p-4 flex flex-col space-y-4 bg-white">
+        <span className="text-xl font-bold font-lexend">Tóm tắt đơn hàng</span>
+        <div className="flex items-center justify-between">
+          <span className="text-sm">Tạm tính</span>
+          <span className="text-sm font-semibold">Đang tải...</span>
+        </div>
+        <div className="border-t border-dashed border-gray-300"></div>
+        <div className="flex items-center justify-between">
+          <span className="text-base font-semibold">Tổng cộng</span>
+          <span className="text-base font-semibold">Đang tải...</span>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="border rounded-2xl overflow-hidden p-4 flex flex-col space-y-4 bg-white">
@@ -17,14 +38,14 @@ export default function SummaryOrders({
       <div className="flex items-center justify-between">
         <span className="text-sm">Tạm tính</span>
         <span className="text-sm font-semibold">
-          {formatPrice(totalAmount)}
+          {formatPrice(totalAmount || 0)}
         </span>
       </div>
       <div className="border-t border-dashed border-gray-300"></div>
       <div className="flex items-center justify-between">
         <span className="text-base font-semibold">Tổng cộng</span>
         <span className="text-base font-semibold">
-          {formatPrice(totalAmount)}
+          {formatPrice(totalAmount || 0)}
         </span>
       </div>
       <div className="max-md:bottom-0 max-md:inset-x-0 max-md:bg-white max-md:z-[11] max-md:flex max-md:flex-col max-md:shadow-inverse-md fixed md:relative">
@@ -77,7 +98,7 @@ export default function SummaryOrders({
           <div className="w-1/2 flex md:hidden flex-col items-end">
             <span className="text-sm">Tổng cộng</span>
             <span className="text-lg font-semibold">
-              {formatPrice(totalAmount)}
+              {formatPrice(totalAmount || 0)}
             </span>
           </div>
           <div className="flex-1">

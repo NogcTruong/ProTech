@@ -96,14 +96,14 @@ export default function CheckoutClient() {
             setAreaModal={setAreaModal}
           />
           <div className="max-md:col-start-1 max-md:row-start-3 md:col-start-3 flex flex-col space-y-2">
-          <Promotion
-            openGiftPromotion={openGiftPromotion}
-            setOpenGiftPromotion={() => setOpenGiftPromotion(true)}
-            setCloseGiftPromotion={() => setOpenGiftPromotion(false)}
-          />
-          <SummaryOrders
-            setOpenGiftPromotion={() => setOpenGiftPromotion(true)}
-          />
+            <Promotion
+              openGiftPromotion={openGiftPromotion}
+              setOpenGiftPromotion={() => setOpenGiftPromotion(true)}
+              setCloseGiftPromotion={() => setOpenGiftPromotion(false)}
+            />
+            <SummaryOrders
+              setOpenGiftPromotion={() => setOpenGiftPromotion(true)}
+            />
           </div>
           <ProductOrders
             handleProductsOrder={handleProductsOrder}

@@ -1,6 +1,7 @@
 import "./shoppingCart.css";
 import { Metadata } from "next";
 import ShoppingCartClient from "./ShoppingCartClient";
+import HydrationWrapper from "@/components/common/HydrationWrapper";
 
 export const metadata: Metadata = {
   title: "Giỏ hàng",
@@ -17,5 +18,9 @@ export const metadata: Metadata = {
 };
 
 export default function ShoppingCart() {
-  return <ShoppingCartClient />;
+  return (
+    <HydrationWrapper>
+      <ShoppingCartClient />
+    </HydrationWrapper>
+  );
 }

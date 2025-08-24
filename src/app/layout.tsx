@@ -12,13 +12,25 @@ export const metadata: Metadata = {
   title: {
     default:
       "Techpro - Laptop, Phím cơ, Bàn nâng hạ, Ghế công thái học, PS5, Nintendo - Dịch vụ Tận tâm",
-    template: "%s | techpro",
+    template: "%s | TechPro",
   },
   description:
     "Chuỗi cửa hàng chuyên Máy tính xách tay (Laptop), Bàn phím cơ, Bàn ghế Công thái học, Máy chơi game, PS5, Nintendo - Dịch vụ Tận tâm, đội ngũ tư vấn được đào tạo kỹ lưỡng, có chuyên môn.",
-  authors: [{ name: "techpro" }],
-  creator: "techpro",
-  publisher: "techpro",
+  keywords: [
+    "laptop",
+    "bàn phím cơ",
+    "ghế công thái học",
+    "bàn nâng hạ",
+    "ps5",
+    "nintendo",
+    "máy chơi game",
+    "techpro",
+    "công nghệ",
+    "máy tính",
+  ],
+  authors: [{ name: "TechPro" }],
+  creator: "TechPro",
+  publisher: "TechPro",
   formatDetection: {
     email: false,
     address: false,
@@ -38,6 +50,24 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    url: "https://techpro.vn",
+    siteName: "TechPro",
+    title: "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam",
+    description:
+      "Chuỗi cửa hàng chuyên Máy tính xách tay (Laptop), Bàn phím cơ, Bàn ghế Công thái học, Máy chơi game, PS5, Nintendo - Dịch vụ Tận tâm.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam",
+    description:
+      "Chuỗi cửa hàng chuyên Máy tính xách tay (Laptop), Bàn phím cơ, Bàn ghế Công thái học, Máy chơi game, PS5, Nintendo - Dịch vụ Tận tâm.",
+  },
+  verification: {
+    google: "your-google-verification-code",
   },
 };
 

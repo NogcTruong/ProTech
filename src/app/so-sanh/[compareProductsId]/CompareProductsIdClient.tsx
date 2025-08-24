@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import "./compareProductsId.css";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import AddComparativeProducts from "@/components/product/AddComparativeProducts";
 import ProductHeader from "./components/ProductHeader";

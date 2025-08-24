@@ -25,7 +25,6 @@ export default function ProductListsClient({
   params,
 }: ProductListsClientProps) {
   const { productListsId } = params;
-  const [isOpen, setIsOpen] = useState(false);
   const [buttonCompare, setButtonCompare] = useState(false);
   const [isOpenBrands, setIsOpenBrands] = useState(true);
   const [isOpenPrices, setIsOpenPrices] = useState(true);

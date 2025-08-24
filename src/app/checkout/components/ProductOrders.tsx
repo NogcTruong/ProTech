@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import ProductsOrderModal from "@/app/checkout/components/modals/ProductsOrderModal";
 import { useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatters";
+import { useHydration } from "@/hooks/useHydration";
 
 interface ProductOrdersProps {
   handleProductsOrder: () => void;
@@ -10,13 +13,46 @@ interface ProductOrdersProps {
   productsOrderModal: boolean;
   setProductsOrderModal: (productsOrderModal: boolean) => void;
 }
+
 export default function ProductOrders({
   handleProductsOrder,
   productsOrder,
   productsOrderModal,
   setProductsOrderModal,
 }: ProductOrdersProps) {
+  const isHydrated = useHydration();
   const cart = useAppSelector((state: any) => state.cart);
+
+  if (!isHydrated) {
+    return (
+      <div className="max-md:col-start-1 max-md:row-start-1 md:col-start-3 md:row-start-2">
+        <div className="rounded-2xl border bg-white">
+          <div className="w-full flex items-center space-x-2 p-4">
+            <div className="flex-1 h-6 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+          <div className="hidden md:flex flex-col space-y-2 px-4 pb-4">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="relative flex items-center space-x-3 shrink-0 py-2 px-3 rounded-2xl"
+              >
+                <div className="w-[72px] h-[72px] bg-gray-200 rounded-lg animate-pulse"></div>
+                <div className="flex-1 flex flex-col space-y-1">
+                  <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                  <div className="h-3 bg-gray-200 rounded w-1/2 animate-pulse"></div>
+                  <div className="flex items-center space-x-2">
+                    <div className="h-4 bg-gray-200 rounded w-16 animate-pulse"></div>
+                    <div className="h-4 bg-gray-200 rounded w-12 animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-md:col-start-1 max-md:row-start-1 md:col-start-3 md:row-start-2">
@@ -26,7 +62,7 @@ export default function ProductOrders({
           onClick={handleProductsOrder}
         >
           <span className="flex-1 text-lg md:text-xl font-lexend font-bold text-left">
-            Sản phẩm trong đơn ({cart?.totalQuantity})
+            Sản phẩm trong đơn ({cart?.totalQuantity || 0})
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +85,7 @@ export default function ProductOrders({
         {productsOrder && (
           <div className="hidden md:flex flex-col space-y-2 px-4 pb-4">
             <>
-              {cart.items.map((item: any) => (
+              {cart?.items?.map((item: any) => (
                 <Link
                   key={`${item.id}-${item.variant}`}
                   href="#!"

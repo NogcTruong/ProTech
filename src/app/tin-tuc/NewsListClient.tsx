@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import "./newslist.css";
 import { useState } from "react";
 import { data, dataNews, recommendedProducts } from "./data";

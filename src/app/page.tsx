@@ -15,8 +15,35 @@ export const metadata: Metadata = {
   title: "Trang chủ",
   description:
     "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam chuyên cung cấp Laptop, Bàn phím cơ, Ghế công thái học, Máy chơi game PS5, Nintendo. Giá tốt nhất, bảo hành chính hãng, giao hàng miễn phí toàn quốc.",
+  keywords: [
+    "trang chủ",
+    "techpro",
+    "laptop",
+    "bàn phím cơ",
+    "ghế công thái học",
+    "máy chơi game",
+    "ps5",
+    "nintendo",
+    "công nghệ",
+    "máy tính",
+  ],
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    title: "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam",
+    description:
+      "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam chuyên cung cấp Laptop, Bàn phím cơ, Ghế công thái học, Máy chơi game PS5, Nintendo. Giá tốt nhất, bảo hành chính hãng, giao hàng miễn phí toàn quốc.",
+    url: "https://techpro.vn",
+    siteName: "TechPro",
+    locale: "vi_VN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam",
+    description:
+      "TechPro - Cửa hàng công nghệ hàng đầu Việt Nam chuyên cung cấp Laptop, Bàn phím cơ, Ghế công thái học, Máy chơi game PS5, Nintendo.",
   },
 };
 

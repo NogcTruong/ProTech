@@ -1,3 +1,5 @@
+"use client";
+
 import PromotionalCode from "@/components/shoppingCart/modals/PromotionalCode";
 
 interface PromotionProps {
